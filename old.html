@@ -85,7 +85,7 @@
         }
 
         .section-content {
-            display: block; /* Default to block, JS will handle collapsing */
+            display: block;
             padding: 10px;
         }
 
@@ -101,7 +101,7 @@
         }
 
         .form-col {
-            flex: 1 0 300px; /* Allow wrapping on smaller screens */
+            flex: 1 0 300px;
             padding: 0 10px;
             margin-bottom: 15px;
         }
@@ -194,7 +194,7 @@
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
-            gap: 10px; /* Added gap for better spacing */
+            gap: 10px;
         }
 
         .field-info {
@@ -238,7 +238,6 @@
             justify-content: center;
             cursor: pointer;
             font-size: 0.9rem;
-            border: none; /* Ensure button style consistency */
         }
 
         .section-actions {
@@ -263,7 +262,7 @@
             overflow-x: auto;
             white-space: pre;
             margin-top: 30px;
-            display: none; /* Hidden by default */
+            display: none;
         }
 
         .export-options {
@@ -311,9 +310,9 @@
             padding: 5px;
             position: absolute;
             z-index: 1;
-            bottom: 125%; /* Position above the icon */
+            bottom: 125%;
             left: 50%;
-            margin-left: -100px; /* Center the tooltip */
+            margin-left: -100px;
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -322,22 +321,19 @@
             visibility: visible;
             opacity: 1;
         }
-        
+
         @media (max-width: 768px) {
             .form-col {
-                flex: 0 0 100%; /* Full width on smaller screens */
+                flex: 0 0 100%;
             }
             
             .buttons-container {
                 flex-direction: column;
             }
             
-            button { /* Apply to all buttons for consistency */
+            button {
                 width: 100%;
                 margin-bottom: 10px;
-            }
-            .buttons-container button:last-child { /* Remove margin for last button in container */
-                 margin-bottom: 0;
             }
         }
     </style>
@@ -358,6 +354,7 @@
             </div>
 
             <form id="metadatenForm">
+                <!-- Objektkennzeichnung -->
                 <div class="section">
                     <div class="section-header" data-section="objektkennzeichnung">
                         <h2>1. Objektkennzeichnung</h2>
@@ -428,6 +425,7 @@
                     </div>
                 </div>
 
+                <!-- Objektbeschreibung -->
                 <div class="section">
                     <div class="section-header" data-section="objektbeschreibung">
                         <h2>2. Objektbeschreibung</h2>
@@ -490,6 +488,7 @@
                     </div>
                 </div>
 
+                <!-- Zustandserfassung -->
                 <div class="section">
                     <div class="section-header" data-section="zustandserfassung">
                         <h2>3. Zustandserfassung</h2>
@@ -551,17 +550,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group" id="schadensphänomene_ursachen_container">
-                            <label class="required-field">Schadensphänomene und -ursachen</label>
+                        <div class="form-group" id="schadensphänomene_container">
+                            <label class="required-field">Schadensphänomene</label>
                             <div class="field-info">Mehrfachnennung möglich</div>
                             
-                            <div class="removable-item schadensphaenomen-ursache-item">
+                            <div class="removable-item schadensphänomen-item">
                                 <div class="remove-item-btn">×</div>
                                 <div class="form-row">
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label>Schadensphänomen</label>
-                                            <select class="schadensphaenomen_select" required>
+                                            <select class="schadensphänomen" required>
                                                 <option value="">Bitte wählen</option>
                                                 <option value="keine">Keine</option>
                                                 <option value="fragmentiert">Fragmentiert</option>
@@ -574,7 +573,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label>Grad des Schadensphänomens</label>
-                                            <select class="schadensgrad_select">
+                                            <select class="schadensgrad">
                                                 <option value="">Bitte wählen</option>
                                                 <option value="gering">Gering</option>
                                                 <option value="mittel">Mittel</option>
@@ -583,17 +582,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                     <div class="form-col">
-                                        <div class="form-group">
-                                            <label>Schadensursache</label>
-                                            <input type="text" class="schadensursache_text" placeholder="z.B. Transportschaden, Altrestaurierung">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             
-                            <button type="button" class="add-item-btn" id="add_schadensphaenomen_ursache">+ Schadensphänomen/-ursache hinzufügen</button>
+                            <button type="button" class="add-item-btn" id="add_schadensphänomen">+ Schadensphänomen hinzufügen</button>
+                        </div>
+
+                        <div class="form-group" id="schadensursachen_container">
+                            <label>Schadensursache</label>
+                            <div class="field-info">Optional, Mehrfachnennung möglich</div>
+                            
+                            <div class="removable-item schadensursache-item">
+                                <div class="remove-item-btn">×</div>
+                                <input type="text" class="schadensursache" placeholder="z.B. Transportschaden, Altrestaurierung">
+                            </div>
+                            
+                            <button type="button" class="add-item-btn" id="add_schadensursache">+ Schadensursache hinzufügen</button>
                         </div>
 
                         <div class="form-group">
@@ -604,6 +607,7 @@
                     </div>
                 </div>
 
+                <!-- Konservierungs-Restaurierungskonzept -->
                 <div class="section">
                     <div class="section-header" data-section="restaurierungskonzept">
                         <h2>4. Konservierungs-Restaurierungskonzept</h2>
@@ -629,6 +633,7 @@
                     </div>
                 </div>
 
+                <!-- Durchgeführte Maßnahmen -->
                 <div class="section">
                     <div class="section-header" data-section="durchgefuehrte_massnahmen">
                         <h2>5. Durchgeführte Maßnahmen</h2>
@@ -690,6 +695,7 @@
 
                         <div class="form-group" id="materialien_container">
                             <label class="required-field">Material</label>
+                            
                             <div class="removable-item material-item">
                                 <div class="remove-item-btn">×</div>
                                 <div class="form-row">
@@ -721,20 +727,18 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <button type="button" class="add-item-btn" id="add_material">+ Material hinzufügen</button>
                         </div>
 
-                        <div class="form-group" id="werkzeuge_geraete_container">
-                            <label class="recommended-field">Werkzeug/Gerät</label>
-                            <div class="removable-item werkzeug-geraet-item">
-                                <div class="remove-item-btn">×</div>
-                                <input type="text" class="werkzeug_geraet_name" placeholder="Werkzeug/Gerät eingeben">
-                            </div>
-                            <button type="button" class="add-item-btn" id="add_werkzeug_geraet">+ Werkzeug/Gerät hinzufügen</button>
+                        <div class="form-group">
+                            <label for="werkzeug_geraet" class="recommended-field">Werkzeug/Gerät</label>
+                            <textarea id="werkzeug_geraet" name="werkzeug_geraet" rows="3"></textarea>
                         </div>
                     </div>
                 </div>
 
+                <!-- Untersuchung -->
                 <div class="section">
                     <div class="section-header" data-section="untersuchung">
                         <h2>6. Untersuchung</h2>
@@ -830,10 +834,12 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <button type="button" class="add-item-btn" id="add_untersuchung">+ Untersuchung hinzufügen</button>
                     </div>
                 </div>
 
+                <!-- Probeentnahme -->
                 <div class="section">
                     <div class="section-header" data-section="probeentnahme">
                         <h2>7. Probeentnahme</h2>
@@ -902,10 +908,12 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <button type="button" class="add-item-btn" id="add_probe">+ Probeentnahme hinzufügen</button>
                     </div>
                 </div>
 
+                <!-- Sicherheit & Arbeitsschutz -->
                 <div class="section">
                     <div class="section-header" data-section="sicherheit_arbeitsschutz">
                         <h2>8. Sicherheit & Arbeitsschutz</h2>
@@ -966,6 +974,7 @@
                     </div>
                 </div>
 
+                <!-- Präventive Konservierung -->
                 <div class="section">
                     <div class="section-header" data-section="praeventive_konservierung">
                         <h2>9. Präventive Konservierung</h2>
@@ -1063,6 +1072,7 @@
                     </div>
                 </div>
 
+                <!-- Verwendete Literatur -->
                 <div class="section">
                     <div class="section-header" data-section="verwendete_literatur">
                         <h2>10. Verwendete Literatur</h2>
@@ -1075,6 +1085,7 @@
                     </div>
                 </div>
 
+                <!-- Administrative Metadaten -->
                 <div class="section">
                     <div class="section-header" data-section="administrative_metadaten">
                         <h2>11. Administrative Metadaten</h2>
@@ -1141,41 +1152,24 @@
         const collectFormData = () => {
             const data = {};
 
+            // Helper function to get value from an input or textarea
             const getValue = (id) => document.getElementById(id)?.value;
 
+            // Helper function to get values for dynamic lists
             const getDynamicList = (containerId, itemClass, fields) => {
                 const items = [];
                 document.querySelectorAll(`#${containerId} .${itemClass}`).forEach(itemElement => {
                     const itemData = {};
-                    let hasData = false;
                     fields.forEach(field => {
                         const inputElement = itemElement.querySelector(`.${field.class}`);
                         if (inputElement) {
                             itemData[field.name] = inputElement.value;
-                            if (inputElement.value) hasData = true;
                         }
                     });
-                    // Only add item if it has some data (for multi-field items) or if it's a simple text list
-                    if (hasData || (fields.length === 1 && itemData[fields[0].name])) {
-                         items.push(itemData);
-                    } else if (containerId === 'schadensphänomene_ursachen_container' && itemData[fields[0].name]) { // Special case for Schadensphänomen select
-                        items.push(itemData);
-                    }
+                    items.push(itemData);
                 });
                 return items;
             };
-            
-            const getSimpleDynamicList = (containerId, itemClass, inputClass) => {
-                const items = [];
-                document.querySelectorAll(`#${containerId} .${itemClass}`).forEach(itemElement => {
-                    const inputElement = itemElement.querySelector(`.${inputClass}`);
-                    if (inputElement && inputElement.value) {
-                        items.push(inputElement.value);
-                    }
-                });
-                return items;
-            };
-
 
             // 1. Objektkennzeichnung
             data.objektkennzeichnung = {
@@ -1208,11 +1202,13 @@
                 verweis_kennnummer: getValue('verweis_kennnummer'),
                 umgebungsbedingungen: getValue('umgebungsbedingungen'),
                 physischer_objektzustand: getValue('physischer_objektzustand'),
-                schadensphaenomene_ursachen: getDynamicList('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', [
-                    { class: 'schadensphaenomen_select', name: 'schadensphaenomen' },
-                    { class: 'schadensgrad_select', name: 'grad_des_schadensphaenomens' },
-                    { class: 'schadensursache_text', name: 'schadensursache' }
+                schadensphaenomene: getDynamicList('schadensphänomene_container', 'schadensphänomen-item', [
+                    { class: 'schadensphänomen', name: 'schadensphaenomen' },
+                    { class: 'schadensgrad', name: 'grad_des_schadensphaenomens' }
                 ]),
+                schadensursachen: getDynamicList('schadensursachen_container', 'schadensursache-item', [
+                    { class: 'schadensursache', name: 'schadensursache' }
+                ]).map(item => item.schadensursache), // Extract just the string value
                 fruehere_eingriffe: getValue('fruehere_eingriffe')
             };
 
@@ -1237,7 +1233,7 @@
                     { class: 'material_mischungsverhaeltnis', name: 'mischungsverhaeltnis_konzentration' },
                     { class: 'material_herstellungsdatum', name: 'herstellungsdatum' }
                 ]),
-                werkzeuge_geraete: getSimpleDynamicList('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'werkzeug_geraet_name')
+                werkzeug_geraet: getValue('werkzeug_geraet')
             };
 
             // 6. Untersuchung
@@ -1337,120 +1333,74 @@
             });
         });
 
-        // --- Initial state for sections (some open, some collapsed) ---
-        const initialSectionStates = {
-            'objektkennzeichnung': false, // false = collapsed
-            'objektbeschreibung': false,
-            'zustandserfassung': true,    // true = open
-            'restaurierungskonzept': true,
-            'durchgefuehrte_massnahmen': true,
-            'untersuchung': false,
-            'probeentnahme': false,
-            'sicherheit_arbeitsschutz': false,
-            'praeventive_konservierung': false,
-            'verwendete_literatur': true,
-            'administrative_metadaten': false
-        };
-
-        for (const sectionId in initialSectionStates) {
-            const content = document.getElementById(sectionId);
-            const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
-            if (content && header) {
-                const toggleBtn = header.querySelector('.toggle-btn');
-                if (initialSectionStates[sectionId]) {
-                    content.style.display = 'block';
-                    toggleBtn.textContent = '−';
-                } else {
-                    content.style.display = 'none';
-                    toggleBtn.textContent = '+';
-                }
-            }
-        }
-
+        // Ensure all sections are open by default
+        document.querySelectorAll('.section-content').forEach(content => {
+            content.style.display = 'block';
+            content.previousElementSibling.querySelector('.toggle-btn').textContent = '−';
+        });
 
         // --- 3. Hinzufügen und Entfernen von dynamischen Feldern ---
-        const setupDynamicFields = (containerId, itemClass, addBtnId, templateHtml, attachRemoveDirectly = false) => {
+        const setupDynamicFields = (containerId, itemClass, addBtnId, templateHtml) => {
             const container = document.getElementById(containerId);
             const addBtn = document.getElementById(addBtnId);
 
             const addItem = () => {
-                const newItemWrapper = document.createElement('div'); // Wrapper for proper DOM insertion if templateHtml is just innerHTML
-                newItemWrapper.innerHTML = templateHtml;
-                const newItem = newItemWrapper.firstElementChild; // Assuming template is a single root .removable-item
-                
-                if (newItem.classList.contains('removable-item')) { // Ensure it's the correct structure
-                    container.appendChild(newItem); // Append to main container
-                    attachRemoveListener(newItem.querySelector('.remove-item-btn'));
-                } else { // If template is simpler (e.g. for Werkzeug/Gerät)
-                    const tempDiv = document.createElement('div');
-                    tempDiv.classList.add('removable-item', itemClass); // Add classes here
-                    tempDiv.innerHTML = templateHtml; // templateHtml is just the input and button
-                    container.insertBefore(tempDiv, addBtn); // Insert before the add button
-                    attachRemoveListener(tempDiv.querySelector('.remove-item-btn'));
-
-                }
+                const newItem = document.createElement('div');
+                newItem.classList.add('removable-item', itemClass);
+                newItem.innerHTML = templateHtml;
+                container.appendChild(newItem);
+                attachRemoveListener(newItem.querySelector('.remove-item-btn'));
             };
-            
+
             const attachRemoveListener = (btn) => {
-                if (btn) {
-                    btn.addEventListener('click', (event) => {
-                        event.target.closest('.removable-item').remove();
-                    });
-                }
+                btn.addEventListener('click', (event) => {
+                    event.target.closest('.removable-item').remove();
+                });
             };
 
-            if (addBtn) {
-                addBtn.addEventListener('click', addItem);
-            }
+            addBtn.addEventListener('click', addItem);
 
             // Attach listeners to initially present remove buttons
-            container.querySelectorAll(`.${itemClass} .remove-item-btn`).forEach(btn => attachRemoveListener(btn));
+            container.querySelectorAll('.remove-item-btn').forEach(btn => attachRemoveListener(btn));
         };
-        
 
         // Templates for dynamic fields
-        const schadensphaenomenUrsacheTemplate = `
-            <div class="removable-item schadensphaenomen-ursache-item">
-                <div class="remove-item-btn">×</div>
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Schadensphänomen</label>
-                            <select class="schadensphaenomen_select" required>
-                                <option value="">Bitte wählen</option>
-                                <option value="keine">Keine</option>
-                                <option value="fragmentiert">Fragmentiert</option>
-                                <option value="korrodiert">Korrodiert</option>
-                                <option value="befallen">Befallen</option>
-                                <option value="sonstiges">Sonstiges</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Grad des Schadensphänomens</label>
-                            <select class="schadensgrad_select">
-                                <option value="">Bitte wählen</option>
-                                <option value="gering">Gering</option>
-                                <option value="mittel">Mittel</option>
-                                <option value="stark">Stark</option>
-                            </select>
-                        </div>
+        const schadensphaenomenTemplate = `
+            <div class="remove-item-btn">×</div>
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label>Schadensphänomen</label>
+                        <select class="schadensphänomen" required>
+                            <option value="">Bitte wählen</option>
+                            <option value="keine">Keine</option>
+                            <option value="fragmentiert">Fragmentiert</option>
+                            <option value="korrodiert">Korrodiert</option>
+                            <option value="befallen">Befallen</option>
+                            <option value="sonstiges">Sonstiges</option>
+                        </select>
                     </div>
                 </div>
-                <div class="form-row">
-                     <div class="form-col">
-                        <div class="form-group">
-                            <label>Schadensursache</label>
-                            <input type="text" class="schadensursache_text" placeholder="z.B. Transportschaden, Altrestaurierung">
-                        </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label>Grad des Schadensphänomens</label>
+                        <select class="schadensgrad">
+                            <option value="">Bitte wählen</option>
+                            <option value="gering">Gering</option>
+                            <option value="mittel">Mittel</option>
+                            <option value="stark">Stark</option>
+                        </select>
                     </div>
                 </div>
             </div>
         `;
 
+        const schadensursacheTemplate = `
+            <div class="remove-item-btn">×</div>
+            <input type="text" class="schadensursache" placeholder="z.B. Transportschaden, Altrestaurierung">
+        `;
+
         const materialTemplate = `
-         <div class="removable-item material-item">
             <div class="remove-item-btn">×</div>
             <div class="form-row">
                 <div class="form-col">
@@ -1480,17 +1430,9 @@
                     </div>
                 </div>
             </div>
-        </div>
         `;
-        
-        const werkzeugGeraetTemplate = `
-            <div class="remove-item-btn">×</div>
-            <input type="text" class="werkzeug_geraet_name" placeholder="Werkzeug/Gerät eingeben">
-        `;
-
 
         const untersuchungTemplate = `
-        <div class="removable-item untersuchung-item">
             <div class="remove-item-btn">×</div>
             <div class="form-row">
                 <div class="form-col">
@@ -1574,11 +1516,9 @@
                     </div>
                 </div>
             </div>
-        </div>
         `;
 
         const probeTemplate = `
-        <div class="removable-item probe-item">
             <div class="remove-item-btn">×</div>
             <div class="form-row">
                 <div class="form-col">
@@ -1637,23 +1577,13 @@
                     </div>
                 </div>
             </div>
-        </div>
         `;
-        
-        setupDynamicFields('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, true);
-        setupDynamicFields('materialien_container', 'material-item', 'add_material', materialTemplate, true);
-        setupDynamicFields('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate);
-        setupDynamicFields('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, true);
-        setupDynamicFields('proben_container', 'probe-item', 'add_probe', probeTemplate, true);
 
-        // --- Helper to attach remove listener (used also in fillFormWithData) ---
-        const attachRemoveListenerToItem = (btn) => {
-            if (btn) {
-                btn.addEventListener('click', (event) => {
-                    event.target.closest('.removable-item').remove();
-                });
-            }
-        };
+        setupDynamicFields('schadensphänomene_container', 'schadensphänomen-item', 'add_schadensphänomen', schadensphaenomenTemplate);
+        setupDynamicFields('schadensursachen_container', 'schadensursache-item', 'add_schadensursache', schadensursacheTemplate);
+        setupDynamicFields('materialien_container', 'material-item', 'add_material', materialTemplate);
+        setupDynamicFields('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate);
+        setupDynamicFields('proben_container', 'probe-item', 'add_probe', probeTemplate);
 
 
         // --- 4. Speichern-Funktion (Simuliert) ---
@@ -1661,7 +1591,7 @@
             console.log('Daten werden gespeichert (simuliert)...');
             const formData = collectFormData();
             console.log(JSON.stringify(formData, null, 2));
-            generateJsonOutput(formData); // Show JSON output on save as well
+            generateJsonOutput(formData);
             alert('Daten wurden erfolgreich gespeichert!');
         });
 
@@ -1672,7 +1602,7 @@
         const generateJsonOutput = (data) => {
             jsonOutputDiv.textContent = JSON.stringify(data, null, 2);
             jsonOutputDiv.style.display = 'block';
-            exportOptionsDiv.style.display = 'flex'; 
+            exportOptionsDiv.style.display = 'flex'; // Show export options
         };
 
         document.getElementById('export_json_btn').addEventListener('click', () => {
@@ -1694,8 +1624,9 @@
                 }
             }
         });
-        
+
         const fillFormWithData = (data) => {
+            // Helper function to set value for an input or textarea
             const setValue = (id, value) => {
                 const element = document.getElementById(id);
                 if (element && value !== undefined && value !== null) {
@@ -1703,80 +1634,86 @@
                 }
             };
 
-            const fillDynamicList = (containerId, itemClass, addBtnId, templateHtml, itemsData, fields, isSimpleList = false) => {
+            // Helper function to fill dynamic lists
+            const fillDynamicList = (containerId, itemClass, addBtnId, templateHtml, itemsData, fields) => {
                 const container = document.getElementById(containerId);
-                const addBtn = document.getElementById(addBtnId);
-                
-                container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
+                // Remove all existing dynamic items except the first one if it's a template
+                container.querySelectorAll(`.${itemClass}`).forEach((item, index) => {
+                    // Assuming the first one is the default empty template, remove others
+                    if (index > 0) {
+                        item.remove();
+                    } else if (itemsData && itemsData.length === 0) {
+                         // If no data, ensure only one empty item remains
+                         item.remove();
+                    }
+                });
 
+                // For the first item, if it exists and there's data, fill it, otherwise remove if no data
+                const firstItem = container.querySelector(`.${itemClass}`);
                 if (itemsData && itemsData.length > 0) {
-                    itemsData.forEach(itemData => {
-                        const newItemWrapper = document.createElement('div');
-                        newItemWrapper.innerHTML = templateHtml; // Template should be the full .removable-item
-                        const newItem = newItemWrapper.firstElementChild;
+                    if (!firstItem) { // If no initial item exists, create one
+                        const newItem = document.createElement('div');
+                        newItem.classList.add('removable-item', itemClass);
+                        newItem.innerHTML = templateHtml;
+                        container.insertBefore(newItem, document.getElementById(addBtnId));
+                    }
+                    // Fill the first item
+                    const currentItem = container.querySelector(`.${itemClass}`);
+                    if (currentItem) {
+                        fields.forEach(field => {
+                            const inputElement = currentItem.querySelector(`.${field.class}`);
+                            if (inputElement && itemsData[0][field.name] !== undefined) {
+                                inputElement.value = itemsData[0][field.name];
+                            }
+                        });
+                    }
+                } else if (firstItem) {
+                    // If no data to fill, ensure the first item is removed if it's a "template" that should only appear when adding
+                    // For forms that start with one empty dynamic item, ensure it's truly empty if no data comes in
+                    firstItem.remove(); // Remove initial template if no data
+                }
 
-                        if (!newItem || !newItem.classList.contains('removable-item')) {
-                             // Simpler template handling (like Werkzeug/Gerät)
-                            const tempDiv = document.createElement('div');
-                            tempDiv.classList.add('removable-item', itemClass);
-                            tempDiv.innerHTML = templateHtml; // templateHtml is just the input and button
-                            
-                            if (isSimpleList) {
-                                const inputElement = tempDiv.querySelector(`.${fields[0].class}`);
-                                if (inputElement) inputElement.value = itemData[fields[0].name];
-                            } else {
-                                fields.forEach(field => {
-                                    const inputElement = tempDiv.querySelector(`.${field.class}`);
-                                    if (inputElement && itemData[field.name] !== undefined) {
-                                        inputElement.value = itemData[field.name];
-                                    }
-                                });
-                            }
-                            container.insertBefore(tempDiv, addBtn);
-                            attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
-                        } else {
-                            // For complex items where templateHtml is the full item structure
-                            if (isSimpleList) { // This case should ideally not mix with complex templates
-                                const inputElement = newItem.querySelector(`.${fields[0].class}`);
-                                if (inputElement) inputElement.value = itemData[fields[0].name]; // itemData is just the string
-                            } else {
-                                fields.forEach(field => {
-                                    const inputElement = newItem.querySelector(`.${field.class}`);
-                                    if (inputElement && itemData[field.name] !== undefined) {
-                                        inputElement.value = itemData[field.name];
-                                    }
-                                });
-                            }
-                            container.insertBefore(newItem, addBtn);
-                            attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
+
+                itemsData.slice(firstItem ? 1 : 0).forEach(itemData => { // Start from second item if first was already handled
+                    const newItem = document.createElement('div');
+                    newItem.classList.add('removable-item', itemClass);
+                    newItem.innerHTML = templateHtml;
+                    container.insertBefore(newItem, document.getElementById(addBtnId)); // Insert before the add button
+                    attachRemoveListener(newItem.querySelector('.remove-item-btn'));
+
+                    fields.forEach(field => {
+                        const inputElement = newItem.querySelector(`.${field.class}`);
+                        if (inputElement && itemData[field.name] !== undefined) {
+                            inputElement.value = itemData[field.name];
                         }
                     });
-                } else {
-                     // Add one empty item if no data for this list, so the form looks consistent
-                    const newItemWrapper = document.createElement('div');
-                    newItemWrapper.innerHTML = templateHtml;
-                    const newItem = newItemWrapper.firstElementChild;
-                     if (!newItem || !newItem.classList.contains('removable-item')) {
-                        const tempDiv = document.createElement('div');
-                        tempDiv.classList.add('removable-item', itemClass);
-                        tempDiv.innerHTML = templateHtml;
-                        container.insertBefore(tempDiv, addBtn);
-                        attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
-                     } else {
-                        container.insertBefore(newItem, addBtn);
-                        attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
-                     }
-                }
+                });
             };
 
-
+            // 1. Objektkennzeichnung
             if (data.objektkennzeichnung) {
-                Object.keys(data.objektkennzeichnung).forEach(key => setValue(key === 'ansprechpartner' ? 'ansprechpartner' : key, data.objektkennzeichnung[key]));
-            }
-            if (data.objektbeschreibung) {
-                Object.keys(data.objektbeschreibung).forEach(key => setValue(key, data.objektbeschreibung[key]));
+                setValue('objektansprache', data.objektkennzeichnung.objektansprache);
+                setValue('kennzeichnungsnummer', data.objektkennzeichnung.kennzeichnungsnummer);
+                setValue('datierung', data.objektkennzeichnung.datierung);
+                setValue('herkunft', data.objektkennzeichnung.herkunft);
+                setValue('eingangsdatum', data.objektkennzeichnung.eingangsdatum);
+                setValue('ansprechpartner', data.objektkennzeichnung.ansprechpartner);
+                setValue('schoepferin', data.objektkennzeichnung.schoepferin);
+                setValue('objektbeziehung', data.objektkennzeichnung.objektbeziehung);
             }
 
+            // 2. Objektbeschreibung
+            if (data.objektbeschreibung) {
+                setValue('objekttyp', data.objektbeschreibung.objekttyp);
+                setValue('weitere_objekteigenschaften', data.objektbeschreibung.weitere_objekteigenschaften);
+                setValue('objektmaterial', data.objektbeschreibung.objektmaterial);
+                setValue('herstellungstechnik', data.objektbeschreibung.herstellungstechnik);
+                setValue('aktuelle_masse', data.objektbeschreibung.aktuelle_masse);
+                setValue('aktuelles_gewicht', data.objektbeschreibung.aktuelles_gewicht);
+                setValue('aktueller_standort', data.objektbeschreibung.aktueller_standort);
+            }
+
+            // 3. Zustandserfassung
             if (data.zustandserfassung) {
                 setValue('zeitpunkt_erfassung', data.zustandserfassung.zeitpunkt_der_erfassung);
                 setValue('datum_erfassung', data.zustandserfassung.datum_der_erfassung);
@@ -1784,20 +1721,29 @@
                 setValue('verweis_kennnummer', data.zustandserfassung.verweis_kennnummer);
                 setValue('umgebungsbedingungen', data.zustandserfassung.umgebungsbedingungen);
                 setValue('physischer_objektzustand', data.zustandserfassung.physischer_objektzustand);
-                
-                fillDynamicList('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, data.zustandserfassung.schadensphaenomene_ursachen, [
-                    { class: 'schadensphaenomen_select', name: 'schadensphaenomen' },
-                    { class: 'schadensgrad_select', name: 'grad_des_schadensphaenomens' },
-                    { class: 'schadensursache_text', name: 'schadensursache' }
+
+                // For schadensphaenomene
+                fillDynamicList('schadensphänomene_container', 'schadensphänomen-item', 'add_schadensphänomen', schadensphaenomenTemplate, data.zustandserfassung.schadensphaenomene, [
+                    { class: 'schadensphänomen', name: 'schadensphaenomen' },
+                    { class: 'schadensgrad', name: 'grad_des_schadensphaenomens' }
                 ]);
+
+                // For schadensursachen (needs mapping back to string array)
+                const schadensursachenData = data.zustandserfassung.schadensursachen ? data.zustandserfassung.schadensursachen.map(s => ({ schadensursache: s })) : [];
+                fillDynamicList('schadensursachen_container', 'schadensursache-item', 'add_schadensursache', schadensursacheTemplate, schadensursachenData, [
+                    { class: 'schadensursache', name: 'schadensursache' }
+                ]);
+
                 setValue('fruehere_eingriffe', data.zustandserfassung.fruehere_eingriffe);
             }
 
+            // 4. Konservierungs-Restaurierungskonzept
             if (data.restaurierungskonzept) {
                 setValue('anlass_massnahme', data.restaurierungskonzept.anlass_der_massnahme);
                 setValue('ziel_massnahme', data.restaurierungskonzept.ziel_der_massnahme);
             }
 
+            // 5. Durchgeführte Maßnahmen
             if (data.durchgefuehrte_massnahmen) {
                 setValue('zustaendige_einrichtung', data.durchgefuehrte_massnahmen.zustaendige_restaurierungseinrichtung);
                 setValue('massnahmenkennnummer', data.durchgefuehrte_massnahmen.massnahmenkennnummer);
@@ -1813,26 +1759,42 @@
                     { class: 'material_mischungsverhaeltnis', name: 'mischungsverhaeltnis_konzentration' },
                     { class: 'material_herstellungsdatum', name: 'herstellungsdatum' }
                 ]);
-                
-                const werkzeugeData = data.durchgefuehrte_massnahmen.werkzeuge_geraete 
-                    ? data.durchgefuehrte_massnahmen.werkzeuge_geraete.map(name => ({ name: name })) 
-                    : [];
-                fillDynamicList('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate, werkzeugeData, [
-                    { class: 'werkzeug_geraet_name', name: 'name' }
-                ], true);
+
+                setValue('werkzeug_geraet', data.durchgefuehrte_massnahmen.werkzeug_geraet);
             }
 
+            // 6. Untersuchung
             if (data.untersuchung) {
                 fillDynamicList('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, data.untersuchung.untersuchungen, [
-                    { class: 'untersuchung_person', name: 'zustaendige_person' }, { class: 'untersuchung_institution', name: 'durchfuehrende_institution' }, { class: 'untersuchung_kennung', name: 'kennung_der_untersuchung' }, { class: 'untersuchung_datum', name: 'datum_der_untersuchung' }, { class: 'untersuchung_grund', name: 'grund_anlass_der_untersuchung' }, { class: 'untersuchung_lokalisation', name: 'lokalisation_der_untersuchung' }, { class: 'untersuchung_verfahren', name: 'untersuchungsverfahren' }, { class: 'untersuchung_material', name: 'material' }, { class: 'untersuchung_geraet', name: 'untersuchungsgeraet' }, { class: 'untersuchung_parameter', name: 'parameter_einstellungen' }, { class: 'untersuchung_ergebnis', name: 'untersuchungsergebnis' }
-                ]);
-            }
-            if (data.probeentnahme) {
-                fillDynamicList('proben_container', 'probe-item', 'add_probe', probeTemplate, data.probeentnahme.proben, [
-                    { class: 'probe_person', name: 'zustaendige_person' }, { class: 'probe_institution', name: 'durchfuehrende_institution' }, { class: 'probe_datum', name: 'datum_der_probennahme' }, { class: 'probe_kennung', name: 'kennung_der_probe' }, { class: 'probe_beschreibung', name: 'probenbeschreibung' }, { class: 'probe_grund', name: 'grund_anlass_der_entnahme' }, { class: 'probe_stelle', name: 'stelle_der_probenentnahme' }, { class: 'probe_methode', name: 'entnahmemethode' }
+                    { class: 'untersuchung_person', name: 'zustaendige_person' },
+                    { class: 'untersuchung_institution', name: 'durchfuehrende_institution' },
+                    { class: 'untersuchung_kennung', name: 'kennung_der_untersuchung' },
+                    { class: 'untersuchung_datum', name: 'datum_der_untersuchung' },
+                    { class: 'untersuchung_grund', name: 'grund_anlass_der_untersuchung' },
+                    { class: 'untersuchung_lokalisation', name: 'lokalisation_der_untersuchung' },
+                    { class: 'untersuchung_verfahren', name: 'untersuchungsverfahren' },
+                    { class: 'untersuchung_material', name: 'material' },
+                    { class: 'untersuchung_geraet', name: 'untersuchungsgeraet' },
+                    { class: 'untersuchung_parameter', name: 'parameter_einstellungen' },
+                    { class: 'untersuchung_ergebnis', name: 'untersuchungsergebnis' }
                 ]);
             }
 
+            // 7. Probeentnahme
+            if (data.probeentnahme) {
+                fillDynamicList('proben_container', 'probe-item', 'add_probe', probeTemplate, data.probeentnahme.proben, [
+                    { class: 'probe_person', name: 'zustaendige_person' },
+                    { class: 'probe_institution', name: 'durchfuehrende_institution' },
+                    { class: 'probe_datum', name: 'datum_der_probennahme' },
+                    { class: 'probe_kennung', name: 'kennung_der_probe' },
+                    { class: 'probe_beschreibung', name: 'probenbeschreibung' },
+                    { class: 'probe_grund', name: 'grund_anlass_der_entnahme' },
+                    { class: 'probe_stelle', name: 'stelle_der_probenentnahme' },
+                    { class: 'probe_methode', name: 'entnahmemethode' }
+                ]);
+            }
+
+            // 8. Sicherheit & Arbeitsschutz
             if (data.sicherheit_arbeitsschutz) {
                 setValue('gefaehrdungshinweise', data.sicherheit_arbeitsschutz.gefaehrdungshinweise);
                 setValue('art_gefaehrdung', data.sicherheit_arbeitsschutz.art_der_gefaehrdung);
@@ -1844,6 +1806,7 @@
                 setValue('zugaenglichkeit_vorbehalt', data.sicherheit_arbeitsschutz.zugaenglichkeit_unter_vorbehalt);
             }
 
+            // 9. Präventive Konservierung
             if (data.praeventive_konservierung) {
                 if (data.praeventive_konservierung.allgemeine_umgangsempfehlungen) {
                     setValue('praesentationsvorgaben', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.praesentationsvorgaben);
@@ -1863,9 +1826,13 @@
                     setValue('schadstoffe', data.praeventive_konservierung.monitoring.schadstoffe);
                 }
             }
+
+            // 10. Verwendete Literatur
             if (data.verwendete_literatur) {
                 setValue('literatur', data.verwendete_literatur.literatur);
             }
+
+            // 11. Administrative Metadaten
             if (data.administrative_metadaten) {
                 setValue('erstellungsdatum', data.administrative_metadaten.erstellungsdatum);
                 setValue('bearbeiterin', data.administrative_metadaten.bearbeiterin);
@@ -1873,94 +1840,43 @@
                 setValue('lizenz', data.administrative_metadaten.lizenz_openaccess);
             }
         };
-        
-        // --- Function to prefill and collapse forms ---
-        const prefillAndCollapseForms = () => {
-            const prefillData = {
-                objektkennzeichnung: {
-                    objektansprache: "Antiker Keramikkrug", kennzeichnungsnummer: "RGZM-2024-123", datierung: "Ca. 200 n. Chr.", herkunft: "Römische Villa, Mainz", eingangsdatum: "2024-01-15", ansprechpartner: "Dr. Eva Beispiel", schoepferin: "Unbekannt", objektbeziehung: "Teil eines Geschirrsets (RGZM-2024-120 bis RGZM-2024-125)"
-                },
-                objektbeschreibung: {
-                    objekttyp: "Krug", weitere_objekteigenschaften: "Einhenkelig, bauchige Form, rote Bemalung", objektmaterial: "Gebrannter Ton (Keramik)", herstellungstechnik: "Auf der Töpferscheibe gedreht, bemalt", aktuelle_masse: "H: 25cm, B: 15cm, T: 15cm", aktuelles_gewicht: "1.2 kg", aktueller_standort: "Restaurierungswerkstatt, Raum 3"
-                },
-                untersuchung: { // Data for one investigation item
-                    untersuchungen: [{ zustaendige_person: "Dr. Max Mustermann", durchfuehrende_institution: "Institut für Archäometrie", kennung_der_untersuchung: "RFA-Analyse-001", datum_der_untersuchung: "2024-02-10", grund_anlass_der_untersuchung: "Bestimmung der Pigmentzusammensetzung der roten Bemalung.", lokalisation_der_untersuchung: "Bemalte Oberfläche, Scherbe Nr. 3", untersuchungsverfahren: "Röntgenfluoreszenzanalyse (RFA)", material: "Rote Pigmente", untersuchungsgeraet: "Bruker M4 TORNADO", parameter_einstellungen: "40kV, 200µA, Messzeit 120s", untersuchungsergebnis: "Eisenoxid (Hämatit) als Hauptbestandteil der roten Farbe identifiziert." }]
-                },
-                probeentnahme: { // Data for one sample item
-                    proben: [{ zustaendige_person: "Maria Schmidt", durchfuehrende_institution: "Restaurierungslabor RGZM", datum_der_probennahme: "2024-02-05", kennung_der_probe: "P-2024-01-A", probenbeschreibung: "Kleine Scherbe von der Bruchkante, ca. 0.5 x 0.5 cm", grund_anlass_der_entnahme: "Materialanalyse (RFA) und Mikroskopie", stelle_der_probenentnahme: "Unauffällige Bruchkante am Boden", entnahmemethode: "Manuelle Entnahme mit Skalpell" }]
-                },
-                sicherheit_arbeitsschutz: {
-                    gefaehrdungshinweise: "Staubentwicklung beim Reinigen. Alte Restaurierungsmaterialien könnten unbekannte Substanzen enthalten.", art_der_gefaehrdung: "chemisch", schutzmassnahmen: "Staubmaske (FFP2), Handschuhe, Schutzbrille tragen. Arbeiten unter Abzug empfohlen.", letzte_sicherheitsbewertung: { datum: "2024-01-20", verweis: "Interne Risikobewertung Nr. RB-05"}, zugaenglichkeit_unter_vorbehalt: "Bearbeitung nur durch geschultes Personal mit entsprechender PSA."
-                },
-                praeventive_konservierung: {
-                    allgemeine_umgangsempfehlungen: { praesentationsvorgaben: "Stabile, vibrationsfreie Vitrine. Stützmaterialien verwenden.", verpackungs_transportempfehlungen: "Gepolsterter Koffer, säurefreie Materialien, Erschütterungsindikatoren.", handlingsempfehlungen: "Mit beiden Händen am Korpus anfassen, nicht am Henkel. Handschuhe tragen."},
-                    einzuhaltende_konservatorische_bedingungen: { temperatur_celsius: "18-22", luftfeuchte_rf: "45-55", lux_lx: "Max. 50", uv: "Max. 75 µW/lm" },
-                    monitoring: { biologischer_befall: "Regelmäßige Kontrolle alle 6 Monate.", klima: "Kontinuierliches Monitoring mit Datenloggern.", lux_stunden: "Max. 50.000 Luxstunden/Jahr", schadstoffe: "Verwendung von Oddy-getesteten Materialien in der Nähe." }
-                },
-                administrative_metadaten: {
-                    erstellungsdatum: "2024-03-10", bearbeiterin: "Anna Kurat", version: "1.0", lizenz_openaccess: "ja"
-                }
-            };
-            fillFormWithData(prefillData); // Use the main fill function
-        };
-
-        prefillAndCollapseForms(); // Call prefill function
 
 
         // --- 7. Formular zurücksetzen ---
         document.getElementById('reset_btn').addEventListener('click', () => {
             document.getElementById('metadatenForm').reset();
 
-            const resetDynamicContainer = (containerId, itemClass, addBtnId, templateHtml, isFullItemTemplate = false) => {
+            // Reset dynamic fields to initial state (one item if present in original HTML)
+            const resetDynamicContainer = (containerId, itemClass, addBtnId, templateHtml) => {
                 const container = document.getElementById(containerId);
-                const addBtn = document.getElementById(addBtnId);
+                // Remove all current dynamic items
                 container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
 
-                // Add back one fresh item
-                const newItemWrapper = document.createElement('div');
-                newItemWrapper.innerHTML = templateHtml; // Template is the full .removable-item HTML string
-                const newItem = newItemWrapper.firstElementChild;
-                
-                if (!newItem || !newItem.classList.contains('removable-item')) {
-                     // Simpler template handling (like Werkzeug/Gerät)
-                    const tempDiv = document.createElement('div');
-                    tempDiv.classList.add('removable-item', itemClass);
-                    tempDiv.innerHTML = templateHtml; // templateHtml is just the input and button
-                    container.insertBefore(tempDiv, addBtn);
-                    attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
-                } else {
-                    container.insertBefore(newItem, addBtn); // Insert the actual item
-                    attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
+                // Add back one fresh item if the original HTML had one, or if it needs one to start.
+                // This assumes the original HTML already has one instance of each dynamic item.
+                // If not, you might want to call addItem() here instead, or create a specific initial state for each.
+                if (containerId === 'schadensphänomene_container' || containerId === 'schadensursachen_container' ||
+                    containerId === 'materialien_container' || containerId === 'untersuchungen_container' || containerId === 'proben_container') {
+                    const newItem = document.createElement('div');
+                    newItem.classList.add('removable-item', itemClass);
+                    newItem.innerHTML = templateHtml;
+                    container.insertBefore(newItem, document.getElementById(addBtnId));
+                    attachRemoveListener(newItem.querySelector('.remove-item-btn'));
                 }
             };
-            
-            resetDynamicContainer('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, true);
-            resetDynamicContainer('materialien_container', 'material-item', 'add_material', materialTemplate, true);
-            resetDynamicContainer('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate);
-            resetDynamicContainer('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, true);
-            resetDynamicContainer('proben_container', 'probe-item', 'add_probe', probeTemplate, true);
 
+            resetDynamicContainer('schadensphänomene_container', 'schadensphänomen-item', 'add_schadensphänomen', schadensphaenomenTemplate);
+            resetDynamicContainer('schadensursachen_container', 'schadensursache-item', 'add_schadensursache', schadensursacheTemplate);
+            resetDynamicContainer('materialien_container', 'material-item', 'add_material', materialTemplate);
+            resetDynamicContainer('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate);
+            resetDynamicContainer('proben_container', 'probe-item', 'add_probe', probeTemplate);
+
+
+            // Hide JSON output and options
             jsonOutputDiv.style.display = 'none';
             exportOptionsDiv.style.display = 'none';
 
-            // Re-apply initial collapsed/open states after reset
-             for (const sectionId in initialSectionStates) {
-                const content = document.getElementById(sectionId);
-                const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
-                if (content && header) {
-                    const toggleBtn = header.querySelector('.toggle-btn');
-                    if (initialSectionStates[sectionId]) {
-                        content.style.display = 'block';
-                        toggleBtn.textContent = '−';
-                    } else {
-                        content.style.display = 'none';
-                        toggleBtn.textContent = '+';
-                    }
-                }
-            }
-            prefillAndCollapseForms(); // Re-prefill specified forms
-
-            alert('Formular wurde zurückgesetzt und teilweise vorbefüllt.');
+            alert('Formular wurde zurückgesetzt.');
         });
 
 
@@ -1983,12 +1899,40 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            const date = new Date().toISOString().slice(0, 10); 
+            const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
             a.download = `restaurierungsdokumentation_${date}.json`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         });
+
+        // Initial setup for dynamic items already present in HTML
+        document.querySelectorAll('.schadensphänomen-item .remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.target.closest('.removable-item').remove();
+            });
+        });
+        document.querySelectorAll('.schadensursache-item .remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.target.closest('.removable-item').remove();
+            });
+        });
+        document.querySelectorAll('.material-item .remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.target.closest('.removable-item').remove();
+            });
+        });
+        document.querySelectorAll('.untersuchung-item .remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.target.closest('.removable-item').remove();
+            });
+        });
+        document.querySelectorAll('.probe-item .remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                event.target.closest('.removable-item').remove();
+            });
+        });
+
     });
 </script>
