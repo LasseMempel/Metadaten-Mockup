@@ -1374,23 +1374,18 @@
             const addBtn = document.getElementById(addBtnId);
 
             const addItem = () => {
-                const newItemWrapper = document.createElement('div'); 
+                const newItemWrapper = document.createElement('div'); // Wrapper for proper DOM insertion if templateHtml is just innerHTML
                 newItemWrapper.innerHTML = templateHtml;
-                const newItem = newItemWrapper.firstElementChild; 
+                const newItem = newItemWrapper.firstElementChild; // Assuming template is a single root .removable-item
                 
-                if (newItem.classList.contains('removable-item')) { 
-                    container.appendChild(newItem); 
+                if (newItem.classList.contains('removable-item')) { // Ensure it's the correct structure
+                    container.appendChild(newItem); // Append to main container
                     attachRemoveListener(newItem.querySelector('.remove-item-btn'));
-                } else { 
+                } else { // If template is simpler (e.g. for Werkzeug/Gerät)
                     const tempDiv = document.createElement('div');
-                    tempDiv.classList.add('removable-item', itemClass); 
-                    tempDiv.innerHTML = templateHtml; 
-                    // Check if addBtn is a child of container before using insertBefore
-                    if (container.contains(addBtn)) {
-                        container.insertBefore(tempDiv, addBtn); 
-                    } else {
-                        container.appendChild(tempDiv); // Fallback to appendChild
-                    }
+                    tempDiv.classList.add('removable-item', itemClass); // Add classes here
+                    tempDiv.innerHTML = templateHtml; // templateHtml is just the input and button
+                    container.insertBefore(tempDiv, addBtn); // Insert before the add button
                     attachRemoveListener(tempDiv.querySelector('.remove-item-btn'));
 
                 }
@@ -1710,24 +1705,25 @@
 
             const fillDynamicList = (containerId, itemClass, addBtnId, templateHtml, itemsData, fields, isSimpleList = false) => {
                 const container = document.getElementById(containerId);
-                // const addBtn = document.getElementById(addBtnId); // addBtn might not be needed if always appending
+                const addBtn = document.getElementById(addBtnId);
                 
                 container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
 
                 if (itemsData && itemsData.length > 0) {
                     itemsData.forEach(itemData => {
                         const newItemWrapper = document.createElement('div');
-                        newItemWrapper.innerHTML = templateHtml; 
+                        newItemWrapper.innerHTML = templateHtml; // Template should be the full .removable-item
                         const newItem = newItemWrapper.firstElementChild;
 
                         if (!newItem || !newItem.classList.contains('removable-item')) {
+                             // Simpler template handling (like Werkzeug/Gerät)
                             const tempDiv = document.createElement('div');
                             tempDiv.classList.add('removable-item', itemClass);
-                            tempDiv.innerHTML = templateHtml; 
+                            tempDiv.innerHTML = templateHtml; // templateHtml is just the input and button
                             
                             if (isSimpleList) {
                                 const inputElement = tempDiv.querySelector(`.${fields[0].class}`);
-                                if (inputElement) inputElement.value = itemData[fields[0].name]; // itemData is an object for simple list now
+                                if (inputElement) inputElement.value = itemData[fields[0].name];
                             } else {
                                 fields.forEach(field => {
                                     const inputElement = tempDiv.querySelector(`.${field.class}`);
@@ -1736,14 +1732,13 @@
                                     }
                                 });
                             }
-                            container.appendChild(tempDiv); // MODIFIED: Was insertBefore
+                            container.insertBefore(tempDiv, addBtn);
                             attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
                         } else {
-                            if (isSimpleList) { 
+                            // For complex items where templateHtml is the full item structure
+                            if (isSimpleList) { // This case should ideally not mix with complex templates
                                 const inputElement = newItem.querySelector(`.${fields[0].class}`);
-                                if (inputElement && typeof itemData === 'string') inputElement.value = itemData; // Original simple list itemData was string
-                                else if (inputElement && itemData[fields[0].name] !== undefined) inputElement.value = itemData[fields[0].name];
-
+                                if (inputElement) inputElement.value = itemData[fields[0].name]; // itemData is just the string
                             } else {
                                 fields.forEach(field => {
                                     const inputElement = newItem.querySelector(`.${field.class}`);
@@ -1752,11 +1747,12 @@
                                     }
                                 });
                             }
-                            container.appendChild(newItem); // MODIFIED: Was insertBefore
+                            container.insertBefore(newItem, addBtn);
                             attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
                         }
                     });
                 } else {
+                     // Add one empty item if no data for this list, so the form looks consistent
                     const newItemWrapper = document.createElement('div');
                     newItemWrapper.innerHTML = templateHtml;
                     const newItem = newItemWrapper.firstElementChild;
@@ -1764,10 +1760,10 @@
                         const tempDiv = document.createElement('div');
                         tempDiv.classList.add('removable-item', itemClass);
                         tempDiv.innerHTML = templateHtml;
-                        container.appendChild(tempDiv); // MODIFIED: Was insertBefore
+                        container.insertBefore(tempDiv, addBtn);
                         attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
                      } else {
-                        container.appendChild(newItem); // MODIFIED: Was insertBefore
+                        container.insertBefore(newItem, addBtn);
                         attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
                      }
                 }
@@ -1819,7 +1815,7 @@
                 ]);
                 
                 const werkzeugeData = data.durchgefuehrte_massnahmen.werkzeuge_geraete 
-                    ? data.durchgefuehrte_massnahmen.werkzeuge_geraete.map(val => ({ name: val })) // Ensure itemData is an object for simple list
+                    ? data.durchgefuehrte_massnahmen.werkzeuge_geraete.map(name => ({ name: name })) 
                     : [];
                 fillDynamicList('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate, werkzeugeData, [
                     { class: 'werkzeug_geraet_name', name: 'name' }
@@ -1887,10 +1883,10 @@
                 objektbeschreibung: {
                     objekttyp: "Krug", weitere_objekteigenschaften: "Einhenkelig, bauchige Form, rote Bemalung", objektmaterial: "Gebrannter Ton (Keramik)", herstellungstechnik: "Auf der Töpferscheibe gedreht, bemalt", aktuelle_masse: "H: 25cm, B: 15cm, T: 15cm", aktuelles_gewicht: "1.2 kg", aktueller_standort: "Restaurierungswerkstatt, Raum 3"
                 },
-                untersuchung: { 
+                untersuchung: { // Data for one investigation item
                     untersuchungen: [{ zustaendige_person: "Dr. Max Mustermann", durchfuehrende_institution: "Institut für Archäometrie", kennung_der_untersuchung: "RFA-Analyse-001", datum_der_untersuchung: "2024-02-10", grund_anlass_der_untersuchung: "Bestimmung der Pigmentzusammensetzung der roten Bemalung.", lokalisation_der_untersuchung: "Bemalte Oberfläche, Scherbe Nr. 3", untersuchungsverfahren: "Röntgenfluoreszenzanalyse (RFA)", material: "Rote Pigmente", untersuchungsgeraet: "Bruker M4 TORNADO", parameter_einstellungen: "40kV, 200µA, Messzeit 120s", untersuchungsergebnis: "Eisenoxid (Hämatit) als Hauptbestandteil der roten Farbe identifiziert." }]
                 },
-                probeentnahme: { 
+                probeentnahme: { // Data for one sample item
                     proben: [{ zustaendige_person: "Maria Schmidt", durchfuehrende_institution: "Restaurierungslabor RGZM", datum_der_probennahme: "2024-02-05", kennung_der_probe: "P-2024-01-A", probenbeschreibung: "Kleine Scherbe von der Bruchkante, ca. 0.5 x 0.5 cm", grund_anlass_der_entnahme: "Materialanalyse (RFA) und Mikroskopie", stelle_der_probenentnahme: "Unauffällige Bruchkante am Boden", entnahmemethode: "Manuelle Entnahme mit Skalpell" }]
                 },
                 sicherheit_arbeitsschutz: {
@@ -1905,10 +1901,10 @@
                     erstellungsdatum: "2024-03-10", bearbeiterin: "Anna Kurat", version: "1.0", lizenz_openaccess: "ja"
                 }
             };
-            fillFormWithData(prefillData); 
+            fillFormWithData(prefillData); // Use the main fill function
         };
 
-        prefillAndCollapseForms(); 
+        prefillAndCollapseForms(); // Call prefill function
 
 
         // --- 7. Formular zurücksetzen ---
@@ -1917,34 +1913,37 @@
 
             const resetDynamicContainer = (containerId, itemClass, addBtnId, templateHtml, isFullItemTemplate = false) => {
                 const container = document.getElementById(containerId);
-                // const addBtn = document.getElementById(addBtnId); // addBtn might not be needed if always appending
+                const addBtn = document.getElementById(addBtnId);
                 container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
 
+                // Add back one fresh item
                 const newItemWrapper = document.createElement('div');
-                newItemWrapper.innerHTML = templateHtml; 
+                newItemWrapper.innerHTML = templateHtml; // Template is the full .removable-item HTML string
                 const newItem = newItemWrapper.firstElementChild;
                 
                 if (!newItem || !newItem.classList.contains('removable-item')) {
+                     // Simpler template handling (like Werkzeug/Gerät)
                     const tempDiv = document.createElement('div');
                     tempDiv.classList.add('removable-item', itemClass);
-                    tempDiv.innerHTML = templateHtml; 
-                    container.appendChild(tempDiv); // MODIFIED: Was insertBefore
+                    tempDiv.innerHTML = templateHtml; // templateHtml is just the input and button
+                    container.insertBefore(tempDiv, addBtn);
                     attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
                 } else {
-                    container.appendChild(newItem); // MODIFIED: Was insertBefore
+                    container.insertBefore(newItem, addBtn); // Insert the actual item
                     attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
                 }
             };
             
             resetDynamicContainer('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, true);
             resetDynamicContainer('materialien_container', 'material-item', 'add_material', materialTemplate, true);
-            resetDynamicContainer('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate); // Simpler template, already uses appendChild or insertBefore(addBtn) where addBtn is child
+            resetDynamicContainer('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate);
             resetDynamicContainer('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, true);
             resetDynamicContainer('proben_container', 'probe-item', 'add_probe', probeTemplate, true);
 
             jsonOutputDiv.style.display = 'none';
             exportOptionsDiv.style.display = 'none';
 
+            // Re-apply initial collapsed/open states after reset
              for (const sectionId in initialSectionStates) {
                 const content = document.getElementById(sectionId);
                 const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
@@ -1959,7 +1958,7 @@
                     }
                 }
             }
-            prefillAndCollapseForms(); 
+            prefillAndCollapseForms(); // Re-prefill specified forms
 
             alert('Formular wurde zurückgesetzt und teilweise vorbefüllt.');
         });
