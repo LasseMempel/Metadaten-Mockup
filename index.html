@@ -15,6 +15,7 @@
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
             --border-radius: 5px;
+            --purple-color: #8e44ad;
         }
 
         * {
@@ -339,6 +340,15 @@
             visibility: visible;
             opacity: 1;
         }
+
+        .btn-purple {
+            background-color: var(--purple-color);
+        }
+
+        .btn-purple:hover {
+            background-color: #732d91;
+        }
+
         
         @media (max-width: 768px) {
             .form-col {
@@ -1140,7 +1150,7 @@
                 <button type="button" id="save_btn" class="btn-success">Speichern</button>
                 <button type="button" id="export_json_btn">Als JSON exportieren</button>
                 <button type="button" id="import_json_btn" class="btn-warning">JSON importieren</button>
-                <button type="button" id="fill_all_btn" class="btn-info">Alle übrigen Felder füllen</button>
+                <button type="button" id="fill_all_btn" class="btn-purple">Alle übrigen Felder füllen</button>
                 <button type="button" id="reset_btn" class="btn-danger">Formular zurücksetzen</button>
             </div>
 
@@ -1589,7 +1599,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. Speichern-Funktion ---
     document.getElementById('save_btn').addEventListener('click', () => {
-        if (!validateRequiredFields()) return; 
+        //if (!validateRequiredFields()) return; 
         console.log('Daten werden gespeichert (simuliert)...');
         const formData = collectFormData();
         console.log(JSON.stringify(formData, null, 2));
