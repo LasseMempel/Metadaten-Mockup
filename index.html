@@ -11,6 +11,7 @@
             --success-color: #27ae60;
             --warning-color: #f39c12;
             --danger-color: #e74c3c;
+            --info-color: #3498db; /* Added for new button */
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
             --border-radius: 5px;
@@ -135,6 +136,12 @@
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
         }
+        
+        input.error, textarea.error, select.error { /* Style for validation error */
+            border-color: var(--danger-color) !important;
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3) !important;
+        }
+
 
         .input-group {
             display: flex;
@@ -189,12 +196,21 @@
         .btn-success:hover {
             background-color: #218c5a;
         }
+        
+        .btn-info { /* Style for the new button */
+            background-color: var(--info-color);
+        }
+        .btn-info:hover {
+            background-color: var(--secondary-color); /* Using existing secondary for hover */
+        }
+
 
         .buttons-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Adjusted for potentially more buttons */
+            flex-wrap: wrap; /* Allow wrapping if too many buttons */
             margin-top: 30px;
-            gap: 10px; /* Added gap for better spacing */
+            gap: 10px; 
         }
 
         .field-info {
@@ -238,7 +254,7 @@
             justify-content: center;
             cursor: pointer;
             font-size: 0.9rem;
-            border: none; /* Ensure button style consistency */
+            border: none; 
         }
 
         .section-actions {
@@ -270,6 +286,7 @@
             display: flex;
             gap: 10px;
             margin-top: 20px;
+            /* display: none; initially hidden, shown by JS when export is clicked */
         }
 
         .legend {
@@ -311,9 +328,9 @@
             padding: 5px;
             position: absolute;
             z-index: 1;
-            bottom: 125%; /* Position above the icon */
+            bottom: 125%; 
             left: 50%;
-            margin-left: -100px; /* Center the tooltip */
+            margin-left: -100px; 
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -325,18 +342,18 @@
         
         @media (max-width: 768px) {
             .form-col {
-                flex: 0 0 100%; /* Full width on smaller screens */
+                flex: 0 0 100%; 
             }
             
             .buttons-container {
                 flex-direction: column;
             }
             
-            button { /* Apply to all buttons for consistency */
+            .buttons-container button { 
                 width: 100%;
                 margin-bottom: 10px;
             }
-            .buttons-container button:last-child { /* Remove margin for last button in container */
+            .buttons-container button:last-child { 
                  margin-bottom: 0;
             }
         }
@@ -552,8 +569,8 @@
                         </div>
 
                         <div class="form-group" id="schadensphänomene_ursachen_container">
-                            <label class="required-field">Schadensphänomene und -ursachen</label>
-                            <div class="field-info">Mehrfachnennung möglich</div>
+                            <label>Schadensphänomene und -ursachen<span style="color: var(--danger-color);"> *</span></label>
+                            <div class="field-info">Mehrfachnennung möglich. Mindestens ein Schadensphänomen ist erforderlich.</div>
                             
                             <div class="removable-item schadensphaenomen-ursache-item">
                                 <div class="remove-item-btn">×</div>
@@ -561,7 +578,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label>Schadensphänomen</label>
-                                            <select class="schadensphaenomen_select" required>
+                                            <select class="schadensphaenomen_select"> 
                                                 <option value="">Bitte wählen</option>
                                                 <option value="keine">Keine</option>
                                                 <option value="fragmentiert">Fragmentiert</option>
@@ -689,14 +706,15 @@
                         </div>
 
                         <div class="form-group" id="materialien_container">
-                            <label class="required-field">Material</label>
+                            <label>Material<span style="color: var(--danger-color);"> *</span></label>
+                            <div class="field-info">Mindestens ein Material mit Namen ist erforderlich.</div>
                             <div class="removable-item material-item">
                                 <div class="remove-item-btn">×</div>
                                 <div class="form-row">
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label>Material</label>
-                                            <input type="text" class="material_name" required>
+                                            <input type="text" class="material_name">
                                         </div>
                                     </div>
                                     <div class="form-col">
@@ -741,7 +759,7 @@
                         <button type="button" class="toggle-btn">−</button>
                     </div>
                     <div class="section-content" id="untersuchung">
-                        <div class="field-info" style="margin-bottom: 15px;">z.B. naturwissenschaftliche, technologische, materialtechnische, instrumentelle Untersuchung</div>
+                        <div class="field-info" style="margin-bottom: 15px;">z.B. naturwissenschaftliche, technologische, materialtechnische, instrumentelle Untersuchung. Falls Untersuchungen durchgeführt wurden, sind die gekennzeichneten Felder Pflicht (wenn das Untersuchungs-Item teilweise ausgefüllt ist).</div>
                         
                         <div id="untersuchungen_container">
                             <div class="removable-item untersuchung-item">
@@ -750,7 +768,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Zuständige Person</label>
-                                            <input type="text" class="untersuchung_person" required>
+                                            <input type="text" class="untersuchung_person"> 
                                         </div>
                                     </div>
                                     <div class="form-col">
@@ -771,7 +789,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Datum der Untersuchung</label>
-                                            <input type="date" class="untersuchung_datum" required>
+                                            <input type="date" class="untersuchung_datum"> 
                                         </div>
                                     </div>
                                 </div>
@@ -779,7 +797,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Grund/Anlass der Untersuchung</label>
-                                            <textarea class="untersuchung_grund" rows="2" required></textarea>
+                                            <textarea class="untersuchung_grund" rows="2"></textarea> 
                                             <div class="field-info">Fragestellung</div>
                                         </div>
                                     </div>
@@ -794,7 +812,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Untersuchungsverfahren</label>
-                                            <input type="text" class="untersuchung_verfahren" required>
+                                            <input type="text" class="untersuchung_verfahren"> 
                                             <div class="field-info">Methode/Technik/praktische Vorgehensweise, etc.</div>
                                         </div>
                                     </div>
@@ -824,7 +842,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Untersuchungsergebnis</label>
-                                            <textarea class="untersuchung_ergebnis" rows="3" required></textarea>
+                                            <textarea class="untersuchung_ergebnis" rows="3"></textarea> 
                                         </div>
                                     </div>
                                 </div>
@@ -840,6 +858,7 @@
                         <button type="button" class="toggle-btn">−</button>
                     </div>
                     <div class="section-content" id="probeentnahme">
+                        <div class="field-info" style="margin-bottom: 15px;">Falls Proben entnommen wurden, sind die gekennzeichneten Felder Pflicht (wenn das Proben-Item teilweise ausgefüllt ist).</div>
                         <div id="proben_container">
                             <div class="removable-item probe-item">
                                 <div class="remove-item-btn">×</div>
@@ -847,7 +866,7 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Zuständige Person</label>
-                                            <input type="text" class="probe_person" required>
+                                            <input type="text" class="probe_person"> 
                                         </div>
                                     </div>
                                     <div class="form-col">
@@ -861,13 +880,13 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Datum der Probennahme</label>
-                                            <input type="date" class="probe_datum" required>
+                                            <input type="date" class="probe_datum"> 
                                         </div>
                                     </div>
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Kennung der Probe</label>
-                                            <input type="text" class="probe_kennung" required>
+                                            <input type="text" class="probe_kennung"> 
                                             <div class="field-info">Nummer, Name, eindeutiger Identifikator</div>
                                         </div>
                                     </div>
@@ -876,13 +895,13 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Probenbeschreibung</label>
-                                            <textarea class="probe_beschreibung" rows="2" required></textarea>
+                                            <textarea class="probe_beschreibung" rows="2"></textarea> 
                                         </div>
                                     </div>
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Grund/Anlass der Entnahme</label>
-                                            <textarea class="probe_grund" rows="2" required></textarea>
+                                            <textarea class="probe_grund" rows="2"></textarea> 
                                         </div>
                                     </div>
                                 </div>
@@ -890,13 +909,13 @@
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Stelle der Probenentnahme</label>
-                                            <input type="text" class="probe_stelle" required>
+                                            <input type="text" class="probe_stelle"> 
                                         </div>
                                     </div>
                                     <div class="form-col">
                                         <div class="form-group">
                                             <label class="required-field">Entnahmemethode</label>
-                                            <input type="text" class="probe_methode" required>
+                                            <input type="text" class="probe_methode"> 
                                         </div>
                                     </div>
                                 </div>
@@ -923,7 +942,7 @@
                             <div class="form-col">
                                 <div class="form-group">
                                     <label for="art_gefaehrdung">Art der Gefährdung</label>
-                                    <select id="art_gefaehrdung" name="art_gefaehrdung">
+                                    <select id="art_gefaehrdung" name="art_gefaehrdung"> 
                                         <option value="">Bitte wählen</option>
                                         <option value="chemisch">Chemisch</option>
                                         <option value="mikrobiologisch">Mikrobiologisch</option>
@@ -945,7 +964,7 @@
                             </div>
                             <div class="form-col">
                                 <div class="form-group">
-                                    <label for="letzte_sicherheitsbewertung">Letzte Sicherheitsbewertung</label>
+                                    <label for="letzte_sicherheitsbewertung_datum">Letzte Sicherheitsbewertung</label>
                                     <div style="display: flex;">
                                         <input type="date" id="letzte_sicherheitsbewertung_datum" name="letzte_sicherheitsbewertung_datum" style="flex: 1; margin-right: 10px;">
                                         <input type="text" id="letzte_sicherheitsbewertung_verweis" name="letzte_sicherheitsbewertung_verweis" placeholder="Verweis" style="flex: 1;">
@@ -1121,538 +1140,384 @@
                 <button type="button" id="save_btn" class="btn-success">Speichern</button>
                 <button type="button" id="export_json_btn">Als JSON exportieren</button>
                 <button type="button" id="import_json_btn" class="btn-warning">JSON importieren</button>
+                <button type="button" id="fill_all_btn" class="btn-info">Alle übrigen Felder füllen</button>
                 <button type="button" id="reset_btn" class="btn-danger">Formular zurücksetzen</button>
             </div>
-
-            <div class="json-output" id="json_output"></div>
 
             <div class="export-options" id="export_options" style="display: none;">
                 <button type="button" id="copy_json_btn" class="btn-success">In Zwischenablage kopieren</button>
                 <button type="button" id="download_json_btn">JSON-Datei herunterladen</button>
             </div>
+
+            <div class="json-output" id="json_output"></div>
+
         </div>
     </div>
-</body>
-</html>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. Formularfeldeingaben in JSON umwandeln ---
-        const collectFormData = () => {
-            const data = {};
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. Formularfeldeingaben in JSON umwandeln ---
+    const collectFormData = () => {
+        const data = {};
+        const getValue = (id) => document.getElementById(id)?.value;
 
-            const getValue = (id) => document.getElementById(id)?.value;
+        const getDynamicList = (containerId, itemClass, fields) => {
+            const items = [];
+            document.querySelectorAll(`#${containerId} .${itemClass}`).forEach(itemElement => {
+                const itemData = {};
+                let hasData = false;
+                // Check if any field in the item has data.
+                fields.forEach(field => {
+                    const inputElement = itemElement.querySelector(`.${field.class}`);
+                    if (inputElement && inputElement.value.trim()) {
+                        hasData = true;
+                    }
+                    if (inputElement) { // Always collect the value if element exists
+                         itemData[field.name] = inputElement.value;
+                    }
+                });
 
-            const getDynamicList = (containerId, itemClass, fields) => {
-                const items = [];
-                document.querySelectorAll(`#${containerId} .${itemClass}`).forEach(itemElement => {
-                    const itemData = {};
-                    let hasData = false;
-                    fields.forEach(field => {
-                        const inputElement = itemElement.querySelector(`.${field.class}`);
-                        if (inputElement) {
-                            itemData[field.name] = inputElement.value;
-                            if (inputElement.value) hasData = true;
+                // Only add the item to the list if it actually contains some data.
+                // This prevents empty dynamic items from being saved unless a key field implies it.
+                let keyFieldFilled = false;
+                if (containerId === 'schadensphänomene_ursachen_container' && itemData.schadensphaenomen) keyFieldFilled = true;
+                else if (containerId === 'materialien_container' && itemData.material) keyFieldFilled = true;
+                else if (containerId === 'untersuchungen_container' || containerId === 'proben_container') {
+                    // For these, if any of their specific required fields are filled, consider the item active
+                    const requiredInItem = ['zustaendige_person', 'datum_der_untersuchung', 'grund_anlass_der_untersuchung', 'untersuchungsverfahren', 'untersuchungsergebnis',
+                                            'datum_der_probennahme', 'kennung_der_probe', 'probenbeschreibung', 'grund_anlass_der_entnahme', 'stelle_der_probenentnahme', 'entnahmemethode'];
+                    for (const reqKey of requiredInItem) {
+                        if (itemData[reqKey] && itemData[reqKey].trim() !== '') {
+                            keyFieldFilled = true;
+                            break;
                         }
-                    });
-                    // Only add item if it has some data (for multi-field items) or if it's a simple text list
-                    if (hasData || (fields.length === 1 && itemData[fields[0].name])) {
-                         items.push(itemData);
-                    } else if (containerId === 'schadensphänomene_ursachen_container' && itemData[fields[0].name]) { // Special case for Schadensphänomen select
-                        items.push(itemData);
                     }
-                });
-                return items;
-            };
-            
-            const getSimpleDynamicList = (containerId, itemClass, inputClass) => {
-                const items = [];
-                document.querySelectorAll(`#${containerId} .${itemClass}`).forEach(itemElement => {
-                    const inputElement = itemElement.querySelector(`.${inputClass}`);
-                    if (inputElement && inputElement.value) {
-                        items.push(inputElement.value);
-                    }
-                });
-                return items;
-            };
-
-
-            // 1. Objektkennzeichnung
-            data.objektkennzeichnung = {
-                objektansprache: getValue('objektansprache'),
-                kennzeichnungsnummer: getValue('kennzeichnungsnummer'),
-                datierung: getValue('datierung'),
-                herkunft: getValue('herkunft'),
-                eingangsdatum: getValue('eingangsdatum'),
-                ansprechpartner: getValue('ansprechpartner'),
-                schoepferin: getValue('schoepferin'),
-                objektbeziehung: getValue('objektbeziehung')
-            };
-
-            // 2. Objektbeschreibung
-            data.objektbeschreibung = {
-                objekttyp: getValue('objekttyp'),
-                weitere_objekteigenschaften: getValue('weitere_objekteigenschaften'),
-                objektmaterial: getValue('objektmaterial'),
-                herstellungstechnik: getValue('herstellungstechnik'),
-                aktuelle_masse: getValue('aktuelle_masse'),
-                aktuelles_gewicht: getValue('aktuelles_gewicht'),
-                aktueller_standort: getValue('aktueller_standort')
-            };
-
-            // 3. Zustandserfassung
-            data.zustandserfassung = {
-                zeitpunkt_der_erfassung: getValue('zeitpunkt_erfassung'),
-                datum_der_erfassung: getValue('datum_erfassung'),
-                dokumentationsform: getValue('dokumentationsform'),
-                verweis_kennnummer: getValue('verweis_kennnummer'),
-                umgebungsbedingungen: getValue('umgebungsbedingungen'),
-                physischer_objektzustand: getValue('physischer_objektzustand'),
-                schadensphaenomene_ursachen: getDynamicList('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', [
-                    { class: 'schadensphaenomen_select', name: 'schadensphaenomen' },
-                    { class: 'schadensgrad_select', name: 'grad_des_schadensphaenomens' },
-                    { class: 'schadensursache_text', name: 'schadensursache' }
-                ]),
-                fruehere_eingriffe: getValue('fruehere_eingriffe')
-            };
-
-            // 4. Konservierungs-Restaurierungskonzept
-            data.restaurierungskonzept = {
-                anlass_der_massnahme: getValue('anlass_massnahme'),
-                ziel_der_massnahme: getValue('ziel_massnahme')
-            };
-
-            // 5. Durchgeführte Maßnahmen
-            data.durchgefuehrte_massnahmen = {
-                zustaendige_restaurierungseinrichtung: getValue('zustaendige_einrichtung'),
-                massnahmenkennnummer: getValue('massnahmenkennnummer'),
-                zustaendige_person: getValue('zustaendige_person'),
-                beginn_der_massnahme: getValue('beginn_massnahme'),
-                ende_der_massnahme: getValue('ende_massnahme'),
-                zeitaufwand_in_stunden: getValue('zeitaufwand'),
-                eingriff_behandlung: getValue('eingriff_behandlung'),
-                materialien: getDynamicList('materialien_container', 'material-item', [
-                    { class: 'material_name', name: 'material' },
-                    { class: 'material_bezugsquelle', name: 'bezugsquelle_hersteller' },
-                    { class: 'material_mischungsverhaeltnis', name: 'mischungsverhaeltnis_konzentration' },
-                    { class: 'material_herstellungsdatum', name: 'herstellungsdatum' }
-                ]),
-                werkzeuge_geraete: getSimpleDynamicList('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'werkzeug_geraet_name')
-            };
-
-            // 6. Untersuchung
-            data.untersuchung = {
-                untersuchungen: getDynamicList('untersuchungen_container', 'untersuchung-item', [
-                    { class: 'untersuchung_person', name: 'zustaendige_person' },
-                    { class: 'untersuchung_institution', name: 'durchfuehrende_institution' },
-                    { class: 'untersuchung_kennung', name: 'kennung_der_untersuchung' },
-                    { class: 'untersuchung_datum', name: 'datum_der_untersuchung' },
-                    { class: 'untersuchung_grund', name: 'grund_anlass_der_untersuchung' },
-                    { class: 'untersuchung_lokalisation', name: 'lokalisation_der_untersuchung' },
-                    { class: 'untersuchung_verfahren', name: 'untersuchungsverfahren' },
-                    { class: 'untersuchung_material', name: 'material' },
-                    { class: 'untersuchung_geraet', name: 'untersuchungsgeraet' },
-                    { class: 'untersuchung_parameter', name: 'parameter_einstellungen' },
-                    { class: 'untersuchung_ergebnis', name: 'untersuchungsergebnis' }
-                ])
-            };
-
-            // 7. Probeentnahme
-            data.probeentnahme = {
-                proben: getDynamicList('proben_container', 'probe-item', [
-                    { class: 'probe_person', name: 'zustaendige_person' },
-                    { class: 'probe_institution', name: 'durchfuehrende_institution' },
-                    { class: 'probe_datum', name: 'datum_der_probennahme' },
-                    { class: 'probe_kennung', name: 'kennung_der_probe' },
-                    { class: 'probe_beschreibung', name: 'probenbeschreibung' },
-                    { class: 'probe_grund', name: 'grund_anlass_der_entnahme' },
-                    { class: 'probe_stelle', name: 'stelle_der_probenentnahme' },
-                    { class: 'probe_methode', name: 'entnahmemethode' }
-                ])
-            };
-
-            // 8. Sicherheit & Arbeitsschutz
-            data.sicherheit_arbeitsschutz = {
-                gefaehrdungshinweise: getValue('gefaehrdungshinweise'),
-                art_der_gefaehrdung: getValue('art_gefaehrdung'),
-                getroffene_schutzmassnahmen: getValue('schutzmassnahmen'),
-                letzte_sicherheitsbewertung: {
-                    datum: getValue('letzte_sicherheitsbewertung_datum'),
-                    verweis: getValue('letzte_sicherheitsbewertung_verweis')
-                },
-                zugaenglichkeit_unter_vorbehalt: getValue('zugaenglichkeit_vorbehalt')
-            };
-
-            // 9. Präventive Konservierung
-            data.praeventive_konservierung = {
-                allgemeine_umgangsempfehlungen: {
-                    praesentationsvorgaben: getValue('praesentationsvorgaben'),
-                    verpackungs_transportempfehlungen: getValue('verpackung_transport'),
-                    handlingsempfehlungen: getValue('handlingsempfehlungen')
-                },
-                einzuhaltende_konservatorische_bedingungen: {
-                    temperatur_celsius: getValue('temperatur'),
-                    luftfeuchte_rf: getValue('luftfeuchte'),
-                    lux_lx: getValue('lux'),
-                    uv: getValue('uv')
-                },
-                monitoring: {
-                    biologischer_befall: getValue('biologischer_befall'),
-                    klima: getValue('klima'),
-                    lux_stunden: getValue('lux_stunden'),
-                    schadstoffe: getValue('schadstoffe')
                 }
-            };
 
-            // 10. Verwendete Literatur
-            data.verwendete_literatur = {
-                literatur: getValue('literatur')
-            };
 
-            // 11. Administrative Metadaten
-            data.administrative_metadaten = {
-                erstellungsdatum: getValue('erstellungsdatum'),
-                bearbeiterin: getValue('bearbeiterin'),
-                version: getValue('version'),
-                lizenz_openaccess: getValue('lizenz')
-            };
-
-            return data;
-        };
-
-        // --- 2. Toggle-Funktion für Abschnitte ---
-        document.querySelectorAll('.section-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const sectionId = header.dataset.section;
-                const content = document.getElementById(sectionId);
-                const toggleBtn = header.querySelector('.toggle-btn');
-
-                if (content.style.display === 'none') {
-                    content.style.display = 'block';
-                    toggleBtn.textContent = '−';
-                } else {
-                    content.style.display = 'none';
-                    toggleBtn.textContent = '+';
+                if (hasData || keyFieldFilled) {
+                     items.push(itemData);
                 }
             });
+            return items;
+        };
+        
+        const getSimpleDynamicList = (containerId, itemClass, inputClass) => {
+            const items = [];
+            document.querySelectorAll(`#${containerId} .${itemClass}`).forEach(itemElement => {
+                const inputElement = itemElement.querySelector(`.${inputClass}`);
+                if (inputElement && inputElement.value.trim()) {
+                    items.push(inputElement.value.trim());
+                }
+            });
+            return items;
+        };
+
+        data.objektkennzeichnung = {
+            objektansprache: getValue('objektansprache'),
+            kennzeichnungsnummer: getValue('kennzeichnungsnummer'),
+            datierung: getValue('datierung'),
+            herkunft: getValue('herkunft'),
+            eingangsdatum: getValue('eingangsdatum'),
+            ansprechpartner: getValue('ansprechpartner'),
+            schoepferin: getValue('schoepferin'),
+            objektbeziehung: getValue('objektbeziehung')
+        };
+        data.objektbeschreibung = {
+            objekttyp: getValue('objekttyp'),
+            weitere_objekteigenschaften: getValue('weitere_objekteigenschaften'),
+            objektmaterial: getValue('objektmaterial'),
+            herstellungstechnik: getValue('herstellungstechnik'),
+            aktuelle_masse: getValue('aktuelle_masse'),
+            aktuelles_gewicht: getValue('aktuelles_gewicht'),
+            aktueller_standort: getValue('aktueller_standort')
+        };
+        data.zustandserfassung = {
+            zeitpunkt_der_erfassung: getValue('zeitpunkt_erfassung'),
+            datum_der_erfassung: getValue('datum_erfassung'),
+            dokumentationsform: getValue('dokumentationsform'),
+            verweis_kennnummer: getValue('verweis_kennnummer'),
+            umgebungsbedingungen: getValue('umgebungsbedingungen'),
+            physischer_objektzustand: getValue('physischer_objektzustand'),
+            schadensphaenomene_ursachen: getDynamicList('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', [
+                { class: 'schadensphaenomen_select', name: 'schadensphaenomen' },
+                { class: 'schadensgrad_select', name: 'grad_des_schadensphaenomens' },
+                { class: 'schadensursache_text', name: 'schadensursache' }
+            ]),
+            fruehere_eingriffe: getValue('fruehere_eingriffe')
+        };
+        data.restaurierungskonzept = {
+            anlass_der_massnahme: getValue('anlass_massnahme'),
+            ziel_der_massnahme: getValue('ziel_massnahme')
+        };
+        data.durchgefuehrte_massnahmen = {
+            zustaendige_restaurierungseinrichtung: getValue('zustaendige_einrichtung'),
+            massnahmenkennnummer: getValue('massnahmenkennnummer'),
+            zustaendige_person: getValue('zustaendige_person'),
+            beginn_der_massnahme: getValue('beginn_massnahme'),
+            ende_der_massnahme: getValue('ende_massnahme'),
+            zeitaufwand_in_stunden: getValue('zeitaufwand'),
+            eingriff_behandlung: getValue('eingriff_behandlung'),
+            materialien: getDynamicList('materialien_container', 'material-item', [
+                { class: 'material_name', name: 'material' },
+                { class: 'material_bezugsquelle', name: 'bezugsquelle_hersteller' },
+                { class: 'material_mischungsverhaeltnis', name: 'mischungsverhaeltnis_konzentration' },
+                { class: 'material_herstellungsdatum', name: 'herstellungsdatum' }
+            ]),
+            werkzeuge_geraete: getSimpleDynamicList('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'werkzeug_geraet_name')
+        };
+        data.untersuchung = {
+            untersuchungen: getDynamicList('untersuchungen_container', 'untersuchung-item', [
+                { class: 'untersuchung_person', name: 'zustaendige_person' },
+                { class: 'untersuchung_institution', name: 'durchfuehrende_institution' },
+                { class: 'untersuchung_kennung', name: 'kennung_der_untersuchung' },
+                { class: 'untersuchung_datum', name: 'datum_der_untersuchung' },
+                { class: 'untersuchung_grund', name: 'grund_anlass_der_untersuchung' },
+                { class: 'untersuchung_lokalisation', name: 'lokalisation_der_untersuchung' },
+                { class: 'untersuchung_verfahren', name: 'untersuchungsverfahren' },
+                { class: 'untersuchung_material', name: 'material' },
+                { class: 'untersuchung_geraet', name: 'untersuchungsgeraet' },
+                { class: 'untersuchung_parameter', name: 'parameter_einstellungen' },
+                { class: 'untersuchung_ergebnis', name: 'untersuchungsergebnis' }
+            ])
+        };
+        data.probeentnahme = {
+            proben: getDynamicList('proben_container', 'probe-item', [
+                { class: 'probe_person', name: 'zustaendige_person' },
+                { class: 'probe_institution', name: 'durchfuehrende_institution' },
+                { class: 'probe_datum', name: 'datum_der_probennahme' },
+                { class: 'probe_kennung', name: 'kennung_der_probe' },
+                { class: 'probe_beschreibung', name: 'probenbeschreibung' },
+                { class: 'probe_grund', name: 'grund_anlass_der_entnahme' },
+                { class: 'probe_stelle', name: 'stelle_der_probenentnahme' },
+                { class: 'probe_methode', name: 'entnahmemethode' }
+            ])
+        };
+        data.sicherheit_arbeitsschutz = {
+            gefaehrdungshinweise: getValue('gefaehrdungshinweise'),
+            art_der_gefaehrdung: getValue('art_gefaehrdung'),
+            getroffene_schutzmassnahmen: getValue('schutzmassnahmen'),
+            letzte_sicherheitsbewertung: {
+                datum: getValue('letzte_sicherheitsbewertung_datum'),
+                verweis: getValue('letzte_sicherheitsbewertung_verweis')
+            },
+            zugaenglichkeit_unter_vorbehalt: getValue('zugaenglichkeit_vorbehalt')
+        };
+        data.praeventive_konservierung = {
+            allgemeine_umgangsempfehlungen: {
+                praesentationsvorgaben: getValue('praesentationsvorgaben'),
+                verpackungs_transportempfehlungen: getValue('verpackung_transport'),
+                handlingsempfehlungen: getValue('handlingsempfehlungen')
+            },
+            einzuhaltende_konservatorische_bedingungen: {
+                temperatur_celsius: getValue('temperatur'),
+                luftfeuchte_rf: getValue('luftfeuchte'),
+                lux_lx: getValue('lux'),
+                uv: getValue('uv')
+            },
+            monitoring: {
+                biologischer_befall: getValue('biologischer_befall'),
+                klima: getValue('klima'),
+                lux_stunden: getValue('lux_stunden'),
+                schadstoffe: getValue('schadstoffe')
+            }
+        };
+        data.verwendete_literatur = {
+            literatur: getValue('literatur')
+        };
+        data.administrative_metadaten = {
+            erstellungsdatum: getValue('erstellungsdatum'),
+            bearbeiterin: getValue('bearbeiterin'),
+            version: getValue('version'),
+            lizenz_openaccess: getValue('lizenz')
+        };
+        return data;
+    };
+
+    // --- VALIDATE REQUIRED FIELDS ---
+    const validateRequiredFields = () => {
+        const missingFieldsMessages = [];
+        const form = document.getElementById('metadatenForm');
+        let firstInvalidField = null;
+
+        form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+        const checkAndMark = (element, fieldName, isDynamicListField = false) => {
+            if (!element) return;
+            let value = element.value;
+            if (typeof value === 'string') value = value.trim();
+
+            let isRequired = element.required;
+            if (!isRequired && !isDynamicListField) { // Check label for non-dynamic fields if input itself is not required
+                 const label = form.querySelector(`label[for="${element.id}"]`);
+                 if (label && label.classList.contains('required-field')) isRequired = true;
+            }
+            
+            // For dynamic lists, we pass fieldName, so it's implicitly required for this check
+            if (isRequired || isDynamicListField) {
+                if (value === '' || value === null || (element.tagName === 'SELECT' && value === '')) {
+                    const labelElement = form.querySelector(`label[for="${element.id}"]`);
+                    const message = labelElement ? labelElement.textContent.replace(/\s*[*†]$/, '') : (fieldName || element.name || element.id);
+                    if (!missingFieldsMessages.includes(message)) { // Avoid duplicate messages for the same field name
+                        missingFieldsMessages.push(message);
+                    }
+                    element.classList.add('error');
+                    if (!firstInvalidField) firstInvalidField = element;
+                } else {
+                    element.classList.remove('error');
+                }
+            }
+        };
+        
+        form.querySelectorAll('input, textarea, select').forEach(el => {
+            if (!el.closest('.removable-item')) { // Standard fields not in dynamic lists
+                 checkAndMark(el);
+            }
         });
 
-        // --- Initial state for sections (some open, some collapsed) ---
-        const initialSectionStates = {
-            'objektkennzeichnung': false, // false = collapsed
-            'objektbeschreibung': false,
-            'zustandserfassung': true,    // true = open
-            'restaurierungskonzept': true,
-            'durchgefuehrte_massnahmen': true,
-            'untersuchung': false,
-            'probeentnahme': false,
-            'sicherheit_arbeitsschutz': false,
-            'praeventive_konservierung': false,
-            'verwendete_literatur': true,
-            'administrative_metadaten': false
-        };
-
-        for (const sectionId in initialSectionStates) {
-            const content = document.getElementById(sectionId);
-            const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
-            if (content && header) {
-                const toggleBtn = header.querySelector('.toggle-btn');
-                if (initialSectionStates[sectionId]) {
-                    content.style.display = 'block';
-                    toggleBtn.textContent = '−';
-                } else {
-                    content.style.display = 'none';
-                    toggleBtn.textContent = '+';
-                }
-            }
+        // Dynamic: Schadensphänomene (mind. 1 Schadensphänomen_select muss gefüllt sein)
+        const schadenItems = document.querySelectorAll('#schadensphänomene_ursachen_container .schadensphaenomen-ursache-item');
+        if (schadenItems.length === 0) { // If container is for required items and it's empty
+             missingFieldsMessages.push("Schadensphänomene und -ursachen (mindestens ein Eintrag)");
+             // Optionally, highlight the container or its label
+        } else {
+            schadenItems.forEach((item, index) => {
+                 checkAndMark(item.querySelector('.schadensphaenomen_select'), `Schadensphänomen (Eintrag ${index + 1})`, true);
+            });
         }
 
+        // Dynamic: Materialien (mind. 1 material_name muss gefüllt sein)
+        const materialItems = document.querySelectorAll('#materialien_container .material-item');
+         if (materialItems.length === 0) {
+             missingFieldsMessages.push("Material (mindestens ein Eintrag mit Name)");
+        } else {
+            materialItems.forEach((item, index) => {
+                 checkAndMark(item.querySelector('.material_name'), `Material Name (Eintrag ${index + 1})`, true);
+            });
+        }
 
-        // --- 3. Hinzufügen und Entfernen von dynamischen Feldern ---
-        const setupDynamicFields = (containerId, itemClass, addBtnId, templateHtml, attachRemoveDirectly = false) => {
-            const container = document.getElementById(containerId);
-            const addBtn = document.getElementById(addBtnId);
+        // Dynamic: Untersuchungen (if an item is partially filled, its required fields become mandatory)
+        document.querySelectorAll('#untersuchungen_container .untersuchung-item').forEach((item, index) => {
+            let isItemPartiallyFilled = false;
+            item.querySelectorAll('input, textarea, select').forEach(inp => { // Check all inputs in the item
+                if (inp.value.trim() !== '') isItemPartiallyFilled = true;
+            });
 
-            const addItem = () => {
-                const newItemWrapper = document.createElement('div'); 
-                newItemWrapper.innerHTML = templateHtml;
-                const newItem = newItemWrapper.firstElementChild; 
-                
-                if (newItem.classList.contains('removable-item')) { 
-                    container.appendChild(newItem); 
-                    attachRemoveListener(newItem.querySelector('.remove-item-btn'));
-                } else { 
-                    const tempDiv = document.createElement('div');
-                    tempDiv.classList.add('removable-item', itemClass); 
-                    tempDiv.innerHTML = templateHtml; 
-                    // Check if addBtn is a child of container before using insertBefore
-                    if (container.contains(addBtn)) {
-                        container.insertBefore(tempDiv, addBtn); 
-                    } else {
-                        container.appendChild(tempDiv); // Fallback to appendChild
-                    }
-                    attachRemoveListener(tempDiv.querySelector('.remove-item-btn'));
-
-                }
-            };
-            
-            const attachRemoveListener = (btn) => {
-                if (btn) {
-                    btn.addEventListener('click', (event) => {
-                        event.target.closest('.removable-item').remove();
-                    });
-                }
-            };
-
-            if (addBtn) {
-                addBtn.addEventListener('click', addItem);
+            if (isItemPartiallyFilled) {
+                checkAndMark(item.querySelector('.untersuchung_person'), `Untersuchung: Zuständige Person (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.untersuchung_datum'), `Untersuchung: Datum (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.untersuchung_grund'), `Untersuchung: Grund/Anlass (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.untersuchung_verfahren'), `Untersuchung: Verfahren (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.untersuchung_ergebnis'), `Untersuchung: Ergebnis (Eintrag ${index + 1})`, true);
             }
+        });
 
-            // Attach listeners to initially present remove buttons
-            container.querySelectorAll(`.${itemClass} .remove-item-btn`).forEach(btn => attachRemoveListener(btn));
+        // Dynamic: Proben (if an item is partially filled, its required fields become mandatory)
+        document.querySelectorAll('#proben_container .probe-item').forEach((item, index) => {
+            let isItemPartiallyFilled = false;
+            item.querySelectorAll('input, textarea, select').forEach(inp => {
+                if (inp.value.trim() !== '') isItemPartiallyFilled = true;
+            });
+            if (isItemPartiallyFilled) {
+                checkAndMark(item.querySelector('.probe_person'), `Probe: Zuständige Person (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.probe_datum'), `Probe: Datum (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.probe_kennung'), `Probe: Kennung (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.probe_beschreibung'), `Probe: Beschreibung (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.probe_grund'), `Probe: Grund/Anlass (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.probe_stelle'), `Probe: Stelle (Eintrag ${index + 1})`, true);
+                checkAndMark(item.querySelector('.probe_methode'), `Probe: Methode (Eintrag ${index + 1})`, true);
+            }
+        });
+
+
+        if (missingFieldsMessages.length > 0) {
+            // Remove duplicates from messages for cleaner alert
+            const uniqueMessages = [...new Set(missingFieldsMessages)];
+            alert(`Bitte füllen Sie die folgenden Pflichtfelder aus:\n- ${uniqueMessages.join('\n- ')}`);
+            if (firstInvalidField) {
+                firstInvalidField.focus();
+                 // Scroll to the first invalid field
+                const sectionContent = firstInvalidField.closest('.section-content');
+                if (sectionContent && (sectionContent.style.display === 'none' || sectionContent.style.display === '')) {
+                    const sectionHeader = sectionContent.previousElementSibling;
+                    if (sectionHeader && sectionHeader.classList.contains('section-header')) {
+                        sectionHeader.click(); // Open the section
+                    }
+                }
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return false;
+        }
+        return true;
+    };
+
+
+    // --- 2. Toggle-Funktion für Abschnitte ---
+    document.querySelectorAll('.section-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const sectionId = header.dataset.section;
+            const content = document.getElementById(sectionId);
+            const toggleBtn = header.querySelector('.toggle-btn');
+
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                toggleBtn.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                toggleBtn.textContent = '+';
+            }
+        });
+    });
+
+    // --- Initial state for sections ---
+    const initialSectionStates = {
+        'objektkennzeichnung': false, 'objektbeschreibung': false, 'zustandserfassung': true,
+        'restaurierungskonzept': true, 'durchgefuehrte_massnahmen': true, 'untersuchung': false,
+        'probeentnahme': false, 'sicherheit_arbeitsschutz': false, 'praeventive_konservierung': false,
+        'verwendete_literatur': true, 'administrative_metadaten': false
+    };
+
+    for (const sectionId in initialSectionStates) {
+        const content = document.getElementById(sectionId);
+        const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
+        if (content && header) {
+            const toggleBtn = header.querySelector('.toggle-btn');
+            if (initialSectionStates[sectionId]) {
+                content.style.display = 'block';
+                toggleBtn.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                toggleBtn.textContent = '+';
+            }
+        }
+    }
+
+    // --- 3. Hinzufügen und Entfernen von dynamischen Feldern ---
+    const setupDynamicFields = (containerId, itemClass, addBtnId, templateHtml) => {
+        const container = document.getElementById(containerId);
+        const addBtn = document.getElementById(addBtnId);
+
+        const addItem = () => {
+            const newItemWrapper = document.createElement('div'); 
+            newItemWrapper.innerHTML = templateHtml;
+            const newItem = newItemWrapper.firstElementChild; 
+            
+            const actualItemToAdd = newItem.classList.contains('removable-item') ? newItem : (() => {
+                const tempDiv = document.createElement('div');
+                tempDiv.classList.add('removable-item', itemClass); 
+                tempDiv.innerHTML = templateHtml; 
+                return tempDiv;
+            })();
+            
+            if (addBtn && container.contains(addBtn)) {
+                container.insertBefore(actualItemToAdd, addBtn);
+            } else {
+                container.appendChild(actualItemToAdd);
+            }
+            attachRemoveListener(actualItemToAdd.querySelector('.remove-item-btn'));
         };
         
-
-        // Templates for dynamic fields
-        const schadensphaenomenUrsacheTemplate = `
-            <div class="removable-item schadensphaenomen-ursache-item">
-                <div class="remove-item-btn">×</div>
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Schadensphänomen</label>
-                            <select class="schadensphaenomen_select" required>
-                                <option value="">Bitte wählen</option>
-                                <option value="keine">Keine</option>
-                                <option value="fragmentiert">Fragmentiert</option>
-                                <option value="korrodiert">Korrodiert</option>
-                                <option value="befallen">Befallen</option>
-                                <option value="sonstiges">Sonstiges</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Grad des Schadensphänomens</label>
-                            <select class="schadensgrad_select">
-                                <option value="">Bitte wählen</option>
-                                <option value="gering">Gering</option>
-                                <option value="mittel">Mittel</option>
-                                <option value="stark">Stark</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                     <div class="form-col">
-                        <div class="form-group">
-                            <label>Schadensursache</label>
-                            <input type="text" class="schadensursache_text" placeholder="z.B. Transportschaden, Altrestaurierung">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        const materialTemplate = `
-         <div class="removable-item material-item">
-            <div class="remove-item-btn">×</div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Material</label>
-                        <input type="text" class="material_name" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Bezugsquelle bzw. Hersteller</label>
-                        <input type="text" class="material_bezugsquelle">
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Mischungsverhältnis/Konzentration</label>
-                        <input type="text" class="material_mischungsverhaeltnis">
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Herstellungsdatum</label>
-                        <input type="date" class="material_herstellungsdatum">
-                    </div>
-                </div>
-            </div>
-        </div>
-        `;
-        
-        const werkzeugGeraetTemplate = `
-            <div class="remove-item-btn">×</div>
-            <input type="text" class="werkzeug_geraet_name" placeholder="Werkzeug/Gerät eingeben">
-        `;
-
-
-        const untersuchungTemplate = `
-        <div class="removable-item untersuchung-item">
-            <div class="remove-item-btn">×</div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Zuständige Person</label>
-                        <input type="text" class="untersuchung_person" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Durchführende Institution / Labor / Person</label>
-                        <input type="text" class="untersuchung_institution">
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Kennung der Untersuchung</label>
-                        <input type="text" class="untersuchung_kennung">
-                        <div class="field-info">Nummer, Name, Titel, etc.</div>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Datum der Untersuchung</label>
-                        <input type="date" class="untersuchung_datum" required>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Grund/Anlass der Untersuchung</label>
-                        <textarea class="untersuchung_grund" rows="2" required></textarea>
-                        <div class="field-info">Fragestellung</div>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Lokalisation der Untersuchung auf dem Objekt</label>
-                        <input type="text" class="untersuchung_lokalisation">
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Untersuchungsverfahren</label>
-                        <input type="text" class="untersuchung_verfahren" required>
-                        <div class="field-info">Methode/Technik/praktische Vorgehensweise, etc.</div>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Material</label>
-                        <input type="text" class="untersuchung_material">
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="recommended-field">Untersuchungsgerät</label>
-                        <input type="text" class="untersuchung_geraet">
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="recommended-field">Parameter / Einstellungen</label>
-                        <input type="text" class="untersuchung_parameter">
-                        <div class="field-info">Messbereich, Auflösung, Scans</div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Untersuchungsergebnis</label>
-                        <textarea class="untersuchung_ergebnis" rows="3" required></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `;
-
-        const probeTemplate = `
-        <div class="removable-item probe-item">
-            <div class="remove-item-btn">×</div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Zuständige Person</label>
-                        <input type="text" class="probe_person" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label>Durchführende Institution / Labor / Person</label>
-                        <input type="text" class="probe_institution">
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Datum der Probennahme</label>
-                        <input type="date" class="probe_datum" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Kennung der Probe</label>
-                        <input type="text" class="probe_kennung" required>
-                        <div class="field-info">Nummer, Name, eindeutiger Identifikator</div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Probenbeschreibung</label>
-                        <textarea class="probe_beschreibung" rows="2" required></textarea>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Grund/Anlass der Entnahme</label>
-                        <textarea class="probe_grund" rows="2" required></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Stelle der Probenentnahme</label>
-                        <input type="text" class="probe_stelle" required>
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="required-field">Entnahmemethode</label>
-                        <input type="text" class="probe_methode" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `;
-        
-        setupDynamicFields('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, true);
-        setupDynamicFields('materialien_container', 'material-item', 'add_material', materialTemplate, true);
-        setupDynamicFields('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate);
-        setupDynamicFields('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, true);
-        setupDynamicFields('proben_container', 'probe-item', 'add_probe', probeTemplate, true);
-
-        // --- Helper to attach remove listener (used also in fillFormWithData) ---
-        const attachRemoveListenerToItem = (btn) => {
+        const attachRemoveListener = (btn) => {
             if (btn) {
                 btn.addEventListener('click', (event) => {
                     event.target.closest('.removable-item').remove();
@@ -1660,336 +1525,471 @@
             }
         };
 
+        if (addBtn) {
+            addBtn.addEventListener('click', addItem);
+        }
+        // Attach to initially present items (if any, though templates usually provide one)
+        container.querySelectorAll(`.${itemClass} .remove-item-btn`).forEach(btn => attachRemoveListener(btn));
+    };
+    
+    const schadensphaenomenUrsacheTemplate = `
+        <div class="removable-item schadensphaenomen-ursache-item">
+            <div class="remove-item-btn">×</div>
+            <div class="form-row">
+                <div class="form-col"><div class="form-group"><label>Schadensphänomen</label><select class="schadensphaenomen_select"><option value="">Bitte wählen</option><option value="keine">Keine</option><option value="fragmentiert">Fragmentiert</option><option value="korrodiert">Korrodiert</option><option value="befallen">Befallen</option><option value="sonstiges">Sonstiges</option></select></div></div>
+                <div class="form-col"><div class="form-group"><label>Grad des Schadensphänomens</label><select class="schadensgrad_select"><option value="">Bitte wählen</option><option value="gering">Gering</option><option value="mittel">Mittel</option><option value="stark">Stark</option></select></div></div>
+            </div>
+            <div class="form-row"><div class="form-col"><div class="form-group"><label>Schadensursache</label><input type="text" class="schadensursache_text" placeholder="z.B. Transportschaden, Altrestaurierung"></div></div></div>
+        </div>`;
+    const materialTemplate = `
+     <div class="removable-item material-item">
+        <div class="remove-item-btn">×</div>
+        <div class="form-row">
+            <div class="form-col"><div class="form-group"><label>Material</label><input type="text" class="material_name"></div></div>
+            <div class="form-col"><div class="form-group"><label>Bezugsquelle bzw. Hersteller</label><input type="text" class="material_bezugsquelle"></div></div>
+        </div>
+        <div class="form-row">
+            <div class="form-col"><div class="form-group"><label>Mischungsverhältnis/Konzentration</label><input type="text" class="material_mischungsverhaeltnis"></div></div>
+            <div class="form-col"><div class="form-group"><label>Herstellungsdatum</label><input type="date" class="material_herstellungsdatum"></div></div>
+        </div>
+    </div>`;
+    const werkzeugGeraetTemplate = `<div class="remove-item-btn">×</div><input type="text" class="werkzeug_geraet_name" placeholder="Werkzeug/Gerät eingeben">`; // This one is simpler, doesn't have .removable-item in its direct string
+    const untersuchungTemplate = `
+    <div class="removable-item untersuchung-item">
+        <div class="remove-item-btn">×</div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Zuständige Person</label><input type="text" class="untersuchung_person"></div></div><div class="form-col"><div class="form-group"><label>Durchführende Institution / Labor / Person</label><input type="text" class="untersuchung_institution"></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label>Kennung der Untersuchung</label><input type="text" class="untersuchung_kennung"><div class="field-info">Nummer, Name, Titel, etc.</div></div></div><div class="form-col"><div class="form-group"><label class="required-field">Datum der Untersuchung</label><input type="date" class="untersuchung_datum"></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Grund/Anlass der Untersuchung</label><textarea class="untersuchung_grund" rows="2"></textarea><div class="field-info">Fragestellung</div></div></div><div class="form-col"><div class="form-group"><label>Lokalisation der Untersuchung auf dem Objekt</label><input type="text" class="untersuchung_lokalisation"></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Untersuchungsverfahren</label><input type="text" class="untersuchung_verfahren"><div class="field-info">Methode/Technik/praktische Vorgehensweise, etc.</div></div></div><div class="form-col"><div class="form-group"><label>Material</label><input type="text" class="untersuchung_material"></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="recommended-field">Untersuchungsgerät</label><input type="text" class="untersuchung_geraet"></div></div><div class="form-col"><div class="form-group"><label class="recommended-field">Parameter / Einstellungen</label><input type="text" class="untersuchung_parameter"><div class="field-info">Messbereich, Auflösung, Scans</div></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Untersuchungsergebnis</label><textarea class="untersuchung_ergebnis" rows="3"></textarea></div></div></div>
+    </div>`;
+    const probeTemplate = `
+    <div class="removable-item probe-item">
+        <div class="remove-item-btn">×</div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Zuständige Person</label><input type="text" class="probe_person"></div></div><div class="form-col"><div class="form-group"><label>Durchführende Institution / Labor / Person</label><input type="text" class="probe_institution"></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Datum der Probennahme</label><input type="date" class="probe_datum"></div></div><div class="form-col"><div class="form-group"><label class="required-field">Kennung der Probe</label><input type="text" class="probe_kennung"><div class="field-info">Nummer, Name, eindeutiger Identifikator</div></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Probenbeschreibung</label><textarea class="probe_beschreibung" rows="2"></textarea></div></div><div class="form-col"><div class="form-group"><label class="required-field">Grund/Anlass der Entnahme</label><textarea class="probe_grund" rows="2"></textarea></div></div></div>
+        <div class="form-row"><div class="form-col"><div class="form-group"><label class="required-field">Stelle der Probenentnahme</label><input type="text" class="probe_stelle"></div></div><div class="form-col"><div class="form-group"><label class="required-field">Entnahmemethode</label><input type="text" class="probe_methode"></div></div></div>
+    </div>`;
+    
+    setupDynamicFields('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate);
+    setupDynamicFields('materialien_container', 'material-item', 'add_material', materialTemplate);
+    setupDynamicFields('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate);
+    setupDynamicFields('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate);
+    setupDynamicFields('proben_container', 'probe-item', 'add_probe', probeTemplate);
 
-        // --- 4. Speichern-Funktion (Simuliert) ---
-        document.getElementById('save_btn').addEventListener('click', () => {
-            console.log('Daten werden gespeichert (simuliert)...');
-            const formData = collectFormData();
-            console.log(JSON.stringify(formData, null, 2));
-            generateJsonOutput(formData); // Show JSON output on save as well
-            alert('Daten wurden erfolgreich gespeichert!');
-        });
+    const attachRemoveListenerToItem = (btn) => { 
+        if (btn) {
+            btn.addEventListener('click', (event) => {
+                event.target.closest('.removable-item').remove();
+            });
+        }
+    };
 
-        // --- 5. JSON exportieren ---
-        const jsonOutputDiv = document.getElementById('json_output');
-        const exportOptionsDiv = document.getElementById('export_options');
+    // --- 4. Speichern-Funktion ---
+    document.getElementById('save_btn').addEventListener('click', () => {
+        if (!validateRequiredFields()) return; 
+        console.log('Daten werden gespeichert (simuliert)...');
+        const formData = collectFormData();
+        console.log(JSON.stringify(formData, null, 2));
+        alert('Daten wurden erfolgreich gespeichert! Die JSON-Ausgabe erfolgt nun über die Export-Buttons.');
+        document.getElementById('json_output').style.display = 'none';
+        document.getElementById('export_options').style.display = 'none';
+    });
 
-        const generateJsonOutput = (data) => {
-            jsonOutputDiv.textContent = JSON.stringify(data, null, 2);
-            jsonOutputDiv.style.display = 'block';
-            exportOptionsDiv.style.display = 'flex'; 
+    // --- 5. JSON exportieren ---
+    const jsonOutputDiv = document.getElementById('json_output');
+    const exportOptionsDiv = document.getElementById('export_options');
+
+    const generateJsonOutput = (data) => {
+        jsonOutputDiv.textContent = JSON.stringify(data, null, 2);
+        jsonOutputDiv.style.display = 'block'; // Show JSON
+        exportOptionsDiv.style.display = 'flex'; // Show export buttons
+    };
+
+    document.getElementById('export_json_btn').addEventListener('click', () => {
+        if (!validateRequiredFields()) return; 
+        const formData = collectFormData();
+        generateJsonOutput(formData);
+    });
+
+    // --- 6. JSON importieren ---
+    document.getElementById('import_json_btn').addEventListener('click', () => {
+        const jsonString = prompt('Bitte geben Sie die JSON-Daten ein:');
+        if (jsonString) {
+            try {
+                const importedData = JSON.parse(jsonString);
+                fillFormWithData(importedData);
+                alert('Daten erfolgreich importiert!');
+                document.querySelectorAll('.error').forEach(el => el.classList.remove('error')); 
+            } catch (error) {
+                alert('Fehler beim Parsen der JSON-Daten. Bitte überprüfen Sie das Format.');
+                console.error('JSON Import Error:', error);
+            }
+        }
+    });
+    
+    const fillFormWithData = (data) => {
+        const setValue = (id, value) => {
+            const element = document.getElementById(id);
+            if (element && value !== undefined && value !== null) {
+                element.value = value;
+            } else if (element) {
+                element.value = ''; 
+            }
         };
 
-        document.getElementById('export_json_btn').addEventListener('click', () => {
-            const formData = collectFormData();
-            generateJsonOutput(formData);
-        });
+        const fillDynamicList = (containerId, addBtnId, templateHtml, itemClass, itemsData, fields, isSimpleList = false) => {
+            const container = document.getElementById(containerId);
+            const addBtn = document.getElementById(addBtnId); 
+            
+            container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove()); 
 
-        // --- 6. JSON importieren ---
-        document.getElementById('import_json_btn').addEventListener('click', () => {
-            const jsonString = prompt('Bitte geben Sie die JSON-Daten ein:');
-            if (jsonString) {
-                try {
-                    const importedData = JSON.parse(jsonString);
-                    fillFormWithData(importedData);
-                    alert('Daten erfolgreich importiert!');
-                } catch (error) {
-                    alert('Fehler beim Parsen der JSON-Daten. Bitte überprüfen Sie das Format.');
-                    console.error('JSON Import Error:', error);
-                }
-            }
-        });
-        
-        const fillFormWithData = (data) => {
-            const setValue = (id, value) => {
-                const element = document.getElementById(id);
-                if (element && value !== undefined && value !== null) {
-                    element.value = value;
-                }
-            };
-
-            const fillDynamicList = (containerId, itemClass, addBtnId, templateHtml, itemsData, fields, isSimpleList = false) => {
-                const container = document.getElementById(containerId);
-                // const addBtn = document.getElementById(addBtnId); // addBtn might not be needed if always appending
-                
-                container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
-
-                if (itemsData && itemsData.length > 0) {
-                    itemsData.forEach(itemData => {
-                        const newItemWrapper = document.createElement('div');
-                        newItemWrapper.innerHTML = templateHtml; 
-                        const newItem = newItemWrapper.firstElementChild;
-
-                        if (!newItem || !newItem.classList.contains('removable-item')) {
-                            const tempDiv = document.createElement('div');
-                            tempDiv.classList.add('removable-item', itemClass);
-                            tempDiv.innerHTML = templateHtml; 
-                            
-                            if (isSimpleList) {
-                                const inputElement = tempDiv.querySelector(`.${fields[0].class}`);
-                                if (inputElement) inputElement.value = itemData[fields[0].name]; // itemData is an object for simple list now
-                            } else {
-                                fields.forEach(field => {
-                                    const inputElement = tempDiv.querySelector(`.${field.class}`);
-                                    if (inputElement && itemData[field.name] !== undefined) {
-                                        inputElement.value = itemData[field.name];
-                                    }
-                                });
-                            }
-                            container.appendChild(tempDiv); // MODIFIED: Was insertBefore
-                            attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
-                        } else {
-                            if (isSimpleList) { 
-                                const inputElement = newItem.querySelector(`.${fields[0].class}`);
-                                if (inputElement && typeof itemData === 'string') inputElement.value = itemData; // Original simple list itemData was string
-                                else if (inputElement && itemData[fields[0].name] !== undefined) inputElement.value = itemData[fields[0].name];
-
-                            } else {
-                                fields.forEach(field => {
-                                    const inputElement = newItem.querySelector(`.${field.class}`);
-                                    if (inputElement && itemData[field.name] !== undefined) {
-                                        inputElement.value = itemData[field.name];
-                                    }
-                                });
-                            }
-                            container.appendChild(newItem); // MODIFIED: Was insertBefore
-                            attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
-                        }
-                    });
-                } else {
+            if (itemsData && itemsData.length > 0) {
+                itemsData.forEach(itemData => {
                     const newItemWrapper = document.createElement('div');
-                    newItemWrapper.innerHTML = templateHtml;
-                    const newItem = newItemWrapper.firstElementChild;
-                     if (!newItem || !newItem.classList.contains('removable-item')) {
+                    newItemWrapper.innerHTML = templateHtml; 
+                    let newItem = newItemWrapper.firstElementChild;
+
+                    // Ensure the item being added has .removable-item and the target itemClass
+                    if (!newItem.classList.contains('removable-item')) {
                         const tempDiv = document.createElement('div');
                         tempDiv.classList.add('removable-item', itemClass);
-                        tempDiv.innerHTML = templateHtml;
-                        container.appendChild(tempDiv); // MODIFIED: Was insertBefore
-                        attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
-                     } else {
-                        container.appendChild(newItem); // MODIFIED: Was insertBefore
-                        attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
-                     }
-                }
-            };
-
-
-            if (data.objektkennzeichnung) {
-                Object.keys(data.objektkennzeichnung).forEach(key => setValue(key === 'ansprechpartner' ? 'ansprechpartner' : key, data.objektkennzeichnung[key]));
-            }
-            if (data.objektbeschreibung) {
-                Object.keys(data.objektbeschreibung).forEach(key => setValue(key, data.objektbeschreibung[key]));
-            }
-
-            if (data.zustandserfassung) {
-                setValue('zeitpunkt_erfassung', data.zustandserfassung.zeitpunkt_der_erfassung);
-                setValue('datum_erfassung', data.zustandserfassung.datum_der_erfassung);
-                setValue('dokumentationsform', data.zustandserfassung.dokumentationsform);
-                setValue('verweis_kennnummer', data.zustandserfassung.verweis_kennnummer);
-                setValue('umgebungsbedingungen', data.zustandserfassung.umgebungsbedingungen);
-                setValue('physischer_objektzustand', data.zustandserfassung.physischer_objektzustand);
-                
-                fillDynamicList('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, data.zustandserfassung.schadensphaenomene_ursachen, [
-                    { class: 'schadensphaenomen_select', name: 'schadensphaenomen' },
-                    { class: 'schadensgrad_select', name: 'grad_des_schadensphaenomens' },
-                    { class: 'schadensursache_text', name: 'schadensursache' }
-                ]);
-                setValue('fruehere_eingriffe', data.zustandserfassung.fruehere_eingriffe);
-            }
-
-            if (data.restaurierungskonzept) {
-                setValue('anlass_massnahme', data.restaurierungskonzept.anlass_der_massnahme);
-                setValue('ziel_massnahme', data.restaurierungskonzept.ziel_der_massnahme);
-            }
-
-            if (data.durchgefuehrte_massnahmen) {
-                setValue('zustaendige_einrichtung', data.durchgefuehrte_massnahmen.zustaendige_restaurierungseinrichtung);
-                setValue('massnahmenkennnummer', data.durchgefuehrte_massnahmen.massnahmenkennnummer);
-                setValue('zustaendige_person', data.durchgefuehrte_massnahmen.zustaendige_person);
-                setValue('beginn_massnahme', data.durchgefuehrte_massnahmen.beginn_der_massnahme);
-                setValue('ende_massnahme', data.durchgefuehrte_massnahmen.ende_der_massnahme);
-                setValue('zeitaufwand', data.durchgefuehrte_massnahmen.zeitaufwand_in_stunden);
-                setValue('eingriff_behandlung', data.durchgefuehrte_massnahmen.eingriff_behandlung);
-
-                fillDynamicList('materialien_container', 'material-item', 'add_material', materialTemplate, data.durchgefuehrte_massnahmen.materialien, [
-                    { class: 'material_name', name: 'material' },
-                    { class: 'material_bezugsquelle', name: 'bezugsquelle_hersteller' },
-                    { class: 'material_mischungsverhaeltnis', name: 'mischungsverhaeltnis_konzentration' },
-                    { class: 'material_herstellungsdatum', name: 'herstellungsdatum' }
-                ]);
-                
-                const werkzeugeData = data.durchgefuehrte_massnahmen.werkzeuge_geraete 
-                    ? data.durchgefuehrte_massnahmen.werkzeuge_geraete.map(val => ({ name: val })) // Ensure itemData is an object for simple list
-                    : [];
-                fillDynamicList('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate, werkzeugeData, [
-                    { class: 'werkzeug_geraet_name', name: 'name' }
-                ], true);
-            }
-
-            if (data.untersuchung) {
-                fillDynamicList('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, data.untersuchung.untersuchungen, [
-                    { class: 'untersuchung_person', name: 'zustaendige_person' }, { class: 'untersuchung_institution', name: 'durchfuehrende_institution' }, { class: 'untersuchung_kennung', name: 'kennung_der_untersuchung' }, { class: 'untersuchung_datum', name: 'datum_der_untersuchung' }, { class: 'untersuchung_grund', name: 'grund_anlass_der_untersuchung' }, { class: 'untersuchung_lokalisation', name: 'lokalisation_der_untersuchung' }, { class: 'untersuchung_verfahren', name: 'untersuchungsverfahren' }, { class: 'untersuchung_material', name: 'material' }, { class: 'untersuchung_geraet', name: 'untersuchungsgeraet' }, { class: 'untersuchung_parameter', name: 'parameter_einstellungen' }, { class: 'untersuchung_ergebnis', name: 'untersuchungsergebnis' }
-                ]);
-            }
-            if (data.probeentnahme) {
-                fillDynamicList('proben_container', 'probe-item', 'add_probe', probeTemplate, data.probeentnahme.proben, [
-                    { class: 'probe_person', name: 'zustaendige_person' }, { class: 'probe_institution', name: 'durchfuehrende_institution' }, { class: 'probe_datum', name: 'datum_der_probennahme' }, { class: 'probe_kennung', name: 'kennung_der_probe' }, { class: 'probe_beschreibung', name: 'probenbeschreibung' }, { class: 'probe_grund', name: 'grund_anlass_der_entnahme' }, { class: 'probe_stelle', name: 'stelle_der_probenentnahme' }, { class: 'probe_methode', name: 'entnahmemethode' }
-                ]);
-            }
-
-            if (data.sicherheit_arbeitsschutz) {
-                setValue('gefaehrdungshinweise', data.sicherheit_arbeitsschutz.gefaehrdungshinweise);
-                setValue('art_gefaehrdung', data.sicherheit_arbeitsschutz.art_der_gefaehrdung);
-                setValue('schutzmassnahmen', data.sicherheit_arbeitsschutz.getroffene_schutzmassnahmen);
-                if (data.sicherheit_arbeitsschutz.letzte_sicherheitsbewertung) {
-                    setValue('letzte_sicherheitsbewertung_datum', data.sicherheit_arbeitsschutz.letzte_sicherheitsbewertung.datum);
-                    setValue('letzte_sicherheitsbewertung_verweis', data.sicherheit_arbeitsschutz.letzte_sicherheitsbewertung.verweis);
-                }
-                setValue('zugaenglichkeit_vorbehalt', data.sicherheit_arbeitsschutz.zugaenglichkeit_unter_vorbehalt);
-            }
-
-            if (data.praeventive_konservierung) {
-                if (data.praeventive_konservierung.allgemeine_umgangsempfehlungen) {
-                    setValue('praesentationsvorgaben', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.praesentationsvorgaben);
-                    setValue('verpackung_transport', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.verpackungs_transportempfehlungen);
-                    setValue('handlingsempfehlungen', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.handlingsempfehlungen);
-                }
-                if (data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen) {
-                    setValue('temperatur', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.temperatur_celsius);
-                    setValue('luftfeuchte', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.luftfeuchte_rf);
-                    setValue('lux', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.lux_lx);
-                    setValue('uv', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.uv);
-                }
-                if (data.praeventive_konservierung.monitoring) {
-                    setValue('biologischer_befall', data.praeventive_konservierung.monitoring.biologischer_befall);
-                    setValue('klima', data.praeventive_konservierung.monitoring.klima);
-                    setValue('lux_stunden', data.praeventive_konservierung.monitoring.lux_stunden);
-                    setValue('schadstoffe', data.praeventive_konservierung.monitoring.schadstoffe);
-                }
-            }
-            if (data.verwendete_literatur) {
-                setValue('literatur', data.verwendete_literatur.literatur);
-            }
-            if (data.administrative_metadaten) {
-                setValue('erstellungsdatum', data.administrative_metadaten.erstellungsdatum);
-                setValue('bearbeiterin', data.administrative_metadaten.bearbeiterin);
-                setValue('version', data.administrative_metadaten.version);
-                setValue('lizenz', data.administrative_metadaten.lizenz_openaccess);
-            }
-        };
-        
-        // --- Function to prefill and collapse forms ---
-        const prefillAndCollapseForms = () => {
-            const prefillData = {
-                objektkennzeichnung: {
-                    objektansprache: "Antiker Keramikkrug", kennzeichnungsnummer: "RGZM-2024-123", datierung: "Ca. 200 n. Chr.", herkunft: "Römische Villa, Mainz", eingangsdatum: "2024-01-15", ansprechpartner: "Dr. Eva Beispiel", schoepferin: "Unbekannt", objektbeziehung: "Teil eines Geschirrsets (RGZM-2024-120 bis RGZM-2024-125)"
-                },
-                objektbeschreibung: {
-                    objekttyp: "Krug", weitere_objekteigenschaften: "Einhenkelig, bauchige Form, rote Bemalung", objektmaterial: "Gebrannter Ton (Keramik)", herstellungstechnik: "Auf der Töpferscheibe gedreht, bemalt", aktuelle_masse: "H: 25cm, B: 15cm, T: 15cm", aktuelles_gewicht: "1.2 kg", aktueller_standort: "Restaurierungswerkstatt, Raum 3"
-                },
-                untersuchung: { 
-                    untersuchungen: [{ zustaendige_person: "Dr. Max Mustermann", durchfuehrende_institution: "Institut für Archäometrie", kennung_der_untersuchung: "RFA-Analyse-001", datum_der_untersuchung: "2024-02-10", grund_anlass_der_untersuchung: "Bestimmung der Pigmentzusammensetzung der roten Bemalung.", lokalisation_der_untersuchung: "Bemalte Oberfläche, Scherbe Nr. 3", untersuchungsverfahren: "Röntgenfluoreszenzanalyse (RFA)", material: "Rote Pigmente", untersuchungsgeraet: "Bruker M4 TORNADO", parameter_einstellungen: "40kV, 200µA, Messzeit 120s", untersuchungsergebnis: "Eisenoxid (Hämatit) als Hauptbestandteil der roten Farbe identifiziert." }]
-                },
-                probeentnahme: { 
-                    proben: [{ zustaendige_person: "Maria Schmidt", durchfuehrende_institution: "Restaurierungslabor RGZM", datum_der_probennahme: "2024-02-05", kennung_der_probe: "P-2024-01-A", probenbeschreibung: "Kleine Scherbe von der Bruchkante, ca. 0.5 x 0.5 cm", grund_anlass_der_entnahme: "Materialanalyse (RFA) und Mikroskopie", stelle_der_probenentnahme: "Unauffällige Bruchkante am Boden", entnahmemethode: "Manuelle Entnahme mit Skalpell" }]
-                },
-                sicherheit_arbeitsschutz: {
-                    gefaehrdungshinweise: "Staubentwicklung beim Reinigen. Alte Restaurierungsmaterialien könnten unbekannte Substanzen enthalten.", art_der_gefaehrdung: "chemisch", schutzmassnahmen: "Staubmaske (FFP2), Handschuhe, Schutzbrille tragen. Arbeiten unter Abzug empfohlen.", letzte_sicherheitsbewertung: { datum: "2024-01-20", verweis: "Interne Risikobewertung Nr. RB-05"}, zugaenglichkeit_unter_vorbehalt: "Bearbeitung nur durch geschultes Personal mit entsprechender PSA."
-                },
-                praeventive_konservierung: {
-                    allgemeine_umgangsempfehlungen: { praesentationsvorgaben: "Stabile, vibrationsfreie Vitrine. Stützmaterialien verwenden.", verpackungs_transportempfehlungen: "Gepolsterter Koffer, säurefreie Materialien, Erschütterungsindikatoren.", handlingsempfehlungen: "Mit beiden Händen am Korpus anfassen, nicht am Henkel. Handschuhe tragen."},
-                    einzuhaltende_konservatorische_bedingungen: { temperatur_celsius: "18-22", luftfeuchte_rf: "45-55", lux_lx: "Max. 50", uv: "Max. 75 µW/lm" },
-                    monitoring: { biologischer_befall: "Regelmäßige Kontrolle alle 6 Monate.", klima: "Kontinuierliches Monitoring mit Datenloggern.", lux_stunden: "Max. 50.000 Luxstunden/Jahr", schadstoffe: "Verwendung von Oddy-getesteten Materialien in der Nähe." }
-                },
-                administrative_metadaten: {
-                    erstellungsdatum: "2024-03-10", bearbeiterin: "Anna Kurat", version: "1.0", lizenz_openaccess: "ja"
-                }
-            };
-            fillFormWithData(prefillData); 
-        };
-
-        prefillAndCollapseForms(); 
-
-
-        // --- 7. Formular zurücksetzen ---
-        document.getElementById('reset_btn').addEventListener('click', () => {
-            document.getElementById('metadatenForm').reset();
-
-            const resetDynamicContainer = (containerId, itemClass, addBtnId, templateHtml, isFullItemTemplate = false) => {
-                const container = document.getElementById(containerId);
-                // const addBtn = document.getElementById(addBtnId); // addBtn might not be needed if always appending
-                container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
-
+                        tempDiv.innerHTML = templateHtml; // templateHtml might be just the input and button
+                        newItem = tempDiv;
+                    }
+                    
+                    if (isSimpleList) {
+                        const inputElement = newItem.querySelector(`.${fields[0].class}`);
+                        if (inputElement) inputElement.value = (typeof itemData === 'string') ? itemData : itemData[fields[0].name]; // fields[0].name should match the key from werkzeugeData map
+                    } else { 
+                         fields.forEach(field => {
+                            const inputElement = newItem.querySelector(`.${field.class}`);
+                            if (inputElement && itemData[field.name] !== undefined) {
+                                inputElement.value = itemData[field.name];
+                            }
+                        });
+                    }
+                    if(addBtn && container.contains(addBtn)) container.insertBefore(newItem, addBtn); else container.appendChild(newItem);
+                    attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
+                });
+            } else { 
                 const newItemWrapper = document.createElement('div');
-                newItemWrapper.innerHTML = templateHtml; 
-                const newItem = newItemWrapper.firstElementChild;
-                
-                if (!newItem || !newItem.classList.contains('removable-item')) {
+                newItemWrapper.innerHTML = templateHtml;
+                let newItem = newItemWrapper.firstElementChild;
+                if (!newItem.classList.contains('removable-item')) {
                     const tempDiv = document.createElement('div');
                     tempDiv.classList.add('removable-item', itemClass);
-                    tempDiv.innerHTML = templateHtml; 
-                    container.appendChild(tempDiv); // MODIFIED: Was insertBefore
-                    attachRemoveListenerToItem(tempDiv.querySelector('.remove-item-btn'));
-                } else {
-                    container.appendChild(newItem); // MODIFIED: Was insertBefore
-                    attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
+                    tempDiv.innerHTML = templateHtml;
+                    newItem = tempDiv;
                 }
-            };
-            
-            resetDynamicContainer('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, true);
-            resetDynamicContainer('materialien_container', 'material-item', 'add_material', materialTemplate, true);
-            resetDynamicContainer('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate); // Simpler template, already uses appendChild or insertBefore(addBtn) where addBtn is child
-            resetDynamicContainer('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate, true);
-            resetDynamicContainer('proben_container', 'probe-item', 'add_probe', probeTemplate, true);
+                if(addBtn && container.contains(addBtn)) container.insertBefore(newItem, addBtn); else container.appendChild(newItem);
+                attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
+            }
+        };
 
-            jsonOutputDiv.style.display = 'none';
-            exportOptionsDiv.style.display = 'none';
+        if (data.objektkennzeichnung) Object.keys(data.objektkennzeichnung).forEach(key => setValue(key, data.objektkennzeichnung[key]));
+        if (data.objektbeschreibung) Object.keys(data.objektbeschreibung).forEach(key => setValue(key, data.objektbeschreibung[key]));
+        if (data.zustandserfassung) {
+            setValue('zeitpunkt_erfassung', data.zustandserfassung.zeitpunkt_der_erfassung);
+            setValue('datum_erfassung', data.zustandserfassung.datum_der_erfassung);
+            setValue('dokumentationsform', data.zustandserfassung.dokumentationsform);
+            setValue('verweis_kennnummer', data.zustandserfassung.verweis_kennnummer);
+            setValue('umgebungsbedingungen', data.zustandserfassung.umgebungsbedingungen);
+            setValue('physischer_objektzustand', data.zustandserfassung.physischer_objektzustand);
+            fillDynamicList('schadensphänomene_ursachen_container', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, 'schadensphaenomen-ursache-item', data.zustandserfassung.schadensphaenomene_ursachen, [
+                { class: 'schadensphaenomen_select', name: 'schadensphaenomen' }, { class: 'schadensgrad_select', name: 'grad_des_schadensphaenomens' }, { class: 'schadensursache_text', name: 'schadensursache' }
+            ]);
+            setValue('fruehere_eingriffe', data.zustandserfassung.fruehere_eingriffe);
+        }
+        if (data.restaurierungskonzept) {
+            setValue('anlass_massnahme', data.restaurierungskonzept.anlass_der_massnahme);
+            setValue('ziel_massnahme', data.restaurierungskonzept.ziel_der_massnahme);
+        }
+        if (data.durchgefuehrte_massnahmen) {
+            setValue('zustaendige_einrichtung', data.durchgefuehrte_massnahmen.zustaendige_restaurierungseinrichtung);
+            setValue('massnahmenkennnummer', data.durchgefuehrte_massnahmen.massnahmenkennnummer);
+            setValue('zustaendige_person', data.durchgefuehrte_massnahmen.zustaendige_person);
+            setValue('beginn_massnahme', data.durchgefuehrte_massnahmen.beginn_der_massnahme);
+            setValue('ende_massnahme', data.durchgefuehrte_massnahmen.ende_der_massnahme);
+            setValue('zeitaufwand', data.durchgefuehrte_massnahmen.zeitaufwand_in_stunden);
+            setValue('eingriff_behandlung', data.durchgefuehrte_massnahmen.eingriff_behandlung);
+            fillDynamicList('materialien_container', 'add_material', materialTemplate, 'material-item', data.durchgefuehrte_massnahmen.materialien, [
+                { class: 'material_name', name: 'material' }, { class: 'material_bezugsquelle', name: 'bezugsquelle_hersteller' }, { class: 'material_mischungsverhaeltnis', name: 'mischungsverhaeltnis_konzentration' }, { class: 'material_herstellungsdatum', name: 'herstellungsdatum' }
+            ]);
+             const werkzeugeData = data.durchgefuehrte_massnahmen.werkzeuge_geraete 
+                ? data.durchgefuehrte_massnahmen.werkzeuge_geraete.map(val => ({ werkzeug_geraet_name: val }))
+                : [];
+            fillDynamicList('werkzeuge_geraete_container', 'add_werkzeug_geraet', werkzeugGeraetTemplate, 'werkzeug-geraet-item', werkzeugeData, [
+                { class: 'werkzeug_geraet_name', name: 'werkzeug_geraet_name' } 
+            ], true);
+        }
+        if (data.untersuchung && data.untersuchung.untersuchungen) {
+            fillDynamicList('untersuchungen_container', 'add_untersuchung', untersuchungTemplate, 'untersuchung-item', data.untersuchung.untersuchungen, [
+                { class: 'untersuchung_person', name: 'zustaendige_person' }, { class: 'untersuchung_institution', name: 'durchfuehrende_institution' }, { class: 'untersuchung_kennung', name: 'kennung_der_untersuchung' }, { class: 'untersuchung_datum', name: 'datum_der_untersuchung' }, { class: 'untersuchung_grund', name: 'grund_anlass_der_untersuchung' }, { class: 'untersuchung_lokalisation', name: 'lokalisation_der_untersuchung' }, { class: 'untersuchung_verfahren', name: 'untersuchungsverfahren' }, { class: 'untersuchung_material', name: 'material' }, { class: 'untersuchung_geraet', name: 'untersuchungsgeraet' }, { class: 'untersuchung_parameter', name: 'parameter_einstellungen' }, { class: 'untersuchung_ergebnis', name: 'untersuchungsergebnis' }
+            ]);
+        }
+        if (data.probeentnahme && data.probeentnahme.proben) {
+            fillDynamicList('proben_container', 'add_probe', probeTemplate, 'probe-item', data.probeentnahme.proben, [
+                { class: 'probe_person', name: 'zustaendige_person' }, { class: 'probe_institution', name: 'durchfuehrende_institution' }, { class: 'probe_datum', name: 'datum_der_probennahme' }, { class: 'probe_kennung', name: 'kennung_der_probe' }, { class: 'probe_beschreibung', name: 'probenbeschreibung' }, { class: 'probe_grund', name: 'grund_anlass_der_entnahme' }, { class: 'probe_stelle', name: 'stelle_der_probenentnahme' }, { class: 'probe_methode', name: 'entnahmemethode' }
+            ]);
+        }
+        if (data.sicherheit_arbeitsschutz) {
+            setValue('gefaehrdungshinweise', data.sicherheit_arbeitsschutz.gefaehrdungshinweise);
+            setValue('art_gefaehrdung', data.sicherheit_arbeitsschutz.art_der_gefaehrdung);
+            setValue('schutzmassnahmen', data.sicherheit_arbeitsschutz.getroffene_schutzmassnahmen);
+            if (data.sicherheit_arbeitsschutz.letzte_sicherheitsbewertung) {
+                setValue('letzte_sicherheitsbewertung_datum', data.sicherheit_arbeitsschutz.letzte_sicherheitsbewertung.datum);
+                setValue('letzte_sicherheitsbewertung_verweis', data.sicherheit_arbeitsschutz.letzte_sicherheitsbewertung.verweis);
+            }
+            setValue('zugaenglichkeit_vorbehalt', data.sicherheit_arbeitsschutz.zugaenglichkeit_unter_vorbehalt);
+        }
+        if (data.praeventive_konservierung) {
+            if (data.praeventive_konservierung.allgemeine_umgangsempfehlungen) {
+                setValue('praesentationsvorgaben', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.praesentationsvorgaben);
+                setValue('verpackung_transport', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.verpackungs_transportempfehlungen);
+                setValue('handlingsempfehlungen', data.praeventive_konservierung.allgemeine_umgangsempfehlungen.handlingsempfehlungen);
+            }
+            if (data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen) {
+                setValue('temperatur', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.temperatur_celsius);
+                setValue('luftfeuchte', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.luftfeuchte_rf);
+                setValue('lux', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.lux_lx);
+                setValue('uv', data.praeventive_konservierung.einzuhaltende_konservatorische_bedingungen.uv);
+            }
+            if (data.praeventive_konservierung.monitoring) {
+                setValue('biologischer_befall', data.praeventive_konservierung.monitoring.biologischer_befall);
+                setValue('klima', data.praeventive_konservierung.monitoring.klima);
+                setValue('lux_stunden', data.praeventive_konservierung.monitoring.lux_stunden);
+                setValue('schadstoffe', data.praeventive_konservierung.monitoring.schadstoffe);
+            }
+        }
+        if (data.verwendete_literatur) setValue('literatur', data.verwendete_literatur.literatur);
+        if (data.administrative_metadaten) {
+            setValue('erstellungsdatum', data.administrative_metadaten.erstellungsdatum);
+            setValue('bearbeiterin', data.administrative_metadaten.bearbeiterin);
+            setValue('version', data.administrative_metadaten.version);
+            setValue('lizenz', data.administrative_metadaten.lizenz_openaccess);
+        }
+    };
+    
+    const prefillDataGlobal = { 
+        objektkennzeichnung: { objektansprache: "Antiker Keramikkrug", kennzeichnungsnummer: "RGZM-2024-123", datierung: "Ca. 200 n. Chr.", herkunft: "Römische Villa, Mainz", eingangsdatum: "2024-01-15", ansprechpartner: "Dr. Eva Beispiel", schoepferin: "Unbekannt", objektbeziehung: "Teil eines Geschirrsets (RGZM-2024-120 bis RGZM-2024-125)"},
+        objektbeschreibung: { objekttyp: "Krug", weitere_objekteigenschaften: "Einhenkelig, bauchige Form, rote Bemalung", objektmaterial: "Gebrannter Ton (Keramik)", herstellungstechnik: "Auf der Töpferscheibe gedreht, bemalt", aktuelle_masse: "H: 25cm, B: 15cm, T: 15cm", aktuelles_gewicht: "1.2 kg", aktueller_standort: "Restaurierungswerkstatt, Raum 3"},
+        zustandserfassung: {
+             schadensphaenomene_ursachen: [{ schadensphaenomen: "fragmentiert", grad_des_schadensphaenomens: "mittel", schadensursache: "Bodenlagerung" }]
+        },
+        durchgefuehrte_massnahmen: {
+            materialien: [{ material: "Paraloid B72", bezugsquelle_hersteller: "Kremer Pigmente", mischungsverhaeltnis_konzentration: "5% in Aceton", herstellungsdatum: "2024-03-01"}]
+        },
+        untersuchung: { untersuchungen: [{ zustaendige_person: "Dr. Max Mustermann", durchfuehrende_institution: "Institut für Archäometrie", kennung_der_untersuchung: "RFA-Analyse-001", datum_der_untersuchung: "2024-02-10", grund_anlass_der_untersuchung: "Bestimmung der Pigmentzusammensetzung der roten Bemalung.", lokalisation_der_untersuchung: "Bemalte Oberfläche, Scherbe Nr. 3", untersuchungsverfahren: "Röntgenfluoreszenzanalyse (RFA)", material: "Rote Pigmente", untersuchungsgeraet: "Bruker M4 TORNADO", parameter_einstellungen: "40kV, 200µA, Messzeit 120s", untersuchungsergebnis: "Eisenoxid (Hämatit) als Hauptbestandteil der roten Farbe identifiziert." }]},
+        probeentnahme: { proben: [{ zustaendige_person: "Maria Schmidt", durchfuehrende_institution: "Restaurierungslabor RGZM", datum_der_probennahme: "2024-02-05", kennung_der_probe: "P-2024-01-A", probenbeschreibung: "Kleine Scherbe von der Bruchkante, ca. 0.5 x 0.5 cm", grund_anlass_der_entnahme: "Materialanalyse (RFA) und Mikroskopie", stelle_der_probenentnahme: "Unauffällige Bruchkante am Boden", entnahmemethode: "Manuelle Entnahme mit Skalpell" }]},
+        sicherheit_arbeitsschutz: { gefaehrdungshinweise: "Staubentwicklung beim Reinigen. Alte Restaurierungsmaterialien könnten unbekannte Substanzen enthalten.", art_der_gefaehrdung: "chemisch", getroffene_schutzmassnahmen: "Staubmaske (FFP2), Handschuhe, Schutzbrille tragen. Arbeiten unter Abzug empfohlen.", letzte_sicherheitsbewertung: { datum: "2024-01-20", verweis: "Interne Risikobewertung Nr. RB-05"}, zugaenglichkeit_unter_vorbehalt: "Bearbeitung nur durch geschultes Personal mit entsprechender PSA."},
+        praeventive_konservierung: { allgemeine_umgangsempfehlungen: { praesentationsvorgaben: "Stabile, vibrationsfreie Vitrine. Stützmaterialien verwenden.", verpackungs_transportempfehlungen: "Gepolsterter Koffer, säurefreie Materialien, Erschütterungsindikatoren.", handlingsempfehlungen: "Mit beiden Händen am Korpus anfassen, nicht am Henkel. Handschuhe tragen."}, einzuhaltende_konservatorische_bedingungen: { temperatur_celsius: "18-22", luftfeuchte_rf: "45-55", lux_lx: "Max. 50", uv: "Max. 75 µW/lm" }, monitoring: { biologischer_befall: "Regelmäßige Kontrolle alle 6 Monate.", klima: "Kontinuierliches Monitoring mit Datenloggern.", lux_stunden: "Max. 50.000 Luxstunden/Jahr", schadstoffe: "Verwendung von Oddy-getesteten Materialien in der Nähe." }},
+        administrative_metadaten: { erstellungsdatum: new Date().toISOString().slice(0,10), bearbeiterin: "Anna Kurat", version: "1.0", lizenz_openaccess: "ja"}
+    };
 
-             for (const sectionId in initialSectionStates) {
-                const content = document.getElementById(sectionId);
-                const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
-                if (content && header) {
-                    const toggleBtn = header.querySelector('.toggle-btn');
-                    if (initialSectionStates[sectionId]) {
-                        content.style.display = 'block';
-                        toggleBtn.textContent = '−';
-                    } else {
-                        content.style.display = 'none';
-                        toggleBtn.textContent = '+';
-                    }
+    const prefillAndCollapseForms = () => {
+        fillFormWithData(JSON.parse(JSON.stringify(prefillDataGlobal))); // Use a deep copy for prefilling
+        for (const sectionId in initialSectionStates) {
+            const content = document.getElementById(sectionId);
+            const header = document.querySelector(`.section-header[data-section="${sectionId}"]`);
+            if (content && header) {
+                const toggleBtn = header.querySelector('.toggle-btn');
+                if (initialSectionStates[sectionId]) {
+                    content.style.display = 'block'; toggleBtn.textContent = '−';
+                } else {
+                    content.style.display = 'none'; toggleBtn.textContent = '+';
                 }
             }
-            prefillAndCollapseForms(); 
+        }
+    };
+    prefillAndCollapseForms();
 
-            alert('Formular wurde zurückgesetzt und teilweise vorbefüllt.');
-        });
+    // --- 7. Formular zurücksetzen ---
+    document.getElementById('reset_btn').addEventListener('click', () => {
+        if (!confirm("Möchten Sie das Formular wirklich zurücksetzen? Alle nicht gespeicherten Änderungen gehen verloren und es wird mit den Standardwerten vorbefüllt.")) {
+            return;
+        }
+        document.getElementById('metadatenForm').reset();
+        document.querySelectorAll('.error').forEach(el => el.classList.remove('error')); 
 
+        const resetDynamicContainer = (containerId, itemClass, addBtnId, templateHtml) => {
+            const container = document.getElementById(containerId);
+            const addBtn = document.getElementById(addBtnId);
+            container.querySelectorAll(`.${itemClass}`).forEach(item => item.remove());
 
-        // --- 8. JSON in Zwischenablage kopieren ---
-        document.getElementById('copy_json_btn').addEventListener('click', () => {
-            const jsonText = jsonOutputDiv.textContent;
-            navigator.clipboard.writeText(jsonText).then(() => {
-                alert('JSON-Daten in die Zwischenablage kopiert!');
-            }).catch(err => {
-                console.error('Fehler beim Kopieren der JSON-Daten:', err);
-                alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
-            });
-        });
+            const newItemWrapper = document.createElement('div');
+            newItemWrapper.innerHTML = templateHtml; 
+            let newItem = newItemWrapper.firstElementChild;
+             if (!newItem.classList.contains('removable-item')) { // For simple templates like werkzeug
+                const tempDiv = document.createElement('div');
+                tempDiv.classList.add('removable-item', itemClass);
+                tempDiv.innerHTML = templateHtml; 
+                newItem = tempDiv;
+            }
+            if(addBtn && container.contains(addBtn)) container.insertBefore(newItem, addBtn); else container.appendChild(newItem);
+            attachRemoveListenerToItem(newItem.querySelector('.remove-item-btn'));
+        };
+        
+        resetDynamicContainer('schadensphänomene_ursachen_container', 'schadensphaenomen-ursache-item', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate);
+        resetDynamicContainer('materialien_container', 'material-item', 'add_material', materialTemplate);
+        resetDynamicContainer('werkzeuge_geraete_container', 'werkzeug-geraet-item', 'add_werkzeug_geraet', werkzeugGeraetTemplate);
+        resetDynamicContainer('untersuchungen_container', 'untersuchung-item', 'add_untersuchung', untersuchungTemplate);
+        resetDynamicContainer('proben_container', 'probe-item', 'add_probe', probeTemplate);
 
-        // --- 9. JSON-Datei herunterladen ---
-        document.getElementById('download_json_btn').addEventListener('click', () => {
-            const formData = collectFormData();
-            const json = JSON.stringify(formData, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            const date = new Date().toISOString().slice(0, 10); 
-            a.download = `restaurierungsdokumentation_${date}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+        jsonOutputDiv.style.display = 'none';
+        exportOptionsDiv.style.display = 'none';
+        prefillAndCollapseForms(); 
+        alert('Formular wurde zurückgesetzt und Standardwerte wurden geladen.');
+    });
+
+    // --- 8. JSON in Zwischenablage kopieren ---
+    document.getElementById('copy_json_btn').addEventListener('click', () => {
+        if (!validateRequiredFields()) return; 
+        const formData = collectFormData(); // Get fresh data
+        const jsonText = JSON.stringify(formData, null, 2);
+        
+        // Update the hidden JSON output div before copying, even if it's not visible for general export
+        jsonOutputDiv.textContent = jsonText; 
+        // No need to make jsonOutputDiv visible here, just use its content
+
+        navigator.clipboard.writeText(jsonText).then(() => {
+            alert('JSON-Daten in die Zwischenablage kopiert!');
+        }).catch(err => {
+            console.error('Fehler beim Kopieren der JSON-Daten:', err);
+            alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
         });
     });
+
+    // --- 9. JSON-Datei herunterladen ---
+    document.getElementById('download_json_btn').addEventListener('click', () => {
+        if (!validateRequiredFields()) return; 
+        const formData = collectFormData(); 
+        const json = JSON.stringify(formData, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const date = new Date().toISOString().slice(0, 10); 
+        const kennnummer = formData.objektkennzeichnung?.kennzeichnungsnummer?.replace(/\W+/g, '_') || 'objekt'; // Sanitize for filename
+        a.download = `restaurierungsdoku_${kennnummer}_${date}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    // --- 10. Fill all remaining empty fields button ---
+    const fillRemainingFields = () => {
+        const form = document.getElementById('metadatenForm');
+        let filledCount = 0;
+
+        const fillThisElement = (element, defaultText, defaultDate, defaultSelectValue, defaultNumber) => {
+            if (element && (element.value === '' || (element.value && typeof element.value === 'string' && element.value.trim() === ''))) {
+                let wasError = element.classList.contains('error');
+                element.classList.remove('error'); 
+
+                if (element.type === 'date') {
+                    element.value = defaultDate || new Date(Date.now() - Math.random()*1e11).toISOString().slice(0,10); // Random past date
+                } else if (element.type === 'number') {
+                    element.value = defaultNumber || Math.floor(Math.random() * 100) + 1;
+                } else if (element.tagName === 'SELECT') {
+                    if (defaultSelectValue && Array.from(element.options).find(opt => opt.value === defaultSelectValue)) {
+                        element.value = defaultSelectValue;
+                    } else if (element.options.length > 1 && element.options[0].value === "") {
+                        let picked = false;
+                        for(let i=1; i < element.options.length; i++) { // Try to pick a non-empty, non-placeholder option
+                            if(element.options[i].value) { element.value = element.options[i].value; picked = true; break; }
+                        }
+                        if(!picked && element.options.length > 0 && element.options[0].value === "") {
+                            // If only placeholder, maybe pick the first option even if its ""
+                            // or better yet, don't change it if it's just a placeholder and no other valid options
+                        } else if (!picked && element.options.length > 0) {
+                             element.value = element.options[0].value; // Fallback to first if no placeholder
+                        }
+                    } else if (element.options.length > 0) {
+                         element.value = element.options[0].value;
+                    }
+                } else { // text, textarea
+                    element.value = defaultText || `Autom. Wert für ${element.id || element.name || 'Feld'} (${Math.random().toString(36).substring(7)})`;
+                }
+                if (element.value.trim() !== '') { 
+                    filledCount++;
+                } else { 
+                    if(wasError) element.classList.add('error'); 
+                }
+            }
+        };
+
+        form.querySelectorAll('input:not([type="button"]):not([type="submit"]), textarea, select').forEach(el => {
+            if (!el.closest('.removable-item')) { 
+                 const labelFor = form.querySelector(`label[for="${el.id}"]`);
+                 const labelText = labelFor ? labelFor.textContent.replace(/\s*[*†]$/, '') : (el.name || el.id);
+                 fillThisElement(el, `Test ${labelText}`, null, null, (el.min || 10) );
+            }
+        });
+
+        // Ensure at least one item for dynamic sections if they are empty, then fill them
+        const ensureAndFillDynamic = (containerId, addBtnId, templateHtml, itemClass, fillLogic) => {
+            const container = document.getElementById(containerId);
+            const addBtn = document.getElementById(addBtnId);
+            if (container.querySelectorAll(`.${itemClass}`).length === 0) {
+                if (addBtn) addBtn.click(); // Simulate click to add one item via existing logic
+            }
+            container.querySelectorAll(`.${itemClass}`).forEach(item => fillLogic(item));
+        };
+
+        ensureAndFillDynamic('schadensphänomene_ursachen_container', 'add_schadensphaenomen_ursache', schadensphaenomenUrsacheTemplate, 'schadensphaenomen-ursache-item', item => {
+            fillThisElement(item.querySelector('.schadensphaenomen_select'), null, null, 'fragmentiert');
+            fillThisElement(item.querySelector('.schadensgrad_select'), null, null, 'mittel');
+            fillThisElement(item.querySelector('.schadensursache_text'), 'Autom. Test-Schadensursache');
+        });
+        ensureAndFillDynamic('materialien_container', 'add_material', materialTemplate, 'material-item', item => {
+            fillThisElement(item.querySelector('.material_name'), 'Autom. Test-Material');
+            fillThisElement(item.querySelector('.material_bezugsquelle'), 'Autom. Test-Hersteller');
+            fillThisElement(item.querySelector('.material_mischungsverhaeltnis'), '1:2 verdünnt');
+            fillThisElement(item.querySelector('.material_herstellungsdatum'), null, '2023-11-01');
+        });
+         ensureAndFillDynamic('werkzeuge_geraete_container', 'add_werkzeug_geraet', werkzeugGeraetTemplate, 'werkzeug-geraet-item', item => {
+            fillThisElement(item.querySelector('.werkzeug_geraet_name'), 'Autom. Test-Werkzeug');
+        });
+        ensureAndFillDynamic('untersuchungen_container', 'add_untersuchung', untersuchungTemplate, 'untersuchung-item', item => {
+            fillThisElement(item.querySelector('.untersuchung_person'), 'Dr. Auto Test');
+            fillThisElement(item.querySelector('.untersuchung_institution'), 'Auto Test Institut');
+            fillThisElement(item.querySelector('.untersuchung_kennung'), 'AUTO-TEST-UNT-007');
+            fillThisElement(item.querySelector('.untersuchung_datum'), null, '2023-10-01');
+            fillThisElement(item.querySelector('.untersuchung_grund'), 'Automatische Testuntersuchung Grund');
+            fillThisElement(item.querySelector('.untersuchung_lokalisation'), 'Testlokalisation');
+            fillThisElement(item.querySelector('.untersuchung_verfahren'), 'Automatisches Testverfahren');
+            fillThisElement(item.querySelector('.untersuchung_material'), 'Testmaterial untersucht');
+            fillThisElement(item.querySelector('.untersuchung_geraet'), 'Autom. Testgerät');
+            fillThisElement(item.querySelector('.untersuchung_parameter'), 'Standard Testparameter');
+            fillThisElement(item.querySelector('.untersuchung_ergebnis'), 'Automatische Testergebnisse positiv.');
+        });
+        ensureAndFillDynamic('proben_container', 'add_probe', probeTemplate, 'probe-item', item => {
+            fillThisElement(item.querySelector('.probe_person'), 'Auto Test Probenehmer');
+            fillThisElement(item.querySelector('.probe_institution'), 'Auto Test Probenlabor');
+            fillThisElement(item.querySelector('.probe_datum'), null, '2023-09-01');
+            fillThisElement(item.querySelector('.probe_kennung'), 'AUTO-TEST-PROBE-007');
+            fillThisElement(item.querySelector('.probe_beschreibung'), 'Automatisch generierte Testprobe');
+            fillThisElement(item.querySelector('.probe_grund'), 'Automatischer Testgrund für Probe');
+            fillThisElement(item.querySelector('.probe_stelle'), 'Automatisch definierte Teststelle');
+            fillThisElement(item.querySelector('.probe_methode'), 'Automatische Testentnahme');
+        });
+
+
+        if (filledCount > 0) {
+            alert(`${filledCount} leere(s) Feld(er) wurde(n) mit Testdaten gefüllt.`);
+        } else {
+            alert('Keine leeren Felder zum Füllen gefunden oder alle Felder waren bereits gefüllt.');
+        }
+        validateRequiredFields(); 
+    };
+
+    document.getElementById('fill_all_btn').addEventListener('click', fillRemainingFields);
+
+});
 </script>
+</body>
+</html>
