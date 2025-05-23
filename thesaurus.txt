@@ -1,0 +1,253 @@
+{
+    "Objekttyp": [
+        "Archivgut",
+        "Bodendenkmal",
+        "Bildträger",
+        "Fahrzeug",
+        "Gefäß",
+        "Holzskulptur",
+        "Keramikgefäß",
+        "Knochenartefakt",
+        "Metallobjekt",
+        "Möbel",
+        "Münze",
+        "Schriftgut",
+        "Steinwerkzeug",
+        "Textilfragment"
+    ],
+    "Objektmaterial": [
+        "Bronze",
+        "Eisen",
+        "Glas",
+        "Gold",
+        "Holz",
+        "Keramik",
+        "Knochen",
+        "Leder",
+        "Metall",
+        "Papier",
+        "Pflanzenmaterial",
+        "Silber",
+        "Stein",
+        "Textil",
+        "Tierisches Material"
+    ],
+    "Herstellungstechnik": [
+        "Gießen",
+        "Handgeformt",
+        "Schmieden",
+        "Schnitzen",
+        "Töpferscheibe",
+        "Weben"
+    ],
+    "Dokumentationsform": [
+        "3D-Modell",
+        "Fotodokumentation",
+        "Röntgenbild",
+        "Textbeschreibung",
+        "Zeichnung"
+    ],
+    "Umgebungsbedingungen": [
+        "Feuchtigkeit",
+        "Licht",
+        "Luftfeuchtigkeit",
+        "Salz",
+        "Schädling",
+        "Temperatur",
+        "Vibration",
+        "Verschmutzung",
+        "Wasser"
+    ],
+    "Physischer Objektzustand": [
+        "Abgeplatzt",
+        "Abnutzungsspuren",
+        "Bruchkanten",
+        "Deformiert",
+        "Fehlstelle",
+        "Fragmentiert",
+        "Korrosion",
+        "Patinierung",
+        "Rissbildung",
+        "Stabil",
+        "Verfärbt",
+        "Verkrustung"
+    ],
+    "Schadensphänomene": [
+        "Abrieb",
+        "Ausblühung",
+        "Bruch",
+        "Deformation",
+        "Delamination",
+        "Korrosion",
+        "Materialverlust",
+        "Riss",
+        "Salzausblühung",
+        "Schimmelbildung",
+        "Schwund",
+        "Verfärbung",
+        "Verwitterung"
+    ],
+    "Schadensgrad": [
+        "Aktiv",
+        "Gering",
+        "Hoch",
+        "Lokal",
+        "Mittel",
+        "Stabilisiert",
+        "Teilweise",
+        "Total"
+    ],
+    "Schadensursache": [
+        "Biologischer Befall",
+        "Herstellungsfehler",
+        "Klima",
+        "Materialermüdung",
+        "Menschlicher Eingriff",
+        "Salz",
+        "Schädling",
+        "Transportfehler",
+        "Unsachgemäße Reinigung",
+        "Vandalismus",
+        "Wasser"
+    ],
+    "Untersuchungsgrund": [
+        "Authentizitätsprüfung",
+        "Datierung",
+        "Forschung",
+        "Herstellungsanalyse",
+        "Materialanalyse",
+        "Schadensanalyse",
+        "Vorbereitung Konservierung",
+        "Vorbereitung Restaurierung",
+        "Zustandserfassung"
+    ],
+    "Untersuchungsart": [
+        "Dünnschliffanalyse",
+        "Farbmetrik",
+        "Gaschromatographie-Massenspektrometrie (GC-MS)",
+        "Infrarotspektroskopie (IR)",
+        "Mikroskopische Untersuchung",
+        "Polarisationsmikroskopie",
+        "Ramanspektroskopie",
+        "Rasterelektronenmikroskopie (REM)",
+        "Röntgenanalyse",
+        "Röntgenfluoreszenzanalyse (RFA)",
+        "Stratigraphische Untersuchung",
+        "Thermische Analyse (TG/DTA)",
+        "Visuelle Untersuchung"
+    ],
+    "Untersuchungsverfahren": [
+        "Dünnschliffanalyse",
+        "Farbmetrik",
+        "Gaschromatographie-Massenspektrometrie (GC-MS)",
+        "Infrarotspektroskopie (IR)",
+        "Polarisationsmikroskopie",
+        "Ramanspektroskopie",
+        "Rasterelektronenmikroskopie (REM)",
+        "Röntgenfluoreszenzanalyse (RFA)",
+        "Thermische Analyse (TG/DTA)"
+    ],
+    "verwendetes Material (Untersuchung)": [
+        "Destilliertes Wasser",
+        "Dünnschliff",
+        "Ethanol",
+        "Referenzmaterial",
+        "Reagenzien",
+        "Standardproben"
+    ],
+    "Untersuchungsgerät": [
+        "Farbkamera",
+        "Feuchtemessgerät",
+        "Mikroskop",
+        "pH-Meter",
+        "Röntgengerät",
+        "Spektrometer",
+        "Ultraschallreiniger",
+        "UV-Lampe"
+    ],
+    "Anlass der Probenentnahme": [
+        "Materialidentifikation",
+        "Restaurierungskonzept",
+        "Zustandsüberwachung"
+    ],
+    "Entnahmemethode": [
+        "Abklatsch",
+        "Bohrprobe",
+        "Mikro-Spatel",
+        "Skalpell",
+        "Wattetupfer"
+    ],
+    "Anlass der Maßnahme": [
+        "Akute Gefährdung",
+        "Ausstellungsplanung",
+        "Forschungsprojekt",
+        "Konservierungsbedarf",
+        "Notfallplan",
+        "Präventive Konservierung",
+        "Restaurierungsbedarf",
+        "Sammlungspflege",
+        "Transportvorbereitung",
+        "Zustandsüberwachung"
+    ],
+    "Ziel der Maßnahme": [
+        "Authentizitätserhalt",
+        "Forschung",
+        "Funktionswiederherstellung",
+        "Informationstransfer",
+        "Lesbarmachung",
+        "Optische Verbesserung",
+        "Schutz vor weiterer Schädigung",
+        "Stabilisierung"
+    ],
+    "Eingriff": [
+        "Dokumentation",
+        "Entsalzung",
+        "Ergänzung",
+        "Festigung",
+        "Klebungen",
+        "Kittung",
+        "Montage",
+        "Reinigung",
+        "Stabilisierung"
+    ],
+    "Verwendetes Material": [
+        "Acrylbinder",
+        "Epoxidharz",
+        "Gips",
+        "Kasein",
+        "Leim",
+        "Mörtel",
+        "Wachs"
+    ],
+    "Werkzeug": [
+        "Messschieber",
+        "Mikrobohrer",
+        "Pinsel",
+        "Pinzette",
+        "Skalpell",
+        "Spatel",
+        "Zange"
+    ],
+    "Art der Gefährdung": [
+        "Biologischer Befall",
+        "Brand",
+        "Chemische Reaktion",
+        "Diebstahl",
+        "Klimatische Schwankung",
+        "Lagerungsschaden",
+        "Mechanische Beanspruchung",
+        "Transportrisiko",
+        "Vandalismus",
+        "Wasserschaden"
+    ],
+    "Getroffene Schutzmaßnahmen": [
+        "Depotlagerung",
+        "Einhausung",
+        "Klimakontrolle",
+        "Notfallplan",
+        "Regelmäßige Kontrolle",
+        "Sicherheitsverpackung",
+        "UV-Filter",
+        "Vitrine"
+    ]
+}
