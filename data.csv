@@ -1,0 +1,161 @@
+,notation,prefLabel,definition,broader,mandatory,content,multi
+0,B51DAF,Objektkennzeichnung,"Oberbegriff für eine Reihe von Informationen, die das Objekt kennzeichnen.",top,,,
+1,B5DD1A,Objektansprache,"Benennung des konkreten Objektes. Kann sich aus einem offiziellen Titel oder aus Objekttyp und beschreibenden Attributen zusammensetzen.
+
+Beispiel: ""Mona-Lisa"", ""rotfiguriger Krater""",B51DAF,Pflicht,string,
+2,F7D3DB,Kennzeichnungsnummer,"Nummer, die das Objekt eindeutig identifiziert. Dies sollte im Idealfall eine Inventarnummer sein, aber auch andere Arten von eindeutigen Identifikationsnummern sind möglich.
+
+Beispiel: ""O.3649"", ""2025-05-21"" ",B51DAF,Pflicht,string,
+3,F9GB13,Datierung,"zeitliche Einordnung des Objektes.
+
+Beispiel: ""Urnenfelderzeit"" , ""15. Jh."" ",B51DAF,empfohlen,string,
+4,CD3341,Herkunft,"Sammelbegriff für Angaben zur räumlichen oder kulturellen Verortung eines Objektes, die dessen Entstehungs- oder Auffindungskontext beschreiben. Soll als Einordnung von Objekten in ihren historischen, geografischen und kulturellen Zusammhang dienen. Die Angaben können dabei exakte Ortsangaben als auch größere geografische oder kulturelle Räume sein, je nach Überliefungslage bzw. Erkenntnisstand. 
+
+Beispiel: ""Fundort: Italien - Numana - Grab 34"", ""kultureller Kontext: Renaissance""",B51DAF,empfohlen,string,
+5,F2A45F,Eingangsdatum,"Datum, an dem das Objekt in die aktuell zuständige Sammlung aufgenommen wurde. An dieser Stelle ist (noch) nicht das Datum, an dem das Objekt in die Restaurierungseinrichtung eingeliefert wurde gemeint. ",B51DAF,Pflicht,date,
+6,F3G8D1,Ansprechpartner*in,"Benannte Person, die für Rückfragen in Bezug auf das Objekt und den Umgang mit diesem kontaktiert werden kann. Dies kann bei Privatbesitz der Eigentümer sein oder bei Objekten aus öffentlichen Einrichtungen z.B. der/die zuständige Kurator*in.  Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann! ",B51DAF,optional,string,
+7,G76A78,Schöpfer*in,"Angaben zur Person, die das Objekt hergestellt hat - sofern bekannt. 
+
+Beispiel: ""Leonardo da Vinci"" ",B51DAF,optional,string,
+8,GB6DF3,Objektbeziehung,"Sofern das Objekt Teil eines Ensemble, einer definierten Sammlung ist oder anderweitig besondere Beziehungen zu anderen Objekten aufweist, sollten diese erfasst werden. 
+
+Beispiel: ""Teil der Sammlung Becker"" ",B51DAF,bedingte Pflicht,string,
+9,,,,,,,
+10,DA2D73,Objektbeschreibung,"Oberbegriff für Informationen, die die Beschaffenheit des Objektes näher beschreiben",top,,,
+11,F1BA31,Objekttyp,"grundlegende formale Kategorie, in die das Objekt eingeordnet wird. 
+
+Beispiel: ""Gemälde"" , ""Skulptur"", ""Münze"" ",DA2D73,Pflicht,thesaurus,
+12,BGC9F3,Weitere Objekteigenschaften,"Möglichkeit weitere charakteristische Eigenschaften des Objektes zu beschreiben, die sich nicht eindeutig zum Objekttyp oder einer der anderen definierten Beschreibungselemente zuordnen lassen. 
+
+Beispiel: Farbe, Form, Besonderheit beim Aussehen",DA2D73,optional,string,
+13,D866AD,Objektmaterial,"Angaben zum Material bzw. den Materialien aus dem/aus denen das Objekt besteht. 
+
+Idealerweise sollte auch die Belastbarkeit dieser Angaben mit erfasst werden, zum Beispiel ob zur Materialbestimmung eine naturwissenschaftliche Analyse verwendet wurde oder ob sie lediglich auf einer visuellen Begutachtung des Objektes beruht. 
+
+Beispiel: ""Bronze (Ergebnis RFA)"", ""Buntmetall (Ergebnis visuelle Begutachtung) """,DA2D73,Pflicht,thesaurus,x
+14,C4BCF8,Herstellungstechnik,"Angaben zur Technik bzw. zu Techniken, die zur Herstellung des Objektes verwendet wurden. 
+
+Idealerweise sollte auch die Belastbarkeit dieser Angaben mit erfasst werden, z.B. die Spuren/Indizien die auf dem Objekt beobachtet wurden. 
+
+Beispiel: ""Geschmiedet (Hammerspuren)""",DA2D73,empfohlen,thesaurus,x
+15,DBC278,aktuelle Maße,"Angaben zu den räumlichen Dimensionen des Objektes, zum letzten Zeitpunkt der Begutachtung. Die Maße des Objektes können sich im Laufe der Zeit verändern (z.B. durch Beschädigung oder die Zusammensetzung eines zerscherbten Objektes).",DA2D73,,string,
+16,C7C3B7,aktuelles Gewicht,,DA2D73,optional,string,
+17,FC3322,aktueller Standort,,DA2D73,Pflicht,string,
+18,,,,,,,
+19,F52262,Zustandserfassung,"Oberbegriff für Informationen, die die systematische Erfassung des Zustands eines Objektes zu einem definierten Zeitpunkt dokumentieren.",top,,,x
+20,A8ABBA,Erfassungszeitpunkt,"Angaben ob es sich bei dem erfassten Zustand um den Zeitpunkt vor, nach oder zwischen einem konservatorisch-restauratorischen Eingriff handelt oder der Zustand beispielsweise im Zuge eines Monitorings, ohne anschließendem Eingriff, erfasst wurde. 
+
+Der Zustand vor und nach einem Eingriff sollte dabei verpflichtend erfasst werden. Weitere Zustandserfassungen sind bei Bedarf möglich.",F52262,Pflicht,thesaurus,
+21,CA1BC5,Erfassungsdatum,"Angabe des Datums, an dem die Erfassung des Zustandes durchgeführt wurde. ",F52262,Pflicht,date,
+22,CDD6B5,Dokumentationsform,"Angaben, in welcher Form der Zustand erfasst wurde bzw. in welcher/welchen Datenformen/Medien die Dokumentation des Zustandes vorliegt.
+
+Beispiel: ""Zustandsbericht + Fotos"" ",F52262,bedingte Pflicht,string,
+23,GDF23F,Verweis,"Eindeutiger Hinweis, an welchem Ort die Dokumentation(en) zu finden ist/sind. Dies kann zum Beispiel eine URI oder URL zum entsprechenden Datensatz sein oder bei analogen Daten eine Identifikationsnummer oder Angabe zum Standort der Ablage. ",CDD6B5,bedingte Pflicht,string,
+24,AC1786,Zustandsbeschreibung,"Oberbegriff für beobachtete, gemessene, geprüfte oder bewertete Informationen, die den Zustand des Objektes zum Zeitpunkt der Erfassung näher beschreiben. Insbesondere Veränderungen des Objektes, die im Vergleich zu einem früheren oder ursprünglichen Zustand bzw. vom zuletzt berichteten Zustand festgestellt werden, müssen dokumentiert werden. ",F52262,Pflicht,string,
+25,G79CA9,Umgebungsbedingungen,"Aufzeichnung der Bedingungen, unter denen das Objekt bis zum Zeitpunkt der Zustandserfassung gehalten wurde. Insbesondere sofern Auswirkungen der Umgebung auf das Objekt erkannt werden, sollten diese in der Zustandsbeschreibung gemeinsam mit der vermuteten Ursache festgehalten werden.",AC1786,empfohlen,string,
+26,BC5B57,Physischer Objektzustand,"Beschreibung der physischen Merkmale und Eigenschaften des Objektes wie Vollständigkeit, Stabilität, Festigkeit, Maße, Feuchtigkeitsgehalt, etc. ",AC1786,Pflicht,string,
+27,AA6941,Schadensphänomene,"Beschreibung der beobachteten negativen Veränderungen am Objekt im Vergleich zu seinem als ursprünglich angenommenen Zustandes. 
+
+Idealerweise sollte auch die Belastbarkeit dieser Angaben mit erfasst werden, indem z.B. die Art der Untersuchung/Feststellung dieser Veränderung dokumentiert wird.",AC1786,Pflicht,thesaurus,x
+28,C2488A,Schadensgrad,"Bewertungsskala zur Quantifizierung des Ausmaßes der Beschädigung eines Objektes.
+
+Idealerweise sollte auch eine kurze Erklärung zur Bewertungsskala erfasst werden, da diese unter Umständen relativ subjektiv ausfallen kann. 
+
+z.B. ""mittel"", ""gering"", ""stark"" ",AA6941,empfohlen,thesaurus,
+29,D4A13D,Schadensfaktor,"Beschreibung der ermittelten oder vermuteten Ursachen für die Beschädigung des Objektes. 
+
+Idealerweise sollte auch die Belastbarkeit dieser Angabe erfasst werden, d.h. in wie weit es sich um eine interpretative/subjektive Aussage handelt.   ",AA6941,optional,string,
+30,A4G52F,konservatorische Vorgeschichte,"Beschreibung von Spuren früherer, nicht dokumentierter konservatorisch-restauratorischer Eingriffe am Objekt sowie der vermuteten Behandlungsmaßnahmen, die diese Spuren verursacht haben könnten.",F52262,empfohlen,string,
+31,,,,,,,
+32,B3FCA1,Untersuchung,"Oberbegriff für Informationen im Kontext der systematischen Begutachtung und Analyse eines Objekte zur Ermittlung von Materialzusammensetzungen, Objektaufbau, Herstellungstechnik, Erhaltungszuständen und/oder weitere Fragestellungen",top,bedingte Pflicht,,x
+33,G7F25F,Zuständige Person (Untersuchung),"Benennung der Person, die die Untersuchung durchgeführt hat bzw. für diese verantwortlich ist. 
+
+Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann! ",B3FCA1,Pflicht,string,
+34,G76B7G,Durchführende Einrichtung (Untersuchung),"Benennung der Einrichtung, die die Untersuchung durchgeführt hat. 
+
+Besonders wenn dies von einer externen Einrichtung durchgeführt wird, ist die Erfassung zu empfehlen.
+In Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.",B3FCA1,empfohlen,string,
+35,A2AG55,Untersuchungskennung,,,bedingte Pflicht,string,
+36,G73958,Untersuchungsdatum,,B3FCA1,Pflicht,date,
+37,CF3C22,Untersuchungsgrund,,B3FCA1,Pflicht,string,
+38,F8F594,Untersuchungsart,"Möglichkeit der Spezifikation, ob es sich um eine naturwissenschaftliche, technologische, materialtechnische oder sonstige Untersuchung handelt.",B3FCA1,optionale,thesaurus,
+39,A15F83,Lokalisation,"Angabe, an welcher Stelle auf dem Objekt die Untersuchung durchgeführt wurde. Nur bei Untersuchungen direkt auf dem Originalenobjekt nötig, entfällt bei Untersuchungen von Proben ",B3FCA1,bedingte Pflicht,string,
+40,DAB4B7,Untersuchungsverfahren,"Angabe, auf welche Art und Weise die Untersuchung durchgeführt wurde.",B3FCA1,Pflicht,thesaurus,
+41,D1CFD5,verwendetes Material (Untersuchung),"Angaben zum Material, welches für die Untersuchung des Objektes verwendet wurde. Diese Angabe ist besonders dann wichtig, wenn die Materialien Spuren bzw. Rückstände auf dem Objekt hinterlassen haben könnten. ",DAB4B7,empfohlen,thesaurus,
+42,D949G6,Untersuchungsgerät,"Angaben, welches Gerät für die Untersuchung verwendet wurde.",DAB4B7,empfohlen,thesaurus,
+43,D6A11G,Geräteeinstellungen (Untersuchungsgerät),"Angaben zu den Einstellungen bzw. Metadaten des Gerätes, welches für die Untersuchung verwendet wurde.",D949G6,empfohlen,string,
+44,BGG5A6,Untersuchungsergebnis ,"Angabe, der bei der Untersuchung festgestellten Beobachtungen und Ergebnisse.",B3FCA1,Pflicht,string,
+45,,,,,,,
+46,CD5C3F,Probeentnahme,"Oberbegriff für Informationen, die die systematische Entnahme von Materialproben aus einem Objekt für Analyse- und Untersuchungszwecke dokumentieren.",top,bedingte Pflicht,,x
+47,C8CG15,Zuständige Person (Probeentnahme),"Benennung der Person, die die Entnahme der Probe durchgeführt hat bzw. für diese verantwortlich ist. 
+
+Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann! ",CD5C3F,Pflicht,string,
+48,F72743,Durchführende Einrichtung (Probeentnahme),"Benennung der Einrichtung, die die Probenentnahme durchgeführt hat. 
+
+Besonders wenn dies von einer externen Einrichtung durchgeführt wird, sollte die Erfassung verpflichtend angesehen werden. 
+In Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.",CD5C3F,bedingte Pflicht,string,
+49,D3AF3A,Datum der Probenentnahme,,CD5C3F,Pflicht,date,
+50,CB7747,Kennung der Probe,,CD5C3F,Pflicht,string,
+51,FD2B2B,Probenbeschreibung,,CD5C3F,empfohlen,string,
+52,C33D85,Anlass der Probenentnahme,,CD5C3F,bedingte Pflicht,string,
+53,F58F6D,Stelle der Probenentnahme,,CD5C3F,Pflicht,string,
+54,D9A6FA,Entnahmemethode,,CD5C3F,Pflicht,string,
+55,,,,,,,
+56,BAA258,Konservierungskonzept,"Oberbegriff für Informationen, die im Vorfeld des Eingriffs zur Entscheidung und Koordination der durchgeführte(n) Maßnahmen(n) erfasst werden. ",top,Pflicht,,
+57,C6A532,Anlass der Maßnahme,,BAA258,empfohlen,string,
+58,FGF575,Ziel der Maßnahme,,BAA258,Pflicht,string,
+59,,,,,,,
+60,DA9CGG,Durchgeführte Maßnahme,,top,,,x
+61,GF41DG,Zuständige Restaurierungseinrichtung ,"Benennung der Einrichtung, in der die jeweilige Maßnahme durchgeführt würde. Der Begriff ""Einrichtung"" wurde dabei als generischer Überbegriff verwendet, um individuelle Bezeichnungen wie ""Werkstatt"", ""Atelier"", ""Labor"", etc. unter einem Begriff zu vereinen. Institutionen können den jeweils in ihrem Arbeitsalltag verwendeten Begriff auf diesen Überbegriff mappen, ohne ihre eigene hausinterne Terminologie verändern zu müssen.
+
+In Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.""",DA9CGG,Pflicht,string,
+62,AF1F5C,Maßnahmenkennnummer ,"Nummer, die die jeweilige Maßnahme eindeutig identifiziert. Wie genau diese Nummer in den jeweiligen Einrichtungen bezeichnet wird, bleibt individuell und wird auf diesen generischen Oberbegriff gemappt.
+
+Beipspiel: Labornummer, Dokumentationsnummern, Werkblattnummer, etc. ",DA9CGG,Bedingte Pflicht,string,
+63,C79561,Zuständige Person (Durchgeführte Maßnahme),"Benennung der Person, die die jeweilige Maßnahme durchgeführt hat bzw. für diese verantwortlich ist. 
+
+Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. 
+Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann! """,DA9CGG,Pflicht,string,
+64,CDD613,Beginn der Maßnahme/ Ende der Maßnahme ,(Datum),DA9CGG,Pflicht,daterange,
+65,G814D2,Zeitaufwand (in Stunden) ,,DA9CGG,(optional),integer,
+66,A13CD1,Eingriff,Beschreibung der konkreten Vorgehensweise und Techniken mit denen das Objekt zur Erreichung des festgelegten Konservierungsziel behandelt wurde.,DA9CGG,Pflicht,thesaurus,x
+67,CGC619,Verwendetes Material ,"Benennung des bzw. der Materialien, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden.",A13CD1,Pflicht,thesaurus,x
+68,D865C3,Bezugsquelle,,CGC619,optional,string,
+69,C364G1,Konzentration,,CGC619,optional,string,
+70,C421BF,Herstellungsdatum,,CGC619,optional,date,
+71,F87124,Werkzeug,"Benennung des bzw. der Werkzeuge und Geräte, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden. Diese Angabe empfiehlt sich besonders dann, wenn durch die verwendeten Werkzeuge Spuren auf dem Objekt hinterlassen wurden. ",A13CD1,empfohlen,thesaurus,x
+72,,,,,,,
+73,B7B8B6,Sicherheit & Arbeitsschutz,,top,bedingte Pflicht,,
+74,FBFFF5,Gefährdungshinweise,"Kurzbeschreibung relevanter Risiken (z. B. Schädlingsbefall, Schimmel, Biozide, Altlasten etc.)",B7B8B6,Pflicht,string,
+75,BGGCA4,Art der Gefährdung,"(z. B. chemisch, mikrobiologisch, physikalisch)",B7B8B6,bedingte Pflicht,thesaurus,x
+76,BB78D2,Getroffene Schutzmaßnahmen,"(z. B. PSA, Quarantänebereich)",B7B8B6,bedingte Pflicht,thesaurus,x
+77,CCCC7G,Letzte Sicherheitsbewertung,,B7B8B6,optional,,
+78,AFD671,Datum der Sicherheitsbewertung,,CCCC7G,empfohlen,date,
+79,ADD53A,Einschätzung,,CCCC7G,empfohlen,string,
+80,,,,,,,
+81,C93638,Präventive Konservierung,,top,empfohlen,,
+82,GF9C49,Allgemeine Umgangsempfehlungen,,C93638,empfohlen,string,
+83,D941BB,Präsentationsvorgaben,,GF9C49,empfohlen,string,
+84,F2244D,Verpackungs- und Transportempfehlungen,,GF9C49,empfohlen,string,
+85,B14C4A,Handlingsempfehlungen,,GF9C49,empfohlen,string,
+86,C3A182,Konservatorische Bedingungen,,C93638,empfohlen,,
+87,A2FA1B,Temperatur (konservatorische Bedingungen),,C3A182,empfohlen,integer,
+88,BA8198,Luftfeuchte (konservatorische Bedingungen),,C3A182,empfohlen,integer,
+89,DF7759,LUX (konservatorische Bedingungen),,C3A182,optional,float,
+90,FD6617,UV (konservatorische Bedingungen),,C3A182,optional,integer,
+91,C11192,Monitoring,,C93638,empfohlen,,x
+92,F5G576,Datum des Monitoring,,C11192,empfohlen,date,
+93,B9835A,Zuständige Person (Monitoring),,C11192,empfohlen,string,
+94,FFFCB7,Überprüfte Bedingungen,,C11192,empfohlen,string,
+95,BF6D19,biologischer Befall,,FFFCB7,empfohlen,string,
+96,A5C668,Klimawerte,,FFFCB7,empfohlen,string,
+97,C9C527,LUX-Stunden,,FFFCB7,empfohlen,integer,
+98,BF3639,Schadstoffe,,FFFCB7,empfohlen,string,
+99,F396G6,Ergebnis des Monitorings,,C11192,empfohlen,string,
+100,AC16G1,Administrative Metadaten,administrative Angaben zu dem vorliegenden Bericht und seinen Inhalten,top,Pflicht,,
+101,D78721,Erstellungsdatum des Berichts,,AC16G1,Pflicht,date,
+102,F285B2,Bearbeiter*in des Berichts,,AC16G1,Pflicht,string,
+103,D1F5D3,Version,,AC16G1,empfohlen,string,
+104,G56866,Zugangsrecht,,AC16G1,empfohlen,string,
+105,,,,,,,
+106,F2AG55,Verwendete Literatur,,top,optional,string,
