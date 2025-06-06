@@ -1,0 +1,681 @@
+[
+  {
+    "notation": "B51DAF",
+    "prefLabel": "Objektkennzeichnung",
+    "definition": "Oberbegriff für eine Reihe von Informationen, die das Objekt kennzeichnen.",
+    "children": [
+      {
+        "notation": "B5DD1A",
+        "prefLabel": "Objektansprache",
+        "definition": "Benennung des konkreten Objektes. Kann sich aus einem offiziellen Titel oder aus Objekttyp und beschreibenden Attributen zusammensetzen.\n\nBeispiel: \"Mona-Lisa\", \"rotfiguriger Krater\"",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "F7D3DB",
+        "prefLabel": "Kennzeichnungsnummer",
+        "definition": "Nummer, die das Objekt eindeutig identifiziert. Dies sollte im Idealfall eine Inventarnummer sein, aber auch andere Arten von eindeutigen Identifikationsnummern sind möglich.\n\nBeispiel: \"O.3649\", \"2025-05-21\"",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "F9GB13",
+        "prefLabel": "Datierung",
+        "definition": "zeitliche Einordnung des Objektes.\n\nBeispiel: \"Urnenfelderzeit\" , \"15. Jh.\"",
+        "mandatory": "empfohlen",
+        "content": "string"
+      },
+      {
+        "notation": "CD3341",
+        "prefLabel": "Herkunft",
+        "definition": "Sammelbegriff für Angaben zur räumlichen oder kulturellen Verortung eines Objektes, die dessen Entstehungs- oder Auffindungskontext beschreiben. Soll als Einordnung von Objekten in ihren historischen, geografischen und kulturellen Zusammhang dienen. Die Angaben können dabei exakte Ortsangaben als auch größere geografische oder kulturelle Räume sein, je nach Überliefungslage bzw. Erkenntnisstand. \n\nBeispiel: \"Fundort: Italien - Numana - Grab 34\", \"kultureller Kontext: Renaissance\"",
+        "mandatory": "empfohlen",
+        "content": "string"
+      },
+      {
+        "notation": "F2A45F",
+        "prefLabel": "Eingangsdatum",
+        "definition": "Datum, an dem das Objekt in die aktuell zuständige Sammlung aufgenommen wurde. An dieser Stelle ist (noch) nicht das Datum, an dem das Objekt in die Restaurierungseinrichtung eingeliefert wurde gemeint.",
+        "mandatory": "Pflicht",
+        "content": "date"
+      },
+      {
+        "notation": "F3G8D1",
+        "prefLabel": "Ansprechpartner*in",
+        "definition": "Benannte Person, die für Rückfragen in Bezug auf das Objekt und den Umgang mit diesem kontaktiert werden kann. Dies kann bei Privatbesitz der Eigentümer sein oder bei Objekten aus öffentlichen Einrichtungen z.B. der/die zuständige Kurator*in.  Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann!",
+        "mandatory": "optional",
+        "content": "string"
+      },
+      {
+        "notation": "G76A78",
+        "prefLabel": "Schöpfer*in",
+        "definition": "Angaben zur Person, die das Objekt hergestellt hat - sofern bekannt. \n\nBeispiel: \"Leonardo da Vinci\"",
+        "mandatory": "optional",
+        "content": "string"
+      },
+      {
+        "notation": "GB6DF3",
+        "prefLabel": "Objektbeziehung",
+        "definition": "Sofern das Objekt Teil eines Ensemble, einer definierten Sammlung ist oder anderweitig besondere Beziehungen zu anderen Objekten aufweist, sollten diese erfasst werden. \n\nBeispiel: \"Teil der Sammlung Becker\"",
+        "mandatory": "bedingte Pflicht",
+        "content": "string"
+      }
+    ]
+  },
+  {
+    "notation": "DA2D73",
+    "prefLabel": "Objektbeschreibung",
+    "definition": "Oberbegriff für Informationen, die die Beschaffenheit des Objektes näher beschreiben",
+    "children": [
+      {
+        "notation": "F1BA31",
+        "prefLabel": "Objekttyp",
+        "definition": "grundlegende formale Kategorie, in die das Objekt eingeordnet wird. \n\nBeispiel: \"Gemälde\" , \"Skulptur\", \"Münze\"",
+        "mandatory": "Pflicht",
+        "content": "thesaurus"
+      },
+      {
+        "notation": "BGC9F3",
+        "prefLabel": "Weitere Objekteigenschaften",
+        "definition": "Möglichkeit weitere charakteristische Eigenschaften des Objektes zu beschreiben, die sich nicht eindeutig zum Objekttyp oder einer der anderen definierten Beschreibungselemente zuordnen lassen. \n\nBeispiel: Farbe, Form, Besonderheit beim Aussehen",
+        "mandatory": "optional",
+        "content": "string"
+      },
+      {
+        "notation": "D866AD",
+        "prefLabel": "Objektmaterial",
+        "definition": "Angaben zum Material bzw. den Materialien aus dem/aus denen das Objekt besteht. \n\nIdealerweise sollte auch die Belastbarkeit dieser Angaben mit erfasst werden, zum Beispiel ob zur Materialbestimmung eine naturwissenschaftliche Analyse verwendet wurde oder ob sie lediglich auf einer visuellen Begutachtung des Objektes beruht. \n\nBeispiel: \"Bronze (Ergebnis RFA)\", \"Buntmetall (Ergebnis visuelle Begutachtung) \"",
+        "mandatory": "Pflicht",
+        "content": "thesaurus",
+        "multi": "x"
+      },
+      {
+        "notation": "C4BCF8",
+        "prefLabel": "Herstellungstechnik",
+        "definition": "Angaben zur Technik bzw. zu Techniken, die zur Herstellung des Objektes verwendet wurden. \n\nIdealerweise sollte auch die Belastbarkeit dieser Angaben mit erfasst werden, z.B. die Spuren/Indizien die auf dem Objekt beobachtet wurden. \n\nBeispiel: \"Geschmiedet (Hammerspuren)\"",
+        "mandatory": "empfohlen",
+        "content": "thesaurus",
+        "multi": "x"
+      },
+      {
+        "notation": "DBC278",
+        "prefLabel": "aktuelle Maße",
+        "definition": "Angaben zu den räumlichen Dimensionen des Objektes, zum letzten Zeitpunkt der Begutachtung. Die Maße des Objektes können sich im Laufe der Zeit verändern (z.B. durch Beschädigung oder die Zusammensetzung eines zerscherbten Objektes).",
+        "content": "string"
+      },
+      {
+        "notation": "C7C3B7",
+        "prefLabel": "aktuelles Gewicht",
+        "mandatory": "optional",
+        "content": "string"
+      },
+      {
+        "notation": "FC3322",
+        "prefLabel": "aktueller Standort",
+        "mandatory": "Pflicht",
+        "content": "string"
+      }
+    ]
+  },
+  {
+    "notation": "F52262",
+    "prefLabel": "Zustandserfassung",
+    "definition": "Oberbegriff für Informationen, die die systematische Erfassung des Zustands eines Objektes zu einem definierten Zeitpunkt dokumentieren.",
+    "multi": "x",
+    "children": [
+      {
+        "notation": "A8ABBA",
+        "prefLabel": "Erfassungszeitpunkt",
+        "definition": "Angaben ob es sich bei dem erfassten Zustand um den Zeitpunkt vor, nach oder zwischen einem konservatorisch-restauratorischen Eingriff handelt oder der Zustand beispielsweise im Zuge eines Monitorings, ohne anschließendem Eingriff, erfasst wurde. \n\nDer Zustand vor und nach einem Eingriff sollte dabei verpflichtend erfasst werden. Weitere Zustandserfassungen sind bei Bedarf möglich.",
+        "mandatory": "Pflicht",
+        "content": "thesaurus"
+      },
+      {
+        "notation": "CA1BC5",
+        "prefLabel": "Erfassungsdatum",
+        "definition": "Angabe des Datums, an dem die Erfassung des Zustandes durchgeführt wurde.",
+        "mandatory": "Pflicht",
+        "content": "date"
+      },
+      {
+        "notation": "CDD6B5",
+        "prefLabel": "Dokumentationsform",
+        "definition": "Angaben, in welcher Form der Zustand erfasst wurde bzw. in welcher/welchen Datenformen/Medien die Dokumentation des Zustandes vorliegt.\n\nBeispiel: \"Zustandsbericht + Fotos\"",
+        "mandatory": "bedingte Pflicht",
+        "content": "string",
+        "children": [
+          {
+            "notation": "GDF23F",
+            "prefLabel": "Verweis",
+            "definition": "Eindeutiger Hinweis, an welchem Ort die Dokumentation(en) zu finden ist/sind. Dies kann zum Beispiel eine URI oder URL zum entsprechenden Datensatz sein oder bei analogen Daten eine Identifikationsnummer oder Angabe zum Standort der Ablage.",
+            "mandatory": "bedingte Pflicht",
+            "content": "string"
+          }
+        ]
+      },
+      {
+        "notation": "AC1786",
+        "prefLabel": "Zustandsbeschreibung",
+        "definition": "Oberbegriff für beobachtete, gemessene, geprüfte oder bewertete Informationen, die den Zustand des Objektes zum Zeitpunkt der Erfassung näher beschreiben. Insbesondere Veränderungen des Objektes, die im Vergleich zu einem früheren oder ursprünglichen Zustand bzw. vom zuletzt berichteten Zustand festgestellt werden, müssen dokumentiert werden.",
+        "mandatory": "Pflicht",
+        "content": "string",
+        "children": [
+          {
+            "notation": "G79CA9",
+            "prefLabel": "Umgebungsbedingungen",
+            "definition": "Aufzeichnung der Bedingungen, unter denen das Objekt bis zum Zeitpunkt der Zustandserfassung gehalten wurde. Insbesondere sofern Auswirkungen der Umgebung auf das Objekt erkannt werden, sollten diese in der Zustandsbeschreibung gemeinsam mit der vermuteten Ursache festgehalten werden.",
+            "mandatory": "empfohlen",
+            "content": "string"
+          },
+          {
+            "notation": "BC5B57",
+            "prefLabel": "Physischer Objektzustand",
+            "definition": "Beschreibung der physischen Merkmale und Eigenschaften des Objektes wie Vollständigkeit, Stabilität, Festigkeit, Maße, Feuchtigkeitsgehalt, etc.",
+            "mandatory": "Pflicht",
+            "content": "string"
+          },
+          {
+            "notation": "AA6941",
+            "prefLabel": "Schadensphänomene",
+            "definition": "Beschreibung der beobachteten negativen Veränderungen am Objekt im Vergleich zu seinem als ursprünglich angenommenen Zustandes. \n\nIdealerweise sollte auch die Belastbarkeit dieser Angaben mit erfasst werden, indem z.B. die Art der Untersuchung/Feststellung dieser Veränderung dokumentiert wird.",
+            "mandatory": "Pflicht",
+            "content": "thesaurus",
+            "multi": "x",
+            "children": [
+              {
+                "notation": "C2488A",
+                "prefLabel": "Schadensgrad",
+                "definition": "Bewertungsskala zur Quantifizierung des Ausmaßes der Beschädigung eines Objektes.\n\nIdealerweise sollte auch eine kurze Erklärung zur Bewertungsskala erfasst werden, da diese unter Umständen relativ subjektiv ausfallen kann. \n\nz.B. \"mittel\", \"gering\", \"stark\"",
+                "mandatory": "empfohlen",
+                "content": "thesaurus"
+              },
+              {
+                "notation": "D4A13D",
+                "prefLabel": "Schadensfaktor",
+                "definition": "Beschreibung der ermittelten oder vermuteten Ursachen für die Beschädigung des Objektes. \n\nIdealerweise sollte auch die Belastbarkeit dieser Angabe erfasst werden, d.h. in wie weit es sich um eine interpretative/subjektive Aussage handelt.",
+                "mandatory": "optional",
+                "content": "string"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "notation": "A4G52F",
+        "prefLabel": "konservatorische Vorgeschichte",
+        "definition": "Beschreibung von Spuren früherer, nicht dokumentierter konservatorisch-restauratorischer Eingriffe am Objekt sowie der vermuteten Behandlungsmaßnahmen, die diese Spuren verursacht haben könnten.",
+        "mandatory": "empfohlen",
+        "content": "string"
+      }
+    ]
+  },
+  {
+    "notation": "B3FCA1",
+    "prefLabel": "Untersuchung",
+    "definition": "Oberbegriff für Informationen im Kontext der systematischen Begutachtung und Analyse eines Objekte zur Ermittlung von Materialzusammensetzungen, Objektaufbau, Herstellungstechnik, Erhaltungszuständen und/oder weitere Fragestellungen",
+    "mandatory": "bedingte Pflicht",
+    "multi": "x",
+    "children": [
+      {
+        "notation": "G7F25F",
+        "prefLabel": "Zuständige Person (Untersuchung)",
+        "definition": "Benennung der Person, die die Untersuchung durchgeführt hat bzw. für diese verantwortlich ist. \n\nFür die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann!",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "G76B7G",
+        "prefLabel": "Durchführende Einrichtung (Untersuchung)",
+        "definition": "Benennung der Einrichtung, die die Untersuchung durchgeführt hat. \n\nBesonders wenn dies von einer externen Einrichtung durchgeführt wird, ist die Erfassung zu empfehlen.\nIn Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.",
+        "mandatory": "empfohlen",
+        "content": "string"
+      },
+      {
+        "notation": "A2AG55",
+        "prefLabel": "Untersuchungskennung",
+        "mandatory": "bedingte Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "G73958",
+        "prefLabel": "Untersuchungsdatum",
+        "mandatory": "Pflicht",
+        "content": "date"
+      },
+      {
+        "notation": "CF3C22",
+        "prefLabel": "Untersuchungsgrund",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "F8F594",
+        "prefLabel": "Untersuchungsart",
+        "definition": "Möglichkeit der Spezifikation, ob es sich um eine naturwissenschaftliche, technologische, materialtechnische oder sonstige Untersuchung handelt.",
+        "mandatory": "optionale",
+        "content": "thesaurus"
+      },
+      {
+        "notation": "A15F83",
+        "prefLabel": "Lokalisation",
+        "definition": "Angabe, an welcher Stelle auf dem Objekt die Untersuchung durchgeführt wurde. Nur bei Untersuchungen direkt auf dem Originalenobjekt nötig, entfällt bei Untersuchungen von Proben",
+        "mandatory": "bedingte Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "DAB4B7",
+        "prefLabel": "Untersuchungsverfahren",
+        "definition": "Angabe, auf welche Art und Weise die Untersuchung durchgeführt wurde.",
+        "mandatory": "Pflicht",
+        "content": "thesaurus",
+        "children": [
+          {
+            "notation": "D1CFD5",
+            "prefLabel": "verwendetes Material (Untersuchung)",
+            "definition": "Angaben zum Material, welches für die Untersuchung des Objektes verwendet wurde. Diese Angabe ist besonders dann wichtig, wenn die Materialien Spuren bzw. Rückstände auf dem Objekt hinterlassen haben könnten.",
+            "mandatory": "empfohlen",
+            "content": "thesaurus"
+          },
+          {
+            "notation": "D949G6",
+            "prefLabel": "Untersuchungsgerät",
+            "definition": "Angaben, welches Gerät für die Untersuchung verwendet wurde.",
+            "mandatory": "empfohlen",
+            "content": "thesaurus",
+            "children": [
+              {
+                "notation": "D6A11G",
+                "prefLabel": "Geräteeinstellungen (Untersuchungsgerät)",
+                "definition": "Angaben zu den Einstellungen bzw. Metadaten des Gerätes, welches für die Untersuchung verwendet wurde.",
+                "mandatory": "empfohlen",
+                "content": "string"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "notation": "BGG5A6",
+        "prefLabel": "Untersuchungsergebnis",
+        "definition": "Angabe, der bei der Untersuchung festgestellten Beobachtungen und Ergebnisse.",
+        "mandatory": "Pflicht",
+        "content": "string"
+      }
+    ]
+  },
+  {
+    "notation": "CD5C3F",
+    "prefLabel": "Probeentnahme",
+    "definition": "Oberbegriff für Informationen, die die systematische Entnahme von Materialproben aus einem Objekt für Analyse- und Untersuchungszwecke dokumentieren.",
+    "mandatory": "bedingte Pflicht",
+    "multi": "x",
+    "children": [
+      {
+        "notation": "C8CG15",
+        "prefLabel": "Zuständige Person (Probeentnahme)",
+        "definition": "Benennung der Person, die die Entnahme der Probe durchgeführt hat bzw. für diese verantwortlich ist. \n\nFür die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann!",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "F72743",
+        "prefLabel": "Durchführende Einrichtung (Probeentnahme)",
+        "definition": "Benennung der Einrichtung, die die Probenentnahme durchgeführt hat. \n\nBesonders wenn dies von einer externen Einrichtung durchgeführt wird, sollte die Erfassung verpflichtend angesehen werden. \nIn Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.",
+        "mandatory": "bedingte Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "D3AF3A",
+        "prefLabel": "Datum der Probenentnahme",
+        "mandatory": "Pflicht",
+        "content": "date"
+      },
+      {
+        "notation": "CB7747",
+        "prefLabel": "Kennung der Probe",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "FD2B2B",
+        "prefLabel": "Probenbeschreibung",
+        "mandatory": "empfohlen",
+        "content": "string"
+      },
+      {
+        "notation": "C33D85",
+        "prefLabel": "Anlass der Probenentnahme",
+        "mandatory": "bedingte Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "F58F6D",
+        "prefLabel": "Stelle der Probenentnahme",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "D9A6FA",
+        "prefLabel": "Entnahmemethode",
+        "mandatory": "Pflicht",
+        "content": "string"
+      }
+    ]
+  },
+  {
+    "notation": "BAA258",
+    "prefLabel": "Konservierungskonzept",
+    "definition": "Oberbegriff für Informationen, die im Vorfeld des Eingriffs zur Entscheidung und Koordination der durchgeführte(n) Maßnahmen(n) erfasst werden.",
+    "mandatory": "Pflicht",
+    "children": [
+      {
+        "notation": "C6A532",
+        "prefLabel": "Anlass der Maßnahme",
+        "mandatory": "empfohlen",
+        "content": "string"
+      },
+      {
+        "notation": "FGF575",
+        "prefLabel": "Ziel der Maßnahme",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "DA9CGG",
+        "prefLabel": "Durchgeführte Maßnahme",
+        "multi": "x",
+        "children": [
+          {
+            "notation": "GF41DG",
+            "prefLabel": "Zuständige Restaurierungseinrichtung",
+            "definition": "Benennung der Einrichtung, in der die jeweilige Maßnahme durchgeführt würde. Der Begriff \"Einrichtung\" wurde dabei als generischer Überbegriff verwendet, um individuelle Bezeichnungen wie \"Werkstatt\", \"Atelier\", \"Labor\", etc. unter einem Begriff zu vereinen. Institutionen können den jeweils in ihrem Arbeitsalltag verwendeten Begriff auf diesen Überbegriff mappen, ohne ihre eigene hausinterne Terminologie verändern zu müssen.\n\nIn Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.\"",
+            "mandatory": "Pflicht",
+            "content": "string"
+          },
+          {
+            "notation": "AF1F5C",
+            "prefLabel": "Maßnahmenkennnummer",
+            "definition": "Nummer, die die jeweilige Maßnahme eindeutig identifiziert. Wie genau diese Nummer in den jeweiligen Einrichtungen bezeichnet wird, bleibt individuell und wird auf diesen generischen Oberbegriff gemappt.\n\nBeipspiel: Labornummer, Dokumentationsnummern, Werkblattnummer, etc.",
+            "mandatory": "Bedingte Pflicht",
+            "content": "string"
+          },
+          {
+            "notation": "C79561",
+            "prefLabel": "Zuständige Person (Durchgeführte Maßnahme)",
+            "definition": "Benennung der Person, die die jeweilige Maßnahme durchgeführt hat bzw. für diese verantwortlich ist. \n\nFür die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. \nBei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann! \"",
+            "mandatory": "Pflicht",
+            "content": "string"
+          },
+          {
+            "notation": "CDD613",
+            "prefLabel": "Beginn der Maßnahme/ Ende der Maßnahme",
+            "definition": "(Datum)",
+            "mandatory": "Pflicht",
+            "content": "daterange"
+          },
+          {
+            "notation": "G814D2",
+            "prefLabel": "Zeitaufwand (in Stunden)",
+            "mandatory": "(optional)",
+            "content": "integer"
+          },
+          {
+            "notation": "A13CD1",
+            "prefLabel": "Eingriff",
+            "definition": "Beschreibung der konkreten Vorgehensweise und Techniken mit denen das Objekt zur Erreichung des festgelegten Konservierungsziel behandelt wurde.",
+            "mandatory": "Pflicht",
+            "content": "thesaurus",
+            "multi": "x",
+            "children": [
+              {
+                "notation": "CGC619",
+                "prefLabel": "Verwendetes Material",
+                "definition": "Benennung des bzw. der Materialien, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden.",
+                "mandatory": "Pflicht",
+                "content": "thesaurus",
+                "multi": "x",
+                "children": [
+                  {
+                    "notation": "D865C3",
+                    "prefLabel": "Bezugsquelle",
+                    "mandatory": "optional",
+                    "content": "string"
+                  },
+                  {
+                    "notation": "C364G1",
+                    "prefLabel": "Konzentration",
+                    "mandatory": "optional",
+                    "content": "string"
+                  },
+                  {
+                    "notation": "C421BF",
+                    "prefLabel": "Herstellungsdatum",
+                    "mandatory": "optional",
+                    "content": "date"
+                  }
+                ]
+              },
+              {
+                "notation": "F87124",
+                "prefLabel": "Werkzeug",
+                "definition": "Benennung des bzw. der Werkzeuge und Geräte, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden. Diese Angabe empfiehlt sich besonders dann, wenn durch die verwendeten Werkzeuge Spuren auf dem Objekt hinterlassen wurden.",
+                "mandatory": "empfohlen",
+                "content": "thesaurus",
+                "multi": "x"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "notation": "B7B8B6",
+    "prefLabel": "Sicherheit & Arbeitsschutz",
+    "mandatory": "bedingte Pflicht",
+    "children": [
+      {
+        "notation": "FBFFF5",
+        "prefLabel": "Gefährdungshinweise",
+        "definition": "Kurzbeschreibung relevanter Risiken (z. B. Schädlingsbefall, Schimmel, Biozide, Altlasten etc.)",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "BGGCA4",
+        "prefLabel": "Art der Gefährdung",
+        "definition": "(z. B. chemisch, mikrobiologisch, physikalisch)",
+        "mandatory": "bedingte Pflicht",
+        "content": "thesaurus",
+        "multi": "x"
+      },
+      {
+        "notation": "BB78D2",
+        "prefLabel": "Getroffene Schutzmaßnahmen",
+        "definition": "(z. B. PSA, Quarantänebereich)",
+        "mandatory": "bedingte Pflicht",
+        "content": "thesaurus",
+        "multi": "x"
+      },
+      {
+        "notation": "CCCC7G",
+        "prefLabel": "Letzte Sicherheitsbewertung",
+        "mandatory": "optional",
+        "children": [
+          {
+            "notation": "AFD671",
+            "prefLabel": "Datum der Sicherheitsbewertung",
+            "mandatory": "empfohlen",
+            "content": "date"
+          },
+          {
+            "notation": "ADD53A",
+            "prefLabel": "Einschätzung",
+            "mandatory": "empfohlen",
+            "content": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "notation": "C93638",
+    "prefLabel": "Präventive Konservierung",
+    "mandatory": "empfohlen",
+    "children": [
+      {
+        "notation": "GF9C49",
+        "prefLabel": "Allgemeine Umgangsempfehlungen",
+        "mandatory": "empfohlen",
+        "content": "string",
+        "children": [
+          {
+            "notation": "D941BB",
+            "prefLabel": "Präsentationsvorgaben",
+            "mandatory": "empfohlen",
+            "content": "string"
+          },
+          {
+            "notation": "F2244D",
+            "prefLabel": "Verpackungs- und Transportempfehlungen",
+            "mandatory": "empfohlen",
+            "content": "string"
+          },
+          {
+            "notation": "B14C4A",
+            "prefLabel": "Handlingsempfehlungen",
+            "mandatory": "empfohlen",
+            "content": "string"
+          }
+        ]
+      },
+      {
+        "notation": "C3A182",
+        "prefLabel": "Konservatorische Bedingungen",
+        "mandatory": "empfohlen",
+        "children": [
+          {
+            "notation": "A2FA1B",
+            "prefLabel": "Temperatur (konservatorische Bedingungen)",
+            "mandatory": "empfohlen",
+            "content": "integer"
+          },
+          {
+            "notation": "BA8198",
+            "prefLabel": "Luftfeuchte (konservatorische Bedingungen)",
+            "mandatory": "empfohlen",
+            "content": "integer"
+          },
+          {
+            "notation": "DF7759",
+            "prefLabel": "LUX (konservatorische Bedingungen)",
+            "mandatory": "optional",
+            "content": "float"
+          },
+          {
+            "notation": "FD6617",
+            "prefLabel": "UV (konservatorische Bedingungen)",
+            "mandatory": "optional",
+            "content": "integer"
+          }
+        ]
+      },
+      {
+        "notation": "C11192",
+        "prefLabel": "Monitoring",
+        "mandatory": "empfohlen",
+        "multi": "x",
+        "children": [
+          {
+            "notation": "F5G576",
+            "prefLabel": "Datum des Monitoring",
+            "mandatory": "empfohlen",
+            "content": "date"
+          },
+          {
+            "notation": "B9835A",
+            "prefLabel": "Zuständige Person (Monitoring)",
+            "mandatory": "empfohlen",
+            "content": "string"
+          },
+          {
+            "notation": "FFFCB7",
+            "prefLabel": "Überprüfte Bedingungen",
+            "mandatory": "empfohlen",
+            "content": "string",
+            "children": [
+              {
+                "notation": "BF6D19",
+                "prefLabel": "biologischer Befall",
+                "mandatory": "empfohlen",
+                "content": "string"
+              },
+              {
+                "notation": "A5C668",
+                "prefLabel": "Klimawerte",
+                "mandatory": "empfohlen",
+                "content": "string"
+              },
+              {
+                "notation": "C9C527",
+                "prefLabel": "LUX-Stunden",
+                "mandatory": "empfohlen",
+                "content": "integer"
+              },
+              {
+                "notation": "BF3639",
+                "prefLabel": "Schadstoffe",
+                "mandatory": "empfohlen",
+                "content": "string"
+              }
+            ]
+          },
+          {
+            "notation": "F396G6",
+            "prefLabel": "Ergebnis des Monitorings",
+            "mandatory": "empfohlen",
+            "content": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "notation": "AC16G1",
+    "prefLabel": "Administrative Metadaten",
+    "definition": "administrative Angaben zu dem vorliegenden Bericht und seinen Inhalten",
+    "mandatory": "Pflicht",
+    "children": [
+      {
+        "notation": "D78721",
+        "prefLabel": "Erstellungsdatum des Berichts",
+        "mandatory": "Pflicht",
+        "content": "date"
+      },
+      {
+        "notation": "F285B2",
+        "prefLabel": "Bearbeiter*in des Berichts",
+        "mandatory": "Pflicht",
+        "content": "string"
+      },
+      {
+        "notation": "D1F5D3",
+        "prefLabel": "Version",
+        "mandatory": "empfohlen",
+        "content": "string"
+      },
+      {
+        "notation": "G56866",
+        "prefLabel": "Zugangsrecht",
+        "mandatory": "empfohlen",
+        "content": "string"
+      }
+    ]
+  },
+  {
+    "notation": "F2AG55",
+    "prefLabel": "Verwendete Literatur",
+    "mandatory": "optional",
+    "content": "string"
+  }
+]

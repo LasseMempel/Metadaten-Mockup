@@ -75,7 +75,7 @@ Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohle
 
 Besonders wenn dies von einer externen Einrichtung durchgeführt wird, ist die Erfassung zu empfehlen.
 In Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.",B3FCA1,empfohlen,string,
-35,A2AG55,Untersuchungskennung,,,bedingte Pflicht,string,
+35,A2AG55,Untersuchungskennung,,B3FCA1,bedingte Pflicht,string,
 36,G73958,Untersuchungsdatum,,B3FCA1,Pflicht,date,
 37,CF3C22,Untersuchungsgrund,,B3FCA1,Pflicht,string,
 38,F8F594,Untersuchungsart,"Möglichkeit der Spezifikation, ob es sich um eine naturwissenschaftliche, technologische, materialtechnische oder sonstige Untersuchung handelt.",B3FCA1,optionale,thesaurus,
@@ -104,58 +104,57 @@ In Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige P
 56,BAA258,Konservierungskonzept,"Oberbegriff für Informationen, die im Vorfeld des Eingriffs zur Entscheidung und Koordination der durchgeführte(n) Maßnahmen(n) erfasst werden. ",top,Pflicht,,
 57,C6A532,Anlass der Maßnahme,,BAA258,empfohlen,string,
 58,FGF575,Ziel der Maßnahme,,BAA258,Pflicht,string,
-59,,,,,,,
-60,DA9CGG,Durchgeführte Maßnahme,,top,,,x
-61,GF41DG,Zuständige Restaurierungseinrichtung ,"Benennung der Einrichtung, in der die jeweilige Maßnahme durchgeführt würde. Der Begriff ""Einrichtung"" wurde dabei als generischer Überbegriff verwendet, um individuelle Bezeichnungen wie ""Werkstatt"", ""Atelier"", ""Labor"", etc. unter einem Begriff zu vereinen. Institutionen können den jeweils in ihrem Arbeitsalltag verwendeten Begriff auf diesen Überbegriff mappen, ohne ihre eigene hausinterne Terminologie verändern zu müssen.
+59,DA9CGG,Durchgeführte Maßnahme,,BAA258,,,x
+60,GF41DG,Zuständige Restaurierungseinrichtung ,"Benennung der Einrichtung, in der die jeweilige Maßnahme durchgeführt würde. Der Begriff ""Einrichtung"" wurde dabei als generischer Überbegriff verwendet, um individuelle Bezeichnungen wie ""Werkstatt"", ""Atelier"", ""Labor"", etc. unter einem Begriff zu vereinen. Institutionen können den jeweils in ihrem Arbeitsalltag verwendeten Begriff auf diesen Überbegriff mappen, ohne ihre eigene hausinterne Terminologie verändern zu müssen.
 
 In Fällen, in denen bei der Veröffentlichung des Datensatzes die zuständige Person nicht genannt werden kann/darf, sollte stattdessen zumindest die zuständige Einrichtung im Datensatz enthalten sein.""",DA9CGG,Pflicht,string,
-62,AF1F5C,Maßnahmenkennnummer ,"Nummer, die die jeweilige Maßnahme eindeutig identifiziert. Wie genau diese Nummer in den jeweiligen Einrichtungen bezeichnet wird, bleibt individuell und wird auf diesen generischen Oberbegriff gemappt.
+61,AF1F5C,Maßnahmenkennnummer ,"Nummer, die die jeweilige Maßnahme eindeutig identifiziert. Wie genau diese Nummer in den jeweiligen Einrichtungen bezeichnet wird, bleibt individuell und wird auf diesen generischen Oberbegriff gemappt.
 
 Beipspiel: Labornummer, Dokumentationsnummern, Werkblattnummer, etc. ",DA9CGG,Bedingte Pflicht,string,
-63,C79561,Zuständige Person (Durchgeführte Maßnahme),"Benennung der Person, die die jeweilige Maßnahme durchgeführt hat bzw. für diese verantwortlich ist. 
+62,C79561,Zuständige Person (Durchgeführte Maßnahme),"Benennung der Person, die die jeweilige Maßnahme durchgeführt hat bzw. für diese verantwortlich ist. 
 
 Für die interne Zuweisung der Verantwortlichkeit/Zuständigkeit ist es empfohlen, diese Daten regelhaft zu erfassen. 
 Bei der potenziellen Veröffentlichung bzw. dem Austausch des Datensatzes außerhalb der eigenen Einrichtung ist an dieser Stelle zu entscheiden, in wie fern die Person namentlich genannt werden möchte/kann! """,DA9CGG,Pflicht,string,
-64,CDD613,Beginn der Maßnahme/ Ende der Maßnahme ,(Datum),DA9CGG,Pflicht,daterange,
-65,G814D2,Zeitaufwand (in Stunden) ,,DA9CGG,(optional),integer,
-66,A13CD1,Eingriff,Beschreibung der konkreten Vorgehensweise und Techniken mit denen das Objekt zur Erreichung des festgelegten Konservierungsziel behandelt wurde.,DA9CGG,Pflicht,thesaurus,x
-67,CGC619,Verwendetes Material ,"Benennung des bzw. der Materialien, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden.",A13CD1,Pflicht,thesaurus,x
-68,D865C3,Bezugsquelle,,CGC619,optional,string,
-69,C364G1,Konzentration,,CGC619,optional,string,
-70,C421BF,Herstellungsdatum,,CGC619,optional,date,
-71,F87124,Werkzeug,"Benennung des bzw. der Werkzeuge und Geräte, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden. Diese Angabe empfiehlt sich besonders dann, wenn durch die verwendeten Werkzeuge Spuren auf dem Objekt hinterlassen wurden. ",A13CD1,empfohlen,thesaurus,x
-72,,,,,,,
-73,B7B8B6,Sicherheit & Arbeitsschutz,,top,bedingte Pflicht,,
-74,FBFFF5,Gefährdungshinweise,"Kurzbeschreibung relevanter Risiken (z. B. Schädlingsbefall, Schimmel, Biozide, Altlasten etc.)",B7B8B6,Pflicht,string,
-75,BGGCA4,Art der Gefährdung,"(z. B. chemisch, mikrobiologisch, physikalisch)",B7B8B6,bedingte Pflicht,thesaurus,x
-76,BB78D2,Getroffene Schutzmaßnahmen,"(z. B. PSA, Quarantänebereich)",B7B8B6,bedingte Pflicht,thesaurus,x
-77,CCCC7G,Letzte Sicherheitsbewertung,,B7B8B6,optional,,
-78,AFD671,Datum der Sicherheitsbewertung,,CCCC7G,empfohlen,date,
-79,ADD53A,Einschätzung,,CCCC7G,empfohlen,string,
-80,,,,,,,
-81,C93638,Präventive Konservierung,,top,empfohlen,,
-82,GF9C49,Allgemeine Umgangsempfehlungen,,C93638,empfohlen,string,
-83,D941BB,Präsentationsvorgaben,,GF9C49,empfohlen,string,
-84,F2244D,Verpackungs- und Transportempfehlungen,,GF9C49,empfohlen,string,
-85,B14C4A,Handlingsempfehlungen,,GF9C49,empfohlen,string,
-86,C3A182,Konservatorische Bedingungen,,C93638,empfohlen,,
-87,A2FA1B,Temperatur (konservatorische Bedingungen),,C3A182,empfohlen,integer,
-88,BA8198,Luftfeuchte (konservatorische Bedingungen),,C3A182,empfohlen,integer,
-89,DF7759,LUX (konservatorische Bedingungen),,C3A182,optional,float,
-90,FD6617,UV (konservatorische Bedingungen),,C3A182,optional,integer,
-91,C11192,Monitoring,,C93638,empfohlen,,x
-92,F5G576,Datum des Monitoring,,C11192,empfohlen,date,
-93,B9835A,Zuständige Person (Monitoring),,C11192,empfohlen,string,
-94,FFFCB7,Überprüfte Bedingungen,,C11192,empfohlen,string,
-95,BF6D19,biologischer Befall,,FFFCB7,empfohlen,string,
-96,A5C668,Klimawerte,,FFFCB7,empfohlen,string,
-97,C9C527,LUX-Stunden,,FFFCB7,empfohlen,integer,
-98,BF3639,Schadstoffe,,FFFCB7,empfohlen,string,
-99,F396G6,Ergebnis des Monitorings,,C11192,empfohlen,string,
-100,AC16G1,Administrative Metadaten,administrative Angaben zu dem vorliegenden Bericht und seinen Inhalten,top,Pflicht,,
-101,D78721,Erstellungsdatum des Berichts,,AC16G1,Pflicht,date,
-102,F285B2,Bearbeiter*in des Berichts,,AC16G1,Pflicht,string,
-103,D1F5D3,Version,,AC16G1,empfohlen,string,
-104,G56866,Zugangsrecht,,AC16G1,empfohlen,string,
-105,,,,,,,
-106,F2AG55,Verwendete Literatur,,top,optional,string,
+63,CDD613,Beginn der Maßnahme/ Ende der Maßnahme ,(Datum),DA9CGG,Pflicht,daterange,
+64,G814D2,Zeitaufwand (in Stunden) ,,DA9CGG,(optional),integer,
+65,A13CD1,Eingriff,Beschreibung der konkreten Vorgehensweise und Techniken mit denen das Objekt zur Erreichung des festgelegten Konservierungsziel behandelt wurde.,DA9CGG,Pflicht,thesaurus,x
+66,CGC619,Verwendetes Material ,"Benennung des bzw. der Materialien, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden.",A13CD1,Pflicht,thesaurus,x
+67,D865C3,Bezugsquelle,,CGC619,optional,string,
+68,C364G1,Konzentration,,CGC619,optional,string,
+69,C421BF,Herstellungsdatum,,CGC619,optional,date,
+70,F87124,Werkzeug,"Benennung des bzw. der Werkzeuge und Geräte, die für die jeweilige konservatorische und/oder restauratorische Maßnahme verwendet wurden. Diese Angabe empfiehlt sich besonders dann, wenn durch die verwendeten Werkzeuge Spuren auf dem Objekt hinterlassen wurden. ",A13CD1,empfohlen,thesaurus,x
+71,,,,,,,
+72,B7B8B6,Sicherheit & Arbeitsschutz,,top,bedingte Pflicht,,
+73,FBFFF5,Gefährdungshinweise,"Kurzbeschreibung relevanter Risiken (z. B. Schädlingsbefall, Schimmel, Biozide, Altlasten etc.)",B7B8B6,Pflicht,string,
+74,BGGCA4,Art der Gefährdung,"(z. B. chemisch, mikrobiologisch, physikalisch)",B7B8B6,bedingte Pflicht,thesaurus,x
+75,BB78D2,Getroffene Schutzmaßnahmen,"(z. B. PSA, Quarantänebereich)",B7B8B6,bedingte Pflicht,thesaurus,x
+76,CCCC7G,Letzte Sicherheitsbewertung,,B7B8B6,optional,,
+77,AFD671,Datum der Sicherheitsbewertung,,CCCC7G,empfohlen,date,
+78,ADD53A,Einschätzung,,CCCC7G,empfohlen,string,
+79,,,,,,,
+80,C93638,Präventive Konservierung,,top,empfohlen,,
+81,GF9C49,Allgemeine Umgangsempfehlungen,,C93638,empfohlen,string,
+82,D941BB,Präsentationsvorgaben,,GF9C49,empfohlen,string,
+83,F2244D,Verpackungs- und Transportempfehlungen,,GF9C49,empfohlen,string,
+84,B14C4A,Handlingsempfehlungen,,GF9C49,empfohlen,string,
+85,C3A182,Konservatorische Bedingungen,,C93638,empfohlen,,
+86,A2FA1B,Temperatur (konservatorische Bedingungen),,C3A182,empfohlen,integer,
+87,BA8198,Luftfeuchte (konservatorische Bedingungen),,C3A182,empfohlen,integer,
+88,DF7759,LUX (konservatorische Bedingungen),,C3A182,optional,float,
+89,FD6617,UV (konservatorische Bedingungen),,C3A182,optional,integer,
+90,C11192,Monitoring,,C93638,empfohlen,,x
+91,F5G576,Datum des Monitoring,,C11192,empfohlen,date,
+92,B9835A,Zuständige Person (Monitoring),,C11192,empfohlen,string,
+93,FFFCB7,Überprüfte Bedingungen,,C11192,empfohlen,string,
+94,BF6D19,biologischer Befall,,FFFCB7,empfohlen,string,
+95,A5C668,Klimawerte,,FFFCB7,empfohlen,string,
+96,C9C527,LUX-Stunden,,FFFCB7,empfohlen,integer,
+97,BF3639,Schadstoffe,,FFFCB7,empfohlen,string,
+98,F396G6,Ergebnis des Monitorings,,C11192,empfohlen,string,
+99,AC16G1,Administrative Metadaten,administrative Angaben zu dem vorliegenden Bericht und seinen Inhalten,top,Pflicht,,
+100,D78721,Erstellungsdatum des Berichts,,AC16G1,Pflicht,date,
+101,F285B2,Bearbeiter*in des Berichts,,AC16G1,Pflicht,string,
+102,D1F5D3,Version,,AC16G1,empfohlen,string,
+103,G56866,Zugangsrecht,,AC16G1,empfohlen,string,
+104,,,,,,,
+105,F2AG55,Verwendete Literatur,,top,optional,string,
