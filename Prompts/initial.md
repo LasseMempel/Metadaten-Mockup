@@ -1,6 +1,8 @@
 I want a Online Documentation mockup page, where forms for the restoration of archeological artifacts can be filled out, to mock filling fields in a database.
 
-Generate me a HMTL document with JS and CCs, that should be maintainable, ideally dynamically created modular code, based around the appended jsons, that should be integrated in the JS part and be the core of the application, so the application can be changed by changing them.
+Generate me a maintainable HMTL document with JS and CSS. The Page shall be dynamically created based upon appended jsons - the core of the application, so the output can be changed by changing them.
+- hierarchy.json (The Data for building the forms hierarchically)
+- thesaurus.json (A mockup vocabulary with accepted answers for some dropdowns)
 
 Features:
 
